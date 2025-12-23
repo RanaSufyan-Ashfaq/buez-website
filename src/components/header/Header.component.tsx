@@ -81,7 +81,7 @@ const Header = () => {
                 src={BuezLogo}
                 alt="BUEZ Logo"
                 sx={{
-                  height: { xs: "32px", md: "40px" },
+                  height: { xs: "30px", md: "60px" },
                 }}
               />
             </Box>
@@ -100,7 +100,7 @@ const Header = () => {
                   underline="none"
                   sx={{
                     color: "#ffffff",
-                    fontSize: "20px",
+                    fontSize: "16px",
                     fontWeight: 400,
                     letterSpacing: "0.5px",
                     transition: "color 0.3s ease",

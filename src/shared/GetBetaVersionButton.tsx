@@ -11,12 +11,17 @@ export const GetBetaVersionButton = ({}) => {
         backgroundColor: "#ffffff",
         color: "#020617",
         borderRadius: "50px",
-        padding: "12px 24px",
-        fontSize: "20px",
+        padding: "8px 20px",
+        fontSize: "16px",
         fontWeight: 500,
         textTransform: "none",
         width: { sm: "100%", md: "auto" },
         img: { width: "39px", pr: "10px" },
+
+        "&:hover": {
+          backgroundColor: "#ffffff",
+          color: "#020617",
+        },
       }}
     >
       <img src={AppleIconImage} alt="Apple Icon" />

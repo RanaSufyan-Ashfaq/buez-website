@@ -200,7 +200,6 @@ const PricingPlan = () => {
           </Box>
         </Box>
 
-        {/* Subscription Plan Card */}
         <Box
           sx={{
             flex: 1,

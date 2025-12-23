@@ -1,3 +1,4 @@
+import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
 // Assets
@@ -8,12 +9,14 @@ const WhatIsBuez = () => {
     <Box
       sx={{
         background: "#020617",
+        pt: { xs: "40px", md: "70px" },
         pb: { xs: "80px", md: "140px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
       <Grid
         container
+        // spacing={{ xs: 6, md: 10 }}
         alignItems="center"
         flexWrap={{ xs: "wrap", md: "nowrap" }}
         justifyContent={{ xs: "center", md: "space-between" }}
@@ -22,13 +25,12 @@ const WhatIsBuez = () => {
           maxWidth: "1428px",
           margin: "0 auto",
           width: "100%",
-          gap: { xs: "48px", md: "80px" }, // Using gap instead of spacing to avoid negative margins
         }}
       >
         <Grid xs={12} md={6} textAlign="left">
           <Box component="img" src={WhatIsBuezImage} alt="What is BUEZ" />
         </Grid>
-        <Grid xs={12} md={6} sx={{ width: { md: "100%", lg: "50%" } }}>
+        <Grid xs={12} md={6} sx={{ width: { md: "100%", lg: "60%" } }}>
           <Typography
             component="h2"
             sx={{
