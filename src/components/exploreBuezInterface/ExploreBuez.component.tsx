@@ -2,7 +2,13 @@
 // React
 import React, { useState } from "react";
 // MUI Imports
-import { Box, Typography, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Slider
@@ -64,6 +70,8 @@ const PrevArrow = ({ onClick }: { onClick?: () => void }) => {
   );
 };
 const ExploreBuez = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [slideIndex, setSlideIndex] = useState(0);
   const images = [
     ExploreBuezImage,
@@ -75,22 +83,16 @@ const ExploreBuez = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    centerMode: true,
-    centerPadding: "0",
+    slidesToShow: isMobile ? 1 : 3,
+    slidesToScroll: 1,
+    centerMode: !isMobile,
+    centerPadding: "0px",
+    arrows: !isMobile,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    beforeChange: (current: number, next: number) => setSlideIndex(next),
-    responsive: [
-      {
-        breakpoint: 960, // Tablet and Mobile
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "0px", // Strict single slide for everything under 960px
-        },
-      },
-    ],
+    beforeChange: (_current: number, next: number) => {
+      setSlideIndex(next);
+    },
     customPaging: (i: number) => (
       <Box
         sx={{
@@ -160,27 +162,27 @@ const ExploreBuez = () => {
         <Box
           sx={{
             position: "relative",
-            px: { xs: "0", md: "60px" }, // Add padding for arrows
+            px: { xs: "0", md: "60px" },
+
             ".slick-slide": {
-              opacity: 0.5,
-              transform: "scale(0.8)",
+              opacity: isMobile ? 1 : 0.5,
+              transform: isMobile ? "scale(1)" : "scale(0.8)",
               transition: "all 0.5s ease",
             },
+
             ".slick-center": {
               opacity: 1,
-              transform: "scale(1.05)", // Grow effect for center slide
+              transform: isMobile ? "scale(1)" : "scale(1.05)",
               zIndex: 10,
-              position: "relative",
             },
+
             ".slick-list": {
-              padding: "50px 0 !important", // Increased padding to prevent clipping of scaled image
-              // overflow: "visible", // Removed to hide extra slides on sides
+              padding: isMobile ? "0px !important" : "50px 0 !important",
             },
-            // Hide default slick dots
-            ".slick-dots li": {
-              margin: 0,
-              width: "auto",
-              height: "auto",
+
+            ".slick-track": {
+              display: "flex",
+              alignItems: "center",
             },
           }}
         >

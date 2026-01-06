@@ -26,7 +26,7 @@ const HeroSection = () => {
           maxWidth: "1428px",
           margin: "0 auto",
           width: "100%",
-          gap: { xs: "48px", md: "80px" }, // Using gap instead of spacing to avoid negative margins
+          gap: { xs: "48px", md: "80px" },
         }}
       >
         <Grid xs={12} md={6}>
@@ -69,7 +69,7 @@ const HeroSection = () => {
         >
           <Box
             sx={{
-              maxWidth: { xs: "80%", md: "100%" },
+              maxWidth: { xs: "100%", md: "100%" },
             }}
             component="img"
             src={HeroSectionImage}
