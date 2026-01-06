@@ -85,9 +85,9 @@ const ExploreBuez = () => {
       {
         breakpoint: 960, // Tablet and Mobile
         settings: {
-          slidesToShow: 1, // Show 1 slide on mobile for better view
+          slidesToShow: 1,
           centerMode: true,
-          centerPadding: "40px",
+          centerPadding: "0px", // Strict single slide for everything under 960px
         },
       },
     ],
@@ -119,10 +119,11 @@ const ExploreBuez = () => {
   };
   return (
     <Box
+      id="exploreBuez"
       sx={{
         background: "linear-gradient(142deg, #2F80B5 0%, #020617 20%)",
         pb: { xs: "80px", md: "140px" },
-        pt: { xs: "80px", md: "100px" },
+        pt: { xs: "80px", md: "110px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         // overflow: "hidden", // Removed to prevent clipping of shadows/dots
@@ -147,7 +148,7 @@ const ExploreBuez = () => {
           sx={{
             color: "#e5e7eb",
             fontSize: { xs: "16px", lg: "18px" },
-            maxWidth: "60%",
+            maxWidth: { xs: "100%", lg: "60%" },
             margin: "0 auto",
             mb: { xs: "60px", md: "50px" },
           }}
@@ -172,7 +173,7 @@ const ExploreBuez = () => {
               position: "relative",
             },
             ".slick-list": {
-              padding: "60px 0 !important", // Increased padding to prevent clipping of scaled image
+              padding: "50px 0 !important", // Increased padding to prevent clipping of scaled image
               // overflow: "visible", // Removed to hide extra slides on sides
             },
             // Hide default slick dots

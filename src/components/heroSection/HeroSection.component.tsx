@@ -12,7 +12,7 @@ const HeroSection = () => {
       sx={{
         background: "linear-gradient(140deg, #2F80B5 0%, #020617 30%)",
         pt: { xs: "120px", md: "185px" },
-        pb: { xs: "40px", md: "70px" },
+        // pb: { xs: "40px", md: "70px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
@@ -60,8 +60,21 @@ const HeroSection = () => {
           <GetBetaVersionButton />
         </Grid>
 
-        <Grid xs={12} md={6} textAlign="right">
-          <Box component="img" src={HeroSectionImage} alt="Hero section" />
+        <Grid
+          xs={12}
+          md={6}
+          sx={{
+            textAlign: { xs: "center", md: "right" },
+          }}
+        >
+          <Box
+            sx={{
+              maxWidth: { xs: "80%", md: "100%" },
+            }}
+            component="img"
+            src={HeroSectionImage}
+            alt="Hero section"
+          />
         </Grid>
       </Grid>
     </Box>
