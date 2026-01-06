@@ -25,6 +25,7 @@ const WhatIsBuez = () => {
           flexWrap={{ xs: "wrap", md: "nowrap" }}
           justifyContent={{ xs: "center", md: "space-between" }}
           textAlign={{ xs: "center", md: "left" }}
+          flexDirection={{ xs: "column-reverse", md: "row" }}
           sx={{
             maxWidth: "1428px",
             margin: "0 auto",
@@ -36,7 +37,6 @@ const WhatIsBuez = () => {
             md={6}
             sx={{
               textAlign: { xs: "center", md: "left" },
-              paddingBottom: { xs: "60px", md: "0" },
             }}
           >
             <Box
@@ -48,7 +48,14 @@ const WhatIsBuez = () => {
               alt="What is BUEZ"
             />
           </Grid>
-          <Grid xs={12} md={6} sx={{ width: { md: "100%", lg: "60%" } }}>
+          <Grid
+            xs={12}
+            md={6}
+            sx={{
+              width: { md: "100%", lg: "60%" },
+              paddingBottom: { xs: "60px", md: "0" },
+            }}
+          >
             <Typography
               component="h2"
               sx={{
