@@ -42,7 +42,7 @@ const WhatIsBuez = () => {
             <Box
               component="img"
               sx={{
-                maxWidth: { xs: "80%", md: "100%" },
+                maxWidth: { xs: "75%", md: "100%" },
               }}
               src={WhatIsBuezImage}
               alt="What is BUEZ"

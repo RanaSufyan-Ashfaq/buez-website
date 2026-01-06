@@ -54,7 +54,7 @@ const OurFeatures = () => {
       sx={{
         background: "#020617",
         pt: { xs: "80px", md: "110px" },
-        pb: { xs: "80px", md: "140px" },
+        pb: { xs: "0px", md: "140px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
       }}

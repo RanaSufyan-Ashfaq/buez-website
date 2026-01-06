@@ -88,7 +88,7 @@ const WhyChooseBuez = () => {
       id="whyBuez"
       sx={{
         background: "#020617",
-        pb: { xs: "40px", md: "210px" },
+        pb: { xs: "0px", md: "210px" },
         pt: { xs: "80px", md: "110px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
@@ -127,7 +127,7 @@ const WhyChooseBuez = () => {
             fontSize: { xs: "16px", lg: "18px" },
             maxWidth: "620px",
             margin: "0 auto",
-            mb: { xs: "40px", md: "200px" },
+            mb: { xs: "40px", md: "60px", lg: "200px" },
             position: "relative",
             zIndex: 2,
           }}
@@ -162,7 +162,7 @@ const WhyChooseBuez = () => {
               opacity: 1,
               zIndex: 0,
               pointerEvents: "none",
-              display: { xs: "none", md: "block" }, // Hide on mobile if stack layout
+              display: { xs: "none", md: "none", lg: "block" }, // Hide on mobile if stack layout
             }}
           />
 
@@ -186,7 +186,7 @@ const WhyChooseBuez = () => {
           {/* Feature Cards Loop */}
           <Box
             sx={{
-              display: { xs: "grid", md: "block" },
+              display: { xs: "grid", md: "grid", lg: "block" },
               gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
               gap: "20px",
               width: "100%",
@@ -196,14 +196,14 @@ const WhyChooseBuez = () => {
               <Box
                 key={index}
                 sx={{
-                  position: { xs: "relative", md: "absolute" },
+                  position: { xs: "relative", lg: "absolute" },
                   ...feature.position, // Apply top/left/right/bottom for desktop
-                  top: { xs: "auto", md: feature.position.top },
-                  left: { xs: "auto", md: feature.position.left },
-                  right: { xs: "auto", md: feature.position.right },
-                  bottom: { xs: "auto", md: feature.position.bottom },
+                  top: { xs: "auto", lg: feature.position.top },
+                  left: { xs: "auto", lg: feature.position.left },
+                  right: { xs: "auto", lg: feature.position.right },
+                  bottom: { xs: "auto", lg: feature.position.bottom },
 
-                  width: { xs: "100%", sm: "auto", md: "380px" },
+                  width: { xs: "100%", sm: "auto", md: "auto", lg: "380px" },
                   background: "rgba(255, 255, 255, 0.03)",
                   backdropFilter: "blur(10px)",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
