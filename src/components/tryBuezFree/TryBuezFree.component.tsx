@@ -57,7 +57,14 @@ const TryBuezFree = () => {
           </Typography>
           <GetBetaVersionButton />
         </Grid>
-        <Grid xs={12} md={6} textAlign="right">
+        <Grid
+          xs={12}
+          md={6}
+          sx={{
+            textAlign: { xs: "center", md: "right" },
+            paddingTop: { xs: "60px", md: "0" },
+          }}
+        >
           <Box component="img" src={TryBuezImage} alt="Try BUEZ" />
         </Grid>
       </Grid>

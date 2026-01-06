@@ -24,14 +24,27 @@ const Header = () => {
   const navItems = [
     { label: "HOME", href: "#home" },
     { label: "ABOUT BUEZ", href: "#about" },
-    { label: "OUR FEATURES", href: "#features" },
-    { label: "WHY BUEZ", href: "#why" },
+    { label: "OUR FEATURES", href: "#ourFeatures" },
+    { label: "WHY BUEZ", href: "#whyBuez" },
     { label: "PRICING", href: "#pricing" },
-    { label: "EXPLORE", href: "#explore" },
+    { label: "EXPLORE", href: "#exploreBuez" },
   ];
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    if (href.startsWith("#")) {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -62,7 +75,7 @@ const Header = () => {
           <Toolbar
             sx={{
               px: { xs: "20px", md: "40px" },
-              py: { xs: "12px", md: "15px" },
+              py: { xs: "6px", md: "15px" },
               justifyContent: "space-between",
               minHeight: "auto !important",
             }}
@@ -81,7 +94,7 @@ const Header = () => {
                 src={BuezLogo}
                 alt="BUEZ Logo"
                 sx={{
-                  height: { xs: "30px", md: "60px" },
+                  height: { xs: "45px", md: "60px" },
                 }}
               />
             </Box>
@@ -97,6 +110,7 @@ const Header = () => {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   underline="none"
                   sx={{
                     color: "#ffffff",
@@ -152,7 +166,6 @@ const Header = () => {
           sx={{
             display: "flex",
             justifyContent: "flex-end",
-            mb: "30px",
           }}
         >
           <IconButton onClick={toggleMobileMenu} sx={{ color: "#ffffff" }}>
@@ -165,7 +178,10 @@ const Header = () => {
             <ListItem key={item.label} sx={{ padding: 0 }}>
               <Link
                 href={item.href}
-                onClick={toggleMobileMenu}
+                onClick={(e) => {
+                  toggleMobileMenu();
+                  handleNavClick(e, item.href);
+                }}
                 underline="none"
                 sx={{
                   color: "#ffffff",

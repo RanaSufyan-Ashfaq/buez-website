@@ -50,8 +50,10 @@ const OurFeatures = () => {
 
   return (
     <Box
+      id="ourFeatures"
       sx={{
-        background: "linear-gradient(330deg, #2F80B5 0%, #020617 30%)",
+        background: "#020617",
+        pt: { xs: "80px", md: "110px" },
         pb: { xs: "80px", md: "140px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
