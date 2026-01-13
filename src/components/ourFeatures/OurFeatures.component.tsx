@@ -1,47 +1,62 @@
 import React from "react";
 // MUI Imports
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 // Assets
-import SettingIconImage from "../../assets/settingIcon.svg";
+import SettingIconImage from "../../assets/trial.svg";
+import PostRequestIconImage from "../../assets/postRequests.svg";
+import AcceptCompleteIconImage from "../../assets/acceptCompleteTasks.svg";
+import RatingsReviewsIconImage from "../../assets/rating.svg";
+import ProfileBadgesIconImage from "../../assets/profileRanking.svg";
+import LocationRequestsIconImage from "../../assets/location.svg";
+import ManageSubscriptionIconImage from "../../assets/manageSubscription.svg";
+import ThemeLanguageIconImage from "../../assets/themeLanguage.svg";
 
 const OurFeatures = () => {
   const featuresData = [
     {
+      icon: SettingIconImage,
       title: "14-Days Free Trial",
       description:
         "Access all features free for 14 days – explore, connect, and experience BUEZ before subscribing.",
     },
     {
+      icon: PostRequestIconImage,
       title: "Post Requests",
       description:
         "Create task requests by category and description to quickly find help when you need it.",
     },
     {
+      icon: AcceptCompleteIconImage,
       title: "Accept & Complete Tasks",
       description:
         "Browse nearby requests, accept tasks, and assist others to earn rewards and recognition.",
     },
     {
+      icon: RatingsReviewsIconImage,
       title: "Ratings & Reviews",
       description:
         "Both requester and helper can rate and review after each task to build community trust.",
     },
     {
+      icon: ProfileBadgesIconImage,
       title: "Profile Badges",
       description:
         "Earn badges like Top Buezer, Buezer, and Mini Buezer as you complete more tasks successfully.",
     },
     {
+      icon: LocationRequestsIconImage,
       title: "Location-Based Requests",
       description:
         "View posts and top profiles within 100km of your current location for faster, local connections.",
     },
     {
+      icon: ManageSubscriptionIconImage,
       title: "Manage Subscription",
       description:
         "Continue using BUEZ with a simple monthly plan – cancel anytime, no hidden charges.",
     },
     {
+      icon: ThemeLanguageIconImage,
       title: "Theme & Language",
       description:
         "Switch between light or dark mode and choose your preferred language for a personalized experience.",
@@ -122,7 +137,7 @@ const OurFeatures = () => {
           >
             <Box
               component="img"
-              src={SettingIconImage}
+              src={item.icon}
               alt="setting"
               sx={{
                 width: "42px",

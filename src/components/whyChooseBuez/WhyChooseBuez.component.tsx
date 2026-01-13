@@ -2,18 +2,17 @@ import React from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
 // Icons
-import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
-import SpeedIcon from "@mui/icons-material/Speed";
-import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
-import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
-import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import AwardIcon from "../../assets/award.svg";
+import CommunityIcon from "../../assets/community.svg";
+import CommunicationIcon from "../../assets/directCommunication.svg";
+import FastAndEasyIcon from "../../assets/fastAndEasy.svg";
+import FreeToStartIcon from "../../assets/freeToStart.svg";
+import SafeAndReliableIcon from "../../assets/safeAndReliable.svg";
+import PersonalizedExperienceIcon from "../../assets/personalizedExperience.svg";
+import NearbyTasksIcon from "../../assets/nearbyTasks.svg";
 
 // Assets
 import CircleRingsImage from "../../assets/whyChooseBg.svg";
-import WhatIsBuezImage from "../../assets/whyChooseBuez.svg";
 
 const WhyChooseBuez = () => {
   const features = [
@@ -21,31 +20,31 @@ const WhyChooseBuez = () => {
       title: "Rewarding Experience",
       description:
         "Earn badges and build your reputation as you complete tasks.",
-      icon: <EmojiEventsOutlinedIcon sx={{ fontSize: "28px" }} />,
+      icon: AwardIcon,
       position: { top: "-12%", left: "13%" },
       mobileOrder: 1,
     },
     {
       title: "Community-Driven Platform",
       description:
-        "Built to connect real people who believe in helping each other.",
-      icon: <GroupsOutlinedIcon sx={{ fontSize: "28px" }} />,
+        "Designed to connect people who want to help and support each other.",
+      icon: CommunityIcon,
       position: { top: "-12%", right: "13%" },
       mobileOrder: 2,
     },
     {
       title: "Direct Communication",
       description:
-        "Chat securely with users to plan and coordinate tasks easily.",
-      icon: <ChatBubbleOutlineIcon sx={{ fontSize: "28px" }} />,
+        "Communicate safely with users to plan and complete tasks smoothly.",
+      icon: CommunicationIcon,
       position: { top: "29%", left: "3%" },
       mobileOrder: 3,
     },
     {
       title: "Fast & Easy to Use",
       description:
-        "Post or accept tasks in just a few taps — no complicated steps.",
-      icon: <SpeedIcon sx={{ fontSize: "28px" }} />,
+        "Easily post or accept tasks in seconds — no complicated steps.",
+      icon: FastAndEasyIcon,
       position: { top: "29%", right: "3%" },
       mobileOrder: 4,
     },
@@ -53,15 +52,15 @@ const WhyChooseBuez = () => {
       title: "Free to Start",
       description:
         "Enjoy a full 14-days free trial with access to every feature of BUEZ.",
-      icon: <RocketLaunchOutlinedIcon sx={{ fontSize: "28px" }} />,
+      icon: FreeToStartIcon,
       position: { bottom: "22%", left: "3%" },
       mobileOrder: 5,
     },
     {
       title: "Safe & Reliable",
       description:
-        "Verified profiles, ratings, and reviews ensure trusted connections.",
-      icon: <VerifiedUserOutlinedIcon sx={{ fontSize: "28px" }} />,
+        "Ratings, reviews, and top profiles help maintain a safe community.",
+      icon: SafeAndReliableIcon,
       position: { bottom: "22%", right: "3%" },
       mobileOrder: 6,
     },
@@ -69,15 +68,15 @@ const WhyChooseBuez = () => {
       title: "Personalized Experience",
       description:
         "Switch themes, choose your language, and use BUEZ your way.",
-      icon: <TuneOutlinedIcon sx={{ fontSize: "28px" }} />,
+      icon: PersonalizedExperienceIcon,
       position: { bottom: "-12%", left: "13%" },
       mobileOrder: 7,
     },
     {
-      title: "Location-Based Matching",
+      title: "Nearby Tasks & Helpers",
       description:
-        "Find help or offer reliable support within your current location.",
-      icon: <LocationOnOutlinedIcon sx={{ fontSize: "28px" }} />,
+        "Find help or offer trusted support within 100km of your current location.",
+      icon: NearbyTasksIcon,
       position: { bottom: "-12%", right: "13%" },
       mobileOrder: 8,
     },
@@ -89,7 +88,7 @@ const WhyChooseBuez = () => {
       sx={{
         background: "#020617",
         pb: { xs: "0px", md: "210px" },
-        pt: { xs: "80px", md: "110px" },
+        pt: { xs: "80px", md: "0px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         position: "relative",
@@ -224,16 +223,24 @@ const WhyChooseBuez = () => {
                     display: "flex",
                     alignItems: "center",
                     gap: "5px",
+                    pb: "6px",
                   }}
                 >
-                  {feature.icon}
+                  <Box
+                    component="img"
+                    src={feature.icon}
+                    alt="setting"
+                    sx={{
+                      width: "24px",
+                      height: "24px",
+                    }}
+                  />
                   <Typography
                     variant="h6"
                     sx={{
                       color: "#ffffff",
                       fontSize: "16px",
                       fontWeight: 600,
-                      mb: "4px",
                     }}
                   >
                     {feature.title}
