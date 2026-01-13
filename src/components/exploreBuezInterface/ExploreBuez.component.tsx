@@ -74,9 +74,11 @@ const ExploreBuez = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [slideIndex, setSlideIndex] = useState(0);
   const images = [
-    ExploreBuezImage,
+    // ExploreBuezImage,
     ExploreBuezImageTwo,
-    ExploreBuezImage,
+    ExploreBuezImageTwo,
+    ExploreBuezImageTwo,
+    // ExploreBuezImage,
     ExploreBuezImageTwo,
   ];
   const settings = {
