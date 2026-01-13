@@ -65,7 +65,12 @@ const TryBuezFree = () => {
             paddingTop: { xs: "60px", md: "0" },
           }}
         >
-          <Box component="img" src={TryBuezImage} alt="Try BUEZ" />
+          <Box
+            component="img"
+            sx={{ width: { xs: "100%", md: "auto" }, height: "auto" }}
+            src={TryBuezImage}
+            alt="Try BUEZ"
+          />
         </Grid>
       </Grid>
     </Box>

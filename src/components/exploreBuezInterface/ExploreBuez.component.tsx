@@ -75,9 +75,9 @@ const ExploreBuez = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const images = [
     ExploreBuezImage,
+    ExploreBuezImageTwo,
     ExploreBuezImage,
-    ExploreBuezImage,
-    ExploreBuezImage,
+    ExploreBuezImageTwo,
   ];
   const settings = {
     dots: true,
@@ -194,8 +194,9 @@ const ExploreBuez = () => {
                   src={img}
                   alt={`BUEZ Interface ${index + 1}`}
                   sx={{
-                    width: "100%",
+                    // width: "100%",
                     height: "auto",
+                    display: "inline",
                     borderRadius: "24px",
                     boxShadow:
                       index === slideIndex
