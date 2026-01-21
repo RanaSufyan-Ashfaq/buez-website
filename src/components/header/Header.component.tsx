@@ -12,7 +12,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 // Assets
 import BuezLogo from "../../assets/buez.svg";
 // Shared Component
@@ -20,9 +21,11 @@ import { GetBetaVersionButton } from "../../shared/GetBetaVersionButton";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
-    { label: "HOME", href: "#home" },
+    { label: "HOME", href: "https://buezapp.com/" },
     { label: "ABOUT BUEZ", href: "#about" },
     { label: "OUR FEATURES", href: "#ourFeatures" },
     { label: "WHY BUEZ", href: "#whyBuez" },
@@ -34,17 +37,47 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const scrollToSection = (hash: string) => {
+    const element = document.querySelector(hash);
+    if (element) {
+      // Small timeout to ensure accurate position calculation if things depend on layout
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
+
+  useEffect(() => {
+    // specific check for state passed from navigation
+    if (
+      location.state &&
+      location.state.scrollTo &&
+      location.pathname === "/"
+    ) {
+      scrollToSection(location.state.scrollTo);
+      // Clean up state to avoid re-scrolling on random updates
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
+    href: string,
   ) => {
     e.preventDefault();
     if (href.startsWith("#")) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      if (location.pathname === "/") {
+        // Already on home page, just scroll
+        scrollToSection(href);
+      } else {
+        // Not on home page, navigate to home and pass content to scroll to
+        navigate("/", { state: { scrollTo: href } });
       }
+    } else {
+      // External link or other route
+      navigate(href);
     }
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -82,11 +115,12 @@ const Header = () => {
           >
             <Box
               component="a"
-              href="#"
+              href="https://buezapp.com/"
               sx={{
                 display: "flex",
                 alignItems: "center",
                 textDecoration: "none",
+                cursor: "pointer",
               }}
             >
               <Box
@@ -118,6 +152,7 @@ const Header = () => {
                     fontWeight: 400,
                     letterSpacing: "0.5px",
                     transition: "color 0.3s ease",
+                    cursor: "pointer",
                     "&:hover": {
                       color: "#2F80B5",
                     },
@@ -179,7 +214,6 @@ const Header = () => {
               <Link
                 href={item.href}
                 onClick={(e) => {
-                  toggleMobileMenu();
                   handleNavClick(e, item.href);
                 }}
                 underline="none"
@@ -192,6 +226,7 @@ const Header = () => {
                   display: "block",
                   borderRadius: "8px",
                   transition: "all 0.3s ease",
+                  cursor: "pointer",
                   "&:hover": {
                     background: "rgba(47, 128, 181, 0.1)",
                     color: "#2F80B5",

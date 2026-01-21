@@ -15,9 +15,12 @@ import Footer from "./components/footer/Footer.component";
 // Styling
 import "./App.css";
 
+import ScrollToTop from "./components/ScrollToTop.tsx";
+
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route

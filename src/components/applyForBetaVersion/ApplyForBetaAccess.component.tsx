@@ -58,6 +58,10 @@ const CustomTextField = styled(TextField)({
 });
 
 const ApplyForBetaAccess: React.FC = () => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const theme = useTheme();
   const [isSending, setIsSending] = React.useState(false);
 
