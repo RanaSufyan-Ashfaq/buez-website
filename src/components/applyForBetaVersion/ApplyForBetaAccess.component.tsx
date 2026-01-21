@@ -10,6 +10,7 @@ import {
   Dialog,
   DialogContent,
 } from "@mui/material";
+import emailjs from "emailjs-com";
 import { useTheme, styled } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -58,6 +59,8 @@ const CustomTextField = styled(TextField)({
 
 const ApplyForBetaAccess: React.FC = () => {
   const theme = useTheme();
+  const [isSending, setIsSending] = React.useState(false);
+
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const [openSuccessModal, setOpenSuccessModal] = React.useState(false);
@@ -75,9 +78,31 @@ const ApplyForBetaAccess: React.FC = () => {
       hasAgreed: false,
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log("Form Submitted", values);
-      setOpenSuccessModal(true);
+    onSubmit: (values, { resetForm }) => {
+      setIsSending(true);
+      emailjs
+        .send(
+          import.meta.env.VITE_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+          {
+            fullName: values.fullName,
+            email: values.email,
+            deviceModel: values.deviceModel || "N/A",
+          },
+          import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        )
+        .then(
+          () => {
+            setOpenSuccessModal(true);
+            resetForm();
+            setIsSending(false);
+          },
+          (error) => {
+            console.error("Email send error:", error);
+            alert("Failed to send request. Please try again.");
+            setIsSending(false);
+          },
+        );
     },
   });
 
@@ -348,6 +373,7 @@ const ApplyForBetaAccess: React.FC = () => {
               type="submit"
               variant="contained"
               fullWidth
+              disabled={isSending}
               sx={{
                 bgcolor: "#F3F4F6",
                 color: "#0f172a",
@@ -359,9 +385,14 @@ const ApplyForBetaAccess: React.FC = () => {
                 "&:hover": {
                   bgcolor: "#F3F4F6",
                 },
+                "&.Mui-disabled": {
+                  bgcolor: "#F3F4F6",
+                  color: "#0f172a",
+                  opacity: 0.7,
+                },
               }}
             >
-              Request Beta Access
+              {isSending ? "Sending..." : "Request Beta Access"}
             </Button>
           </form>
         </Box>
