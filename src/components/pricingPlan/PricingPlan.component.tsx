@@ -15,8 +15,8 @@ const PricingPlan = () => {
 
   const pricingData: any = {
     CHF: { type: "CHF", monthly: "7.90", yearly: "79", symbol: "CHF" },
-    USD: { type: "USD", monthly: "8.90", yearly: "89", symbol: "$" },
-    EUR: { type: "EUR", monthly: "8.50", yearly: "85", symbol: "€" },
+    USD: { type: "USD", monthly: "9.50", yearly: "95", symbol: "$" },
+    EUR: { type: "EUR", monthly: "8.90", yearly: "89", symbol: "€" },
   };
 
   const currencies = [
