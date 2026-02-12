@@ -1,9 +1,32 @@
 // MUI Imports
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, ClickAwayListener } from "@mui/material";
+import { useState } from "react";
 // Assets
 import CheckIcon from "../../assets/check-icon.svg";
+// Flag Assets
+import FlagCHF from "../../assets/flag-chf.svg";
+import FlagUSD from "../../assets/flag-usd.svg";
+import FlagEUR from "../../assets/flag-eur.svg";
+import ArrowDownIcon from "../../assets/arrow-down.svg";
 
 const PricingPlan = () => {
+  const [currency, setCurrency] = useState("CHF");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const pricingData: any = {
+    CHF: { type: "CHF", monthly: "7.90", yearly: "79", symbol: "CHF" },
+    USD: { type: "USD", monthly: "8.90", yearly: "89", symbol: "$" },
+    EUR: { type: "EUR", monthly: "8.50", yearly: "85", symbol: "€" },
+  };
+
+  const currencies = [
+    { code: "CHF", name: "Swiss Franc", icon: FlagCHF },
+    { code: "USD", name: "United State Dollar", icon: FlagUSD },
+    { code: "EUR", name: "Euro", icon: FlagEUR },
+  ];
+
+  const currentPricing = pricingData[currency];
+
   const freePlanFeatures = [
     "Full access to all features",
     "Post and browse requests",
@@ -35,7 +58,8 @@ const PricingPlan = () => {
         pt: { xs: "80px", md: "110px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
-        overflow: "hidden",
+        overflow: "visible", // Changed to visible for dropdown
+        position: "relative",
       }}
     >
       <Typography
@@ -58,12 +82,146 @@ const PricingPlan = () => {
           fontSize: { xs: "16px", lg: "18px" },
           maxWidth: "620px",
           margin: "0 auto",
-          mb: { xs: "60px", md: "80px" },
+          mb: "30px",
         }}
       >
         Start free for 14 days, then stay connected with full access through our
         simple monthly plan.
       </Typography>
+
+      {/* Currency Dropdown */}
+      <Box
+        sx={{
+          position: "relative",
+          width: "fit-content",
+          margin: "0 auto 50px auto",
+          zIndex: 10,
+        }}
+      >
+        <ClickAwayListener onClickAway={() => setIsOpen(false)}>
+          <Box>
+            <Box
+              onClick={() => setIsOpen(!isOpen)}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "4px 10px",
+                background: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+                borderRadius: "20px",
+                cursor: "pointer",
+                border: "1px solid rgba(255, 255, 255, 0.1)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  background: "rgba(255, 255, 255, 0.15)",
+                },
+              }}
+            >
+              <Box
+                component="img"
+                src={currencies.find((c) => c.code === currency)?.icon}
+                alt={currency}
+                sx={{
+                  width: "20px",
+                  height: "20px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+              />
+              <Typography sx={{ color: "white", fontWeight: 500 }}>
+                {currency}
+              </Typography>
+              <Box
+                sx={{
+                  color: "white",
+                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                  transition: "transform 0.3s",
+                }}
+              >
+                <Box component="img" src={ArrowDownIcon} alt="Arrow Down" />
+              </Box>
+            </Box>
+
+            {isOpen && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "120%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "145px",
+                  // background: "rgba(13, 27, 73, 0.9)", // Darker background for dropdown
+                  backdropFilter: "blur(12px)",
+                  borderRadius: "16px",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  padding: "8px",
+                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.2)",
+                  zIndex: 20,
+                }}
+              >
+                {currencies.map((curr) => (
+                  <Box
+                    key={curr.code}
+                    onClick={() => {
+                      setCurrency(curr.code);
+                      setIsOpen(false);
+                    }}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      padding: "2px 8px",
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                      marginBottom: "10px",
+                      background:
+                        currency === curr.code
+                          ? "rgba(255, 255, 255, 0.1)"
+                          : "transparent",
+                      "&:hover": {
+                        background: "rgba(255, 255, 255, 0.05)",
+                      },
+                    }}
+                  >
+                    <Box
+                      component="img"
+                      src={curr.icon}
+                      alt={curr.code}
+                      sx={{
+                        width: "24px",
+                        height: "24px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <Box sx={{ textAlign: "left" }}>
+                      <Typography
+                        sx={{
+                          color: "white",
+                          fontSize: "16px",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {curr.code}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: "rgba(255, 255, 255, 0.5)",
+                          fontSize: "8px",
+                        }}
+                      >
+                        {curr.name}
+                      </Typography>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+            )}
+          </Box>
+        </ClickAwayListener>
+      </Box>
 
       {/* Pricing Cards */}
       <Box
@@ -114,11 +272,13 @@ const PricingPlan = () => {
               component="span"
               sx={{
                 color: "#ffffff",
-                fontSize: "48px",
+                fontSize: "30px",
                 fontWeight: 600,
               }}
             >
-              $0
+              {currentPricing.type === "CHF"
+                ? "CHF 0"
+                : `${currentPricing.symbol}0`}
             </Typography>
             <Typography
               component="span"
@@ -224,22 +384,14 @@ const PricingPlan = () => {
               component="span"
               sx={{
                 color: "#ffffff",
-                fontSize: "48px",
+                fontSize: "30px",
                 fontWeight: 600,
               }}
             >
-              $12
+              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
+              {currentPricing.monthly}
             </Typography>
-            <Typography
-              component="span"
-              sx={{
-                color: "#ffffff",
-                fontSize: "32px",
-                fontWeight: 600,
-              }}
-            >
-              .99
-            </Typography>
+            {/* Removed the separate cents logic to simplify for dynamic currency */}
             <Typography
               component="span"
               sx={{
@@ -329,7 +481,7 @@ const PricingPlan = () => {
             sx={{
               color: "#ffffff",
               fontSize: "18px",
-              fontWeight: 500,
+              fontWeight: 600,
               mb: "20px",
               padding: "0px 32px",
             }}
@@ -342,11 +494,12 @@ const PricingPlan = () => {
               component="span"
               sx={{
                 color: "#ffffff",
-                fontSize: "48px",
+                fontSize: "30px",
                 fontWeight: 600,
               }}
             >
-              $155
+              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
+              {currentPricing.yearly}
             </Typography>
             <Typography
               component="span"
@@ -383,7 +536,7 @@ const PricingPlan = () => {
               padding: "5px 35px",
               display: "flex",
               justifyContent: "center",
-              width: "54%",
+              width: "62%",
               margin: "-16px auto 0px auto",
             }}
           >
@@ -393,7 +546,9 @@ const PricingPlan = () => {
                 fontSize: "13px",
               }}
             >
-              Save $99 yearly
+              Save{" "}
+              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
+              17% yearly
             </Typography>
           </Box>
 

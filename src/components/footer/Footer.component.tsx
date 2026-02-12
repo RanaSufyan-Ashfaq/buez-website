@@ -320,7 +320,7 @@ const Footer = () => {
             }}
           >
             <Box component="img" src={CopyRightIcon} alt="Copy Right" />
-            2025 BUEZ. All Rights Reserved.
+            2026 Büez Solution. All Rights Reserved.
           </Typography>
 
           <Typography
@@ -330,7 +330,7 @@ const Footer = () => {
               fontWeight: "400",
             }}
           >
-            Designed & Developed by Devappics
+            Jeyaraja Design & Development
           </Typography>
         </Box>
       </Box>
