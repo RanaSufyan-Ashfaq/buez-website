@@ -278,7 +278,7 @@ const PricingPlan = () => {
             >
               {currentPricing.type === "CHF"
                 ? "CHF 0"
-                : `${currentPricing.symbol}0`}
+                : `${currentPricing.symbol} 0`}
             </Typography>
             <Typography
               component="span"
