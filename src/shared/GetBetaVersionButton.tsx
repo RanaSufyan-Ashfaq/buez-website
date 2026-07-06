@@ -3,9 +3,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 // Icons
-import AppleIconImage from "../assets/appleIcon.svg";
+import AppleIconImage from "../assets/download-app.svg";
 
-export const GetBetaVersionButton = ({}) => {
+export const GetBetaVersionButton = ({ label = "Get Beta Version" }) => {
   const navigate = useNavigate();
   return (
     <Button
@@ -28,7 +28,7 @@ export const GetBetaVersionButton = ({}) => {
       }}
     >
       <img src={AppleIconImage} alt="Apple Icon" />
-      Get Beta Version
+      {label}
     </Button>
   );
 };

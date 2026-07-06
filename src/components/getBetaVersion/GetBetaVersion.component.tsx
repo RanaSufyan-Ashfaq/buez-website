@@ -1,6 +1,8 @@
 import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
+import AppleIcon from "@mui/icons-material/Apple";
+import AndroidIcon from "@mui/icons-material/Android";
 // Assets
 import GetBetaVersionImage from "../../assets/getBetaVersion.svg";
 // Shared Component
@@ -67,7 +69,7 @@ const GetBetaVersion = () => {
                 lineHeight: 1.2,
               }}
             >
-              Get Beta Version
+              Manage Chores Smarter
             </Typography>
 
             <Typography
@@ -86,6 +88,49 @@ const GetBetaVersion = () => {
               14-day free trial!
             </Typography>
             <GetBetaVersionButton />
+
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", md: "flex-start" },
+                gap: "12px",
+                mt: "20px",
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  borderRadius: "999px",
+                  padding: "8px 18px",
+                  color: "#ffffff",
+                }}
+              >
+                <AppleIcon sx={{ fontSize: "20px" }} />
+                <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
+                  App Store
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  borderRadius: "999px",
+                  padding: "8px 18px",
+                  color: "#ffffff",
+                }}
+              >
+                <AndroidIcon sx={{ fontSize: "20px" }} />
+                <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
+                  Google Play
+                </Typography>
+              </Box>
+            </Box>
           </Grid>
         </Grid>
       </Box>

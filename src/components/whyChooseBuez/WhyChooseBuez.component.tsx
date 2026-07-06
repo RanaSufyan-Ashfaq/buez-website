@@ -13,6 +13,7 @@ import NearbyTasksIcon from "../../assets/nearbyTasks.svg";
 
 // Assets
 import CircleRingsImage from "../../assets/whyChooseBg.svg";
+import CentralPhoneImage from "../../assets/whyChooseBuez.svg";
 
 const WhyChooseBuez = () => {
   const features = [
@@ -166,21 +167,21 @@ const WhyChooseBuez = () => {
           />
 
           {/* Central Phone Image */}
-          {/* <Box
+          <Box
             component="img"
-            src={WhatIsBuezImage}
+            src={CentralPhoneImage}
             alt="BUEZ App Interface"
             sx={{
-              position: { xs: "relative", md: "absolute" },
-              top: { md: "50%" },
-              left: { md: "50%" },
-              transform: { md: "translate(-50%, -50%)" },
-              width: { xs: "280px", sm: "320px", md: "360px" },
+              display: { xs: "none", lg: "block" },
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "360px",
               height: "auto",
               zIndex: 1,
-              mb: { xs: "40px", md: 0 },
             }}
-          /> */}
+          />
 
           {/* Feature Cards Loop */}
           <Box

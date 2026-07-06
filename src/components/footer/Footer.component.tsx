@@ -1,3 +1,4 @@
+import React from "react";
 // MUI Imports
 import { Box, Typography, TextField, IconButton, Link } from "@mui/material";
 // Assets
@@ -31,8 +32,7 @@ const Footer = () => {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "2fr 1fr 2fr",
+              md: "2fr 1fr",
             },
             mb: "60px",
             gap: "25px",
@@ -163,40 +163,6 @@ const Footer = () => {
                   sx={{ width: "20px", height: "20px" }}
                 />
               </Link>
-            </Box>
-          </Box>
-
-          <Box sx={{ width: { xs: "100%", xlg: "476px" } }}>
-            <Typography
-              sx={{
-                color: "#ffffff",
-                fontSize: "25px",
-                fontWeight: 600,
-                mb: "24px",
-                letterSpacing: "0.5px",
-              }}
-            >
-              QUICK LINKS
-            </Typography>
-
-            <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              {["About", "Features", "Pricing", "Community"].map((link) => (
-                <Link
-                  key={link}
-                  href="#"
-                  underline="none"
-                  sx={{
-                    color: "#ffffff",
-                    fontSize: "14px",
-                    transition: "color 0.3s ease",
-                    "&:hover": {
-                      color: "#94a3b8",
-                    },
-                  }}
-                >
-                  {link}
-                </Link>
-              ))}
             </Box>
           </Box>
 

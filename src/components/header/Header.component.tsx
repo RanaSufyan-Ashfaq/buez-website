@@ -62,7 +62,7 @@ const Header = () => {
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
+    href: string
   ) => {
     e.preventDefault();
     if (href.startsWith("#")) {
@@ -168,7 +168,7 @@ const Header = () => {
                 display: { xs: "none", sm: "none", md: "none", lg: "block" },
               }}
             >
-              <GetBetaVersionButton />
+              <GetBetaVersionButton label="Download App" />
             </Box>
 
             <IconButton
@@ -240,7 +240,7 @@ const Header = () => {
         </List>
 
         <Box sx={{ mt: "30px" }}>
-          <GetBetaVersionButton />
+          <GetBetaVersionButton label="Download App" />
         </Box>
       </Drawer>
     </>

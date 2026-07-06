@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header.component";
 import HeroSection from "./components/heroSection/HeroSection.component";
 import WhatIsBuez from "./components/whatIsBuez/WhatIsBuez.component";
+import HowBuezWorks from "./components/howBuezWorks/HowBuezWorks.component";
 import OurFeatures from "./components/ourFeatures/OurFeatures.component";
 import WhyChooseBuez from "./components/whyChooseBuez/WhyChooseBuez.component";
-import TryBuezFree from "./components/tryBuezFree/TryBuezFree.component";
 import PricingPlan from "./components/pricingPlan/PricingPlan.component";
 import ExploreBuez from "./components/exploreBuezInterface/ExploreBuez.component";
 import GetBetaVersion from "./components/getBetaVersion/GetBetaVersion.component";
@@ -29,9 +29,9 @@ function App() {
             <>
               <HeroSection />
               <WhatIsBuez />
+              <HowBuezWorks />
               <OurFeatures />
               <WhyChooseBuez />
-              <TryBuezFree />
               <PricingPlan />
               <ExploreBuez />
               <GetBetaVersion />

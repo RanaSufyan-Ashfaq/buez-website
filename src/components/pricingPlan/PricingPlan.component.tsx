@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography, Button, ClickAwayListener } from "@mui/material";
-import { useState } from "react";
 // Assets
 import CheckIcon from "../../assets/check-icon.svg";
 // Flag Assets
@@ -264,7 +264,7 @@ const PricingPlan = () => {
               padding: "0px 32px",
             }}
           >
-            Free Plan
+            BUEZ FREE
           </Typography>
 
           <Box sx={{ mb: "32px", padding: "0px 32px" }}>
@@ -360,6 +360,7 @@ const PricingPlan = () => {
             transform: "scale(1.05)",
             boxShadow: "0 8px 32px rgba(47, 128, 181, 0.2)",
             zIndex: 1,
+            position: "relative",
             // "&:hover": {
             //   transform: "scale(1.05)",
             //   border: "1px solid rgba(255,255,255,0.2)",
@@ -367,6 +368,25 @@ const PricingPlan = () => {
             // },
           }}
         >
+          <Box
+            sx={{
+              position: "absolute",
+              top: "-14px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              background: "linear-gradient(90deg, #2F80B5, #4557B0)",
+              borderRadius: "999px",
+              padding: "4px 16px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "12px", fontWeight: 600 }}
+            >
+              MOST POPULAR
+            </Typography>
+          </Box>
+
           <Typography
             sx={{
               color: "#ffffff",
@@ -376,7 +396,7 @@ const PricingPlan = () => {
               padding: "0px 32px",
             }}
           >
-            Monthly Plan
+            BUEZ PRO
           </Typography>
 
           <Box sx={{ mb: "32px", padding: "0px 32px" }}>
@@ -486,7 +506,7 @@ const PricingPlan = () => {
               padding: "0px 32px",
             }}
           >
-            Subscription Plan
+            STANDARD PLAN
           </Typography>
 
           <Box sx={{ mb: "32px", padding: "0px 32px" }}>
