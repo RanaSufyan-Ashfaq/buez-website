@@ -67,23 +67,20 @@ const HowBuezWorks = () => {
       sx={{
         position: "relative",
         background: "#020617",
-        overflow: "hidden",
+        overflowX: "clip",
         py: { xs: "80px", md: "140px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         "&::after": {
           content: '""',
           position: "absolute",
-          bottom: "-220px",
-          right: "-220px",
-          width: "700px",
-          height: "700px",
-          borderRadius: "50%",
-          background: "rgba(47, 128, 181, 1)",
-          filter: "blur(180px)",
-          opacity: 0.55,
+          bottom: "-1155px",
+          right: "-1313px",
+          width: "2750px",
+          height: "2750px",
+          background:
+            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
           pointerEvents: "none",
-          zIndex: 0,
         },
       }}
     >
@@ -265,16 +262,31 @@ const HowBuezWorks = () => {
 
         <Box
           sx={{
+            position: "relative",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
-            maxWidth: "1300px",
+            width: { xs: "100%", lg: "1199px" },
+            height: { lg: "71px" },
             margin: "0 auto",
             mt: { xs: "50px", md: "30px" },
-            padding: { xs: "16px 20px", md: "16px 40px" },
-            borderRadius: "999px",
-            border: "1px solid rgba(129,140,248,0.5)",
+            padding: { xs: "16px 20px", lg: "0 16px" },
+            borderRadius: "35.5px",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              borderRadius: "35.5px",
+              padding: "1px",
+              background:
+                "linear-gradient(98deg, #4557B0, rgba(29,37,74,0))",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              pointerEvents: "none",
+            },
           }}
         >
           {steps.map((step, index) => (
@@ -284,33 +296,29 @@ const HowBuezWorks = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "10px",
+                  gap: "9px",
                   cursor: "pointer",
+                  opacity: index === activeStep ? 1 : 0.3,
+                  transition: "opacity 0.3s ease",
                 }}
               >
                 <Box
                   sx={{
-                    width: "32px",
-                    height: "32px",
+                    width: "40px",
+                    height: "40px",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
                     background:
-                      index === activeStep
-                        ? "linear-gradient(90deg, #2F80B5, #4557B0)"
-                        : "transparent",
-                    border:
-                      index === activeStep
-                        ? "none"
-                        : "1px solid rgba(255,255,255,0.2)",
+                      "linear-gradient(180deg, #253275, #455EDB)",
                   }}
                 >
                   <Typography
                     sx={{
-                      color: index === activeStep ? "#ffffff" : "#64748b",
-                      fontSize: "13px",
+                      color: "#ffffff",
+                      fontSize: "14px",
                       fontWeight: 600,
                     }}
                   >
@@ -319,9 +327,9 @@ const HowBuezWorks = () => {
                 </Box>
                 <Typography
                   sx={{
-                    color: index === activeStep ? "#ffffff" : "#64748b",
+                    color: "#ffffff",
                     fontSize: "14px",
-                    fontWeight: index === activeStep ? 600 : 400,
+                    fontWeight: index === activeStep ? 500 : 400,
                     whiteSpace: "nowrap",
                   }}
                 >
@@ -332,10 +340,10 @@ const HowBuezWorks = () => {
               {index < steps.length - 1 && (
                 <Box
                   sx={{
-                    flex: { xs: "0 0 24px", md: 1 },
-                    minWidth: { xs: "24px", md: "60px" },
-                    height: "1px",
-                    background: "rgba(255,255,255,0.15)",
+                    flex: { xs: "0 0 24px", md: "0 0 52px" },
+                    height: "2px",
+                    borderRadius: "1px",
+                    background: "#4557B0",
                     mx: { xs: "10px", md: "20px" },
                   }}
                 />

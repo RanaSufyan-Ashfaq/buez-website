@@ -16,7 +16,8 @@ const Footer = () => {
       component="footer"
       sx={{
         background: "#0a0c1e",
-        py: { xs: "60px", md: "50px" },
+        pt: { xs: "70px", md: "160px" },
+        pb: { xs: "56px", md: "72px" },
         px: { xs: "20px", md: "40px" },
       }}
     >
@@ -32,33 +33,33 @@ const Footer = () => {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              md: "2fr 1fr",
+              md: "minmax(0, 760px) 363px",
             },
-            mb: "60px",
-            gap: "25px",
+            justifyContent: "space-between",
+            mb: { xs: "56px", md: "92px" },
+            gap: { xs: "54px", md: "80px" },
           }}
         >
-          <Box sx={{ width: { xs: "100%", xlg: "476px" } }}>
-            <Box sx={{ display: "flex", alignItems: "center", mb: "20px" }}>
+          <Box sx={{ width: "100%" }}>
+            <Box sx={{ display: "flex", alignItems: "center", mb: "30px" }}>
               <Box
                 component="img"
                 src={BuezIcon}
                 alt="BUEZ Logo"
                 sx={{
-                  //   width: "40px",
-                  //   height: "40px",
-                  mr: "12px",
+                  width: { xs: "45px", md: "53px" },
+                  height: "auto",
                 }}
               />
             </Box>
 
             <Typography
               sx={{
-                color: "#ffffff",
-                fontSize: "16px",
-                lineHeight: 1.7,
-                mb: "32px",
-                maxWidth: "350px",
+                color: "rgba(255,255,255,0.82)",
+                fontSize: { xs: "16px", md: "28px" },
+                lineHeight: 1.55,
+                mb: { xs: "34px", md: "52px" },
+                maxWidth: { xs: "100%", md: "760px" },
               }}
             >
               More than just an app — BUEZ connects communities, empowers
@@ -67,7 +68,7 @@ const Footer = () => {
             </Typography>
 
             {/* Social Media Icons */}
-            <Box sx={{ display: "flex", gap: "20px", alignItems: "center" }}>
+            <Box sx={{ display: "flex", gap: { xs: "20px", md: "34px" }, alignItems: "center" }}>
               <Link
                 href="#"
                 sx={{
@@ -82,15 +83,15 @@ const Footer = () => {
                   component="img"
                   src={FacebookIcon}
                   alt="Facebook"
-                  sx={{ width: "20px", height: "20px" }}
+                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: "20px",
-                  background: "#475569",
+                  height: { xs: "20px", md: "30px" },
+                  background: "rgba(255,255,255,0.24)",
                 }}
               />
 
@@ -108,15 +109,15 @@ const Footer = () => {
                   component="img"
                   src={InstagramIcon}
                   alt="Instagram"
-                  sx={{ width: "20px", height: "20px" }}
+                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: "20px",
-                  background: "#475569",
+                  height: { xs: "20px", md: "30px" },
+                  background: "rgba(255,255,255,0.24)",
                 }}
               />
 
@@ -134,15 +135,15 @@ const Footer = () => {
                   component="img"
                   src={TwitterIcon}
                   alt="Twitter"
-                  sx={{ width: "20px", height: "20px" }}
+                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: "20px",
-                  background: "#475569",
+                  height: { xs: "20px", md: "30px" },
+                  background: "rgba(255,255,255,0.24)",
                 }}
               />
 
@@ -160,20 +161,20 @@ const Footer = () => {
                   component="img"
                   src={YoutubeIcon}
                   alt="YouTube"
-                  sx={{ width: "20px", height: "20px" }}
+                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
                 />
               </Link>
             </Box>
           </Box>
 
-          <Box sx={{ width: { xs: "100%", xlg: "476px" } }}>
+          <Box sx={{ width: { xs: "100%", md: "363px" } }}>
             <Typography
               sx={{
                 color: "#ffffff",
-                fontSize: "25px",
-                fontWeight: 600,
-                mb: "12px",
-                letterSpacing: "0.5px",
+                fontSize: { xs: "22px", md: "28px" },
+                fontWeight: 700,
+                mb: { xs: "18px", md: "30px" },
+                letterSpacing: 0,
               }}
             >
               LET'S CONNECT
@@ -181,10 +182,10 @@ const Footer = () => {
 
             <Typography
               sx={{
-                color: "#ffffff",
-                fontSize: "14px",
-                mb: "24px",
-                lineHeight: 1.6,
+                color: "rgba(255,255,255,0.82)",
+                fontSize: { xs: "14px", md: "16px" },
+                mb: { xs: "24px", md: "42px" },
+                lineHeight: 1.55,
               }}
             >
               Questions, ideas, or just want to say hi?
@@ -195,8 +196,8 @@ const Footer = () => {
             <Box
               sx={{
                 display: "flex",
-                gap: "8px",
-                maxWidth: "369px",
+                maxWidth: { xs: "100%", md: "363px" },
+                height: "54px",
                 position: "relative",
               }}
             >
@@ -206,9 +207,10 @@ const Footer = () => {
                 fullWidth
                 sx={{
                   "& .MuiOutlinedInput-root": {
-                    background: "#ffffff",
-                    borderRadius: "8px",
-                    fontSize: "14px",
+                    height: "54px",
+                    background: "rgba(255,255,255,0.1)",
+                    borderRadius: "27px",
+                    fontSize: "16px",
                     "& fieldset": {
                       border: "none",
                     },
@@ -220,10 +222,11 @@ const Footer = () => {
                     },
                   },
                   "& .MuiOutlinedInput-input": {
-                    padding: "12px 16px",
-                    color: "#334155",
+                    padding: "0 68px 0 18px",
+                    color: "#ffffff",
+                    height: "54px",
                     "&::placeholder": {
-                      color: "#94a3b8",
+                      color: "rgba(255,255,255,0.56)",
                       opacity: 1,
                     },
                   },
@@ -232,15 +235,15 @@ const Footer = () => {
 
               <IconButton
                 sx={{
-                  background: "#1F2027",
-                  borderRadius: "4px",
+                  background: "#253275",
+                  borderRadius: "50%",
                   width: "46px",
-                  height: "40px",
+                  height: "46px",
                   position: "absolute",
-                  right: "3px",
-                  top: "2px",
+                  right: "4px",
+                  top: "4px",
                   "&:hover": {
-                    background: "#ffffff",
+                    background: "#2f3d8a",
                   },
                 }}
               >
@@ -248,7 +251,7 @@ const Footer = () => {
                   component="img"
                   src={SendEmailIcon}
                   alt="Send"
-                  sx={{ width: "20px", height: "20px" }}
+                  sx={{ width: "22px", height: "22px" }}
                 />
               </IconButton>
             </Box>
@@ -259,8 +262,10 @@ const Footer = () => {
         <Box
           sx={{
             height: "1px",
-            background: "#1e293b",
-            mb: "26px",
+            background: "rgba(255,255,255,0.18)",
+            width: { xs: "100%", md: "calc(100% - 450px)" },
+            ml: { xs: 0, md: "450px" },
+            mb: { xs: "26px", md: "32px" },
           }}
         />
 
@@ -270,29 +275,34 @@ const Footer = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: { xs: "center", md: "flex-end" },
             gap: "8px",
-            textAlign: "center",
+            textAlign: { xs: "center", md: "right" },
           }}
         >
           <Typography
             sx={{
               color: "#ffffff",
-              fontSize: "16px",
+              fontSize: { xs: "14px", md: "18px" },
               fontWeight: "400",
               display: "flex",
               alignItems: "center",
               gap: "6px",
             }}
           >
-            <Box component="img" src={CopyRightIcon} alt="Copy Right" />
+            <Box
+              component="img"
+              src={CopyRightIcon}
+              alt="Copy Right"
+              sx={{ width: { xs: "16px", md: "22px" }, height: { xs: "16px", md: "22px" } }}
+            />
             2026 Büez Solution. All Rights Reserved.
           </Typography>
 
           <Typography
             sx={{
               color: "#ffffff",
-              fontSize: "16px",
+              fontSize: { xs: "14px", md: "18px" },
               fontWeight: "400",
             }}
           >

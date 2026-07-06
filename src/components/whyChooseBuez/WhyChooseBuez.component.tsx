@@ -12,73 +12,64 @@ import PersonalizedExperienceIcon from "../../assets/personalizedExperience.svg"
 import NearbyTasksIcon from "../../assets/nearbyTasks.svg";
 
 // Assets
-import CircleRingsImage from "../../assets/whyChooseBg.svg";
-import CentralPhoneImage from "../../assets/whyChooseBuez.svg";
+import CentralPhoneImage from "../../assets/whyChoosePhone.png";
 
 const WhyChooseBuez = () => {
   const features = [
     {
       title: "Rewarding Experience",
-      description:
-        "Earn badges and build your reputation as you complete tasks.",
+      description: "Earn badges and build your reputation as you complete tasks.",
       icon: AwardIcon,
-      position: { top: "-12%", left: "13%" },
+      position: { top: "138px", left: "117px" },
       mobileOrder: 1,
     },
     {
       title: "Community-Driven Platform",
-      description:
-        "Designed to connect people who want to help and support each other.",
+      description: "Designed to connect people who want to help and support each other.",
       icon: CommunityIcon,
-      position: { top: "-12%", right: "13%" },
+      position: { top: "138px", right: "117px" },
       mobileOrder: 2,
     },
     {
       title: "Direct Communication",
-      description:
-        "Communicate safely with users to plan and complete tasks smoothly.",
+      description: "Communicate safely with users to plan and complete tasks smoothly.",
       icon: CommunicationIcon,
-      position: { top: "29%", left: "3%" },
+      position: { top: "462px", left: "0px" },
       mobileOrder: 3,
     },
     {
       title: "Fast & Easy to Use",
-      description:
-        "Easily post or accept tasks in seconds — no complicated steps.",
+      description: "Easily post or accept tasks in seconds — no complicated steps.",
       icon: FastAndEasyIcon,
-      position: { top: "29%", right: "3%" },
+      position: { top: "462px", right: "0px" },
       mobileOrder: 4,
     },
     {
       title: "Free to Start",
-      description:
-        "Enjoy a full 14-days free trial with access to every feature of BUEZ.",
+      description: "Enjoy a full 14-days free trial with access to every feature of BUEZ.",
       icon: FreeToStartIcon,
-      position: { bottom: "22%", left: "3%" },
+      position: { top: "797px", left: "0px" },
       mobileOrder: 5,
     },
     {
       title: "Safe & Reliable",
-      description:
-        "Ratings, reviews, and top profiles help maintain a safe community.",
+      description: "Ratings, reviews, and top profiles help maintain a safe community.",
       icon: SafeAndReliableIcon,
-      position: { bottom: "22%", right: "3%" },
+      position: { top: "797px", right: "0px" },
       mobileOrder: 6,
     },
     {
       title: "Personalized Experience",
-      description:
-        "Switch themes, choose your language, and use BUEZ your way.",
+      description: "Switch themes, choose your language, and use BUEZ your way.",
       icon: PersonalizedExperienceIcon,
-      position: { bottom: "-12%", left: "13%" },
+      position: { top: "1122px", left: "117px" },
       mobileOrder: 7,
     },
     {
       title: "Nearby Tasks & Helpers",
-      description:
-        "Find help or offer trusted support within 100km of your current location.",
+      description: "Find help or offer trusted support within 100km of your current location.",
       icon: NearbyTasksIcon,
-      position: { bottom: "-12%", right: "13%" },
+      position: { top: "1122px", right: "117px" },
       mobileOrder: 8,
     },
   ];
@@ -88,18 +79,28 @@ const WhyChooseBuez = () => {
       id="whyBuez"
       sx={{
         background: "#020617",
-        pb: { xs: "0px", md: "210px" },
-        pt: { xs: "80px", md: "0px" },
+        pt: { xs: "80px", md: "140px" },
+        pb: { xs: "0px", md: "140px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         position: "relative",
-        overflow: "hidden",
-        minHeight: { md: "1000px", lg: "1200px" }, // Height for orbital layout
+        overflowX: "clip",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-754px",
+          left: "-1524px",
+          width: "2750px",
+          height: "2750px",
+          background: "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+          pointerEvents: "none",
+          display: { xs: "none", md: "block" },
+        },
       }}
     >
       <Box
         sx={{
-          maxWidth: "1400px",
+          maxWidth: "1428px",
           margin: "0 auto",
           height: "100%",
           position: "relative",
@@ -109,8 +110,8 @@ const WhyChooseBuez = () => {
           component="h2"
           sx={{
             color: "#ffffff",
-            fontSize: { xs: "28px", md: "40px", lg: "52px" },
-            fontWeight: 500,
+            fontSize: { xs: "28px", md: "40px" },
+            fontWeight: 600,
             lineHeight: 1.2,
             mb: { xs: "12px", md: "16px" },
             position: "relative",
@@ -123,17 +124,16 @@ const WhyChooseBuez = () => {
         <Typography
           component="p"
           sx={{
-            color: "#e5e7eb",
+            color: "rgba(255,255,255,0.6)",
             fontSize: { xs: "16px", lg: "18px" },
-            maxWidth: "620px",
+            maxWidth: "900px",
             margin: "0 auto",
-            mb: { xs: "40px", md: "60px", lg: "200px" },
+            mb: { xs: "40px", md: "60px", lg: "0px" },
             position: "relative",
             zIndex: 2,
           }}
         >
-          See why BUEZ is the simplest and most trusted way to get and give help
-          in your community.
+          See why BUEZ is the simplest and most trusted way to get and give help in your community.
         </Typography>
 
         {/* Desktop Circular Layout Container */}
@@ -141,28 +141,39 @@ const WhyChooseBuez = () => {
           sx={{
             position: "relative",
             width: "100%",
-            height: { xs: "auto", md: "800px" },
+            height: { xs: "auto", lg: "1402px" },
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          {/* Background Circles */}
+          {/* Background Rings */}
           <Box
-            component="img"
-            src={CircleRingsImage}
-            alt="Background circles"
             sx={{
+              display: { xs: "none", lg: "block" },
               position: "absolute",
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              width: { xs: "100%", md: "100%", lg: "1200px" },
-              height: "auto",
-              opacity: 1,
-              zIndex: 0,
+              width: "1402px",
+              height: "1402px",
+              borderRadius: "50%",
+              border: "1.8px solid rgba(127,133,153,0.17)",
               pointerEvents: "none",
-              display: { xs: "none", md: "none", lg: "block" }, // Hide on mobile if stack layout
+            }}
+          />
+          <Box
+            sx={{
+              display: { xs: "none", lg: "block" },
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "1102px",
+              height: "1102px",
+              borderRadius: "50%",
+              border: "1.8px solid rgba(127,133,153,0.17)",
+              pointerEvents: "none",
             }}
           />
 
@@ -174,10 +185,10 @@ const WhyChooseBuez = () => {
             sx={{
               display: { xs: "none", lg: "block" },
               position: "absolute",
-              top: "50%",
+              top: "323px",
               left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: "360px",
+              transform: "translateX(-50%)",
+              width: "340px",
               height: "auto",
               zIndex: 1,
             }}
@@ -197,24 +208,20 @@ const WhyChooseBuez = () => {
                 key={index}
                 sx={{
                   position: { xs: "relative", lg: "absolute" },
-                  ...feature.position, // Apply top/left/right/bottom for desktop
                   top: { xs: "auto", lg: feature.position.top },
                   left: { xs: "auto", lg: feature.position.left },
                   right: { xs: "auto", lg: feature.position.right },
-                  bottom: { xs: "auto", lg: feature.position.bottom },
 
-                  width: { xs: "100%", sm: "auto", md: "auto", lg: "380px" },
-                  background: "rgba(255, 255, 255, 0.03)",
+                  width: { xs: "100%", sm: "auto", lg: "411px" },
+                  background: "rgba(153,161,187,0.12)",
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
                   borderRadius: "16px",
-                  padding: "20px",
+                  padding: { xs: "20px", lg: "20px 24px" },
                   textAlign: "left",
-                  gap: "16px",
                   zIndex: 2,
-                  transition: "transform 0.3s ease",
+                  transition: "background 0.3s ease",
                   "&:hover": {
-                    background: "rgba(255, 255, 255, 0.08)",
+                    background: "rgba(153,161,187,0.2)",
                   },
                 }}
               >
@@ -223,24 +230,36 @@ const WhyChooseBuez = () => {
                     color: "#ffffff",
                     display: "flex",
                     alignItems: "center",
-                    gap: "5px",
-                    pb: "6px",
+                    gap: "9px",
                   }}
                 >
                   <Box
-                    component="img"
-                    src={feature.icon}
-                    alt="setting"
                     sx={{
-                      width: "24px",
-                      height: "24px",
+                      width: "36px",
+                      height: "36px",
+                      borderRadius: "50%",
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(255,255,255,0.1)",
                     }}
-                  />
+                  >
+                    <Box
+                      component="img"
+                      src={feature.icon}
+                      alt={feature.title}
+                      sx={{
+                        width: "20px",
+                        height: "20px",
+                      }}
+                    />
+                  </Box>
                   <Typography
                     variant="h6"
                     sx={{
                       color: "#ffffff",
-                      fontSize: "16px",
+                      fontSize: { xs: "16px", lg: "18px" },
                       fontWeight: 600,
                     }}
                   >
@@ -250,9 +269,10 @@ const WhyChooseBuez = () => {
                 <Typography
                   variant="body2"
                   sx={{
-                    color: "#9ca3af",
+                    color: "#A1A2A1",
                     fontSize: "13px",
-                    lineHeight: 1.5,
+                    lineHeight: 1.45,
+                    mt: "8px",
                   }}
                 >
                   {feature.description}

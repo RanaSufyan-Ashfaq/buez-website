@@ -7,7 +7,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { useState } from "react";
 
 const FrequentlyAskQuestion = () => {
@@ -55,7 +55,8 @@ const FrequentlyAskQuestion = () => {
     <Box
       sx={{
         background: "#020617",
-        py: { xs: "80px", md: "140px" },
+        pt: { xs: "60px", md: "80px" },
+        pb: { xs: "80px", md: "140px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
@@ -64,8 +65,9 @@ const FrequentlyAskQuestion = () => {
           maxWidth: "1428px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+          gridTemplateColumns: { xs: "1fr", md: "570px 1fr" },
           alignItems: "center",
+          columnGap: { md: "100px" },
         }}
       >
         {/* Left Section - Heading & Description */}
@@ -74,10 +76,10 @@ const FrequentlyAskQuestion = () => {
             component="h2"
             sx={{
               color: "#ffffff",
-              fontSize: { md: "24px", lg: "35px" },
-              fontWeight: 500,
+              fontSize: { xs: "28px", md: "34px", lg: "38px" },
+              fontWeight: 600,
               lineHeight: 1.2,
-              mb: { xs: "20px", md: "24px" },
+              mb: { xs: "20px", md: "28px" },
             }}
           >
             Frequently Asked Questions
@@ -86,19 +88,19 @@ const FrequentlyAskQuestion = () => {
           <Typography
             component="p"
             sx={{
-              color: "#cbd5e1",
-              fontSize: { xs: "16px", lg: "18px" },
+              color: "rgba(255,255,255,0.6)",
+              fontSize: { xs: "16px", md: "18px" },
               lineHeight: 1.7,
-              maxWidth: "500px",
+              maxWidth: "705px",
             }}
           >
-            Have questions about using BUEZ? Find clear answers to help you get
-            started, manage your account, and make the most of your experience.
+            Have questions about using BUEZ? Explore FAQs to get started quickly
+            and use BUEZ with ease.
           </Typography>
         </Box>
 
         {/* Right Section - FAQ Accordion */}
-        <Box>
+        <Box sx={{ mt: { xs: "50px", md: 0 } }}>
           {faqs.map((faq, index) => (
             <Accordion
               key={faq.id}
@@ -107,8 +109,8 @@ const FrequentlyAskQuestion = () => {
               sx={{
                 background: "transparent",
                 border: "none",
-                borderBottom: "1px solid rgba(255,255,255,0.1)",
                 boxShadow: "none",
+                color: "#ffffff",
                 "&:before": {
                   display: "none",
                 },
@@ -119,18 +121,21 @@ const FrequentlyAskQuestion = () => {
             >
               <AccordionSummary
                 expandIcon={
-                  <ExpandMoreIcon
+                  <ChevronRightIcon
                     sx={{
                       color: "#ffffff",
-                      fontSize: "18px",
+                      fontSize: "20px",
                     }}
                   />
                 }
                 sx={{
-                  padding: { xs: "20px 0", md: "20px 0" },
-                  minHeight: "auto",
+                  padding: 0,
+                  minHeight: { xs: "60px", md: "78px" },
                   "&.Mui-expanded": {
-                    minHeight: "auto",
+                    minHeight: { xs: "60px", md: "78px" },
+                  },
+                  "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
+                    transform: "rotate(90deg)",
                   },
                   "& .MuiAccordionSummary-content": {
                     margin: 0,
@@ -144,7 +149,8 @@ const FrequentlyAskQuestion = () => {
                   sx={{
                     color: "#ffffff",
                     fontSize: { xs: "16px", md: "18px" },
-                    fontWeight: 500,
+                    fontWeight: 600,
+                    lineHeight: 1.25,
                   }}
                 >
                   {index + 1}. {faq.question}
@@ -152,15 +158,14 @@ const FrequentlyAskQuestion = () => {
               </AccordionSummary>
               <AccordionDetails
                 sx={{
-                  padding: "0 0 24px 0",
+                  padding: { xs: "0 0 22px 0", md: "0 54px 34px 0" },
                 }}
               >
                 <Typography
                   sx={{
-                    color: "#ffffff",
+                    color: "rgba(255,255,255,0.6)",
                     fontSize: { xs: "14px", md: "15px" },
                     lineHeight: 1.7,
-                    // paddingLeft: { xs: "24px", md: "28px" },
                   }}
                 >
                   {faq.answer}

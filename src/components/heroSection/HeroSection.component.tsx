@@ -7,10 +7,14 @@ import ChecksIcon from "../../assets/checksIcon.svg";
 import ExclusiveIcon from "../../assets/exclusive.svg";
 import AppleStoreIcon from "../../assets/applestore.svg";
 import GooglePlayIcon from "../../assets/googleplay.svg";
-import SlotsIcon from "../../assets/slots.svg";
+import TicketIcon from "../../assets/heroTicketIcon.svg";
+import HeroAvatar1 from "../../assets/heroAvatar1.jpeg";
+import HeroAvatar2 from "../../assets/heroAvatar2.jpeg";
+import HeroAvatar3 from "../../assets/heroAvatar3.jpeg";
+import HeroAvatar4 from "../../assets/heroAvatar4.jpeg";
 
 const badgePills = ["Premium Access", "Founder Badge", "Early Access Launch"];
-const avatarColors = ["#F59E0B", "#8B5CF6", "#10B981"];
+const heroAvatars = [HeroAvatar1, HeroAvatar2, HeroAvatar3, HeroAvatar4];
 
 const HeroSection = () => {
   return (
@@ -57,11 +61,11 @@ const HeroSection = () => {
           <Box
             sx={{
               display: "inline-block",
-              background: "rgba(255,255,255,0.08)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              background: "rgba(69,87,176,0.3)",
+              border: "1px solid rgba(255,255,255,0.05)",
               borderRadius: "999px",
-              padding: "6px 18px",
-              mb: "20px",
+              padding: "8px 13px",
+              mb: "25px",
             }}
           >
             <Typography
@@ -80,18 +84,18 @@ const HeroSection = () => {
             component="h1"
             sx={{
               color: "#ffffff",
-              fontSize: { xs: "28px", md: "40px", lg: "52px" },
+              fontSize: { xs: "28px", md: "40px" },
               fontWeight: 500,
-              lineHeight: 1.25,
+              lineHeight: 1.35,
             }}
           >
             First{" "}
-            <Box component="span" sx={{ fontWeight: 800 }}>
+            <Box component="span" sx={{ fontWeight: 700 }}>
               100
             </Box>{" "}
             User Get
             <br />
-            <Box component="span" sx={{ fontWeight: 800 }}>
+            <Box component="span" sx={{ fontWeight: 700 }}>
               2 Months Free
             </Box>
             <br />
@@ -104,17 +108,17 @@ const HeroSection = () => {
               alignItems: "center",
               justifyContent: { xs: "center", md: "flex-start" },
               gap: "10px",
-              mt: "20px",
+              mt: "18px",
             }}
           >
             <Box
               component="img"
               src={ExclusiveIcon}
               alt="Exclusive"
-              sx={{ width: "28px", height: "28px" }}
+              sx={{ width: "35px", height: "35px" }}
             />
             <Typography
-              sx={{ color: "#FBBF24", fontSize: "16px", fontWeight: 600 }}
+              sx={{ color: "#F4D740", fontSize: "18px", fontWeight: 600 }}
             >
               +Exclusive Founder Badge
             </Typography>
@@ -125,8 +129,9 @@ const HeroSection = () => {
             sx={{
               color: "rgba(255, 255, 255, 0.4)",
               fontSize: { xs: "16px", lg: "18px" },
-              mt: "20px",
-              maxWidth: "480px",
+              lineHeight: 1.7,
+              mt: "24px",
+              maxWidth: "505px",
               mx: { xs: "auto", md: 0 },
             }}
           >
@@ -138,8 +143,8 @@ const HeroSection = () => {
             sx={{
               display: "flex",
               flexWrap: "wrap",
-              gap: "12px",
-              mt: "28px",
+              gap: { xs: "12px", md: "26px" },
+              mt: "20px",
               justifyContent: { xs: "center", md: "flex-start" },
             }}
           >
@@ -149,21 +154,22 @@ const HeroSection = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "8px",
+                  gap: "12px",
+                  height: "48px",
                   background: "rgba(69, 87, 176, 0.3)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "999px",
-                  padding: "8px 16px",
+                  border: "1px solid rgba(255,255,255,0.05)",
+                  borderRadius: "24px",
+                  padding: "0 14px",
                 }}
               >
                 <Box
                   component="img"
                   src={ChecksIcon}
                   alt="Check"
-                  sx={{ width: "16px", height: "16px" }}
+                  sx={{ width: "18px", height: "18px" }}
                 />
                 <Typography
-                  sx={{ color: "#ffffff", fontSize: "14px", fontWeight: 500 }}
+                  sx={{ color: "#ffffff", fontSize: "16px", fontWeight: 500 }}
                 >
                   {label}
                 </Typography>
@@ -174,8 +180,8 @@ const HeroSection = () => {
           <Box
             sx={{
               display: "flex",
-              gap: "12px",
-              mt: "28px",
+              gap: "20px",
+              mt: "40px",
               flexWrap: "wrap",
               justifyContent: { xs: "center", md: "flex-start" },
             }}
@@ -184,34 +190,39 @@ const HeroSection = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                gap: "16px",
+                width: "206px",
+                height: "68px",
+                background: "rgba(255,255,255,0.2)",
                 borderRadius: "12px",
-                padding: "10px 20px",
+                padding: "0 21px",
                 cursor: "pointer",
                 transition: "background 0.3s ease",
-                "&:hover": { background: "rgba(255,255,255,0.1)" },
+                "&:hover": { background: "rgba(255,255,255,0.28)" },
               }}
             >
               <Box
                 component="img"
                 src={AppleStoreIcon}
                 alt="App Store"
-                sx={{ width: "20px", height: "24px" }}
+                sx={{ width: "28px", height: "30px" }}
               />
               <Box sx={{ textAlign: "left" }}>
                 <Typography
-                  sx={{ color: "#cbd5e1", fontSize: "10px", lineHeight: 1.2 }}
+                  sx={{
+                    color: "rgba(255,255,255,0.6)",
+                    fontSize: "14px",
+                    lineHeight: 1.2,
+                  }}
                 >
                   Download on the
                 </Typography>
                 <Typography
                   sx={{
                     color: "#ffffff",
-                    fontSize: "15px",
+                    fontSize: "18px",
                     fontWeight: 600,
-                    lineHeight: 1.2,
+                    lineHeight: 1.3,
                   }}
                 >
                   App Store
@@ -223,34 +234,39 @@ const HeroSection = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: "10px",
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                gap: "16px",
+                width: "206px",
+                height: "68px",
+                background: "rgba(255,255,255,0.2)",
                 borderRadius: "12px",
-                padding: "10px 20px",
+                padding: "0 21px",
                 cursor: "pointer",
                 transition: "background 0.3s ease",
-                "&:hover": { background: "rgba(255,255,255,0.1)" },
+                "&:hover": { background: "rgba(255,255,255,0.28)" },
               }}
             >
               <Box
                 component="img"
                 src={GooglePlayIcon}
                 alt="Google Play"
-                sx={{ width: "22px", height: "24px" }}
+                sx={{ width: "29px", height: "32px" }}
               />
               <Box sx={{ textAlign: "left" }}>
                 <Typography
-                  sx={{ color: "#cbd5e1", fontSize: "10px", lineHeight: 1.2 }}
+                  sx={{
+                    color: "rgba(255,255,255,0.6)",
+                    fontSize: "14px",
+                    lineHeight: 1.2,
+                  }}
                 >
                   Get it on
                 </Typography>
                 <Typography
                   sx={{
                     color: "#ffffff",
-                    fontSize: "15px",
+                    fontSize: "18px",
                     fontWeight: 600,
-                    lineHeight: 1.2,
+                    lineHeight: 1.3,
                   }}
                 >
                   Google Play
@@ -272,30 +288,33 @@ const HeroSection = () => {
             component="img"
             src={FounderImage}
             alt="BUEZ Founder"
-            sx={{ maxWidth: { xs: "70%", md: "85%" }, height: "auto" }}
+            sx={{
+              width: { xs: "auto", md: "484px" },
+              maxWidth: { xs: "70%", md: "100%" },
+              height: "auto",
+            }}
           />
 
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
               position: "absolute",
-              top: "16%",
-              left: "0",
+              top: "106px",
+              right: "317px",
               alignItems: "center",
-              gap: "16px",
+              width: "496px",
+              height: "92px",
               background: "rgba(244, 255, 244, 0.1)",
-              backdropFilter: "blur(40px)",
-              border: "1px solid rgba(255,255,255,0.12)",
+              backdropFilter: "blur(20px)",
               borderRadius: "16px",
-              padding: "16px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+              padding: "0 16px",
             }}
           >
             <Box
               sx={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "20px",
+                width: "45px",
+                height: "45px",
+                borderRadius: "50%",
                 background: "rgba(69, 87, 176, 0.4)",
                 display: "flex",
                 alignItems: "center",
@@ -305,14 +324,20 @@ const HeroSection = () => {
             >
               <Box
                 component="img"
-                src={SlotsIcon}
+                src={TicketIcon}
                 alt="Slots"
-                sx={{ width: "20px", height: "20px" }}
+                sx={{ width: "27px", height: "27px" }}
               />
             </Box>
 
-            <Box>
-              <Typography sx={{ color: "#94a3b8", fontSize: "12px" }}>
+            <Box sx={{ ml: "9px", textAlign: "left" }}>
+              <Typography
+                sx={{
+                  color: "rgba(255,255,255,0.8)",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                }}
+              >
                 Slots Remaining
               </Typography>
               <Box
@@ -320,18 +345,21 @@ const HeroSection = () => {
                   display: "flex",
                   alignItems: "center",
                   gap: "5px",
-                  mt: "2px",
+                  mt: "8px",
                 }}
               >
                 <Box
                   sx={{
-                    width: "6px",
-                    height: "6px",
+                    width: "8px",
+                    height: "8px",
                     borderRadius: "50%",
-                    background: "#818cf8",
+                    background: "#FFDA44",
+                    flexShrink: 0,
                   }}
                 />
-                <Typography sx={{ color: "#cbd5e1", fontSize: "12px" }}>
+                <Typography
+                  sx={{ color: "rgba(255,255,255,0.4)", fontSize: "14px" }}
+                >
                   67 slots remaining
                 </Typography>
               </Box>
@@ -340,51 +368,87 @@ const HeroSection = () => {
             <Box
               sx={{
                 width: "1px",
-                height: "32px",
+                height: "59px",
                 background: "rgba(255,255,255,0.15)",
+                ml: "18px",
+                flexShrink: 0,
               }}
             />
 
-            <Box sx={{ display: "flex", alignItems: "baseline", gap: "2px" }}>
-              <Typography
-                sx={{ color: "#ffffff", fontSize: "24px", fontWeight: 700 }}
+            <Box sx={{ ml: "18px" }}>
+              <Box sx={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                <Typography
+                  sx={{
+                    color: "#ffffff",
+                    fontSize: "36px",
+                    fontWeight: 600,
+                    lineHeight: 1,
+                  }}
+                >
+                  23
+                </Typography>
+                <Typography
+                  sx={{ color: "rgba(255,255,255,0.4)", fontSize: "20px" }}
+                >
+                  /100
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  position: "relative",
+                  width: "92px",
+                  height: "4px",
+                  borderRadius: "2px",
+                  background: "rgba(255,255,255,0.1)",
+                  mt: "10px",
+                }}
               >
-                23
-              </Typography>
-              <Typography sx={{ color: "#64748b", fontSize: "14px" }}>
-                /100
-              </Typography>
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "29px",
+                    height: "4px",
+                    borderRadius: "2px",
+                    background: "#4557B0",
+                  }}
+                />
+              </Box>
             </Box>
 
-            <Box sx={{ display: "flex", ml: "4px" }}>
-              {avatarColors.map((color, index) => (
+            <Box sx={{ display: "flex", alignItems: "center", ml: "auto" }}>
+              {heroAvatars.map((avatar, index) => (
                 <Box
                   key={index}
+                  component="img"
+                  src={avatar}
+                  alt={`Founder ${index + 1}`}
                   sx={{
-                    width: "26px",
-                    height: "26px",
+                    width: "33px",
+                    height: "33px",
                     borderRadius: "50%",
-                    background: color,
-                    border: "2px solid #0f172a",
-                    ml: index === 0 ? 0 : "-8px",
+                    objectFit: "cover",
+                    border: "1px solid #1A1F30",
+                    ml: index === 0 ? 0 : "-10px",
                   }}
                 />
               ))}
               <Box
                 sx={{
-                  width: "26px",
-                  height: "26px",
+                  width: "32px",
+                  height: "32px",
                   borderRadius: "50%",
-                  background: "#1e293b",
-                  border: "2px solid #0f172a",
-                  ml: "-8px",
+                  background: "rgba(255,255,255,0.1)",
+                  border: "1px solid #1A1F30",
+                  ml: "-9px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
                 <Typography
-                  sx={{ color: "#cbd5e1", fontSize: "9px", fontWeight: 600 }}
+                  sx={{ color: "#ffffff", fontSize: "10px", fontWeight: 500 }}
                 >
                   +19
                 </Typography>

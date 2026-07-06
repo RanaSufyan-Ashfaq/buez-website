@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 // MUI Imports
-import { Box, Typography, Button, ClickAwayListener } from "@mui/material";
+import { Box, Typography, ClickAwayListener } from "@mui/material";
+import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 // Assets
 import CheckIcon from "../../assets/check-icon.svg";
 // Flag Assets
@@ -14,9 +20,9 @@ const PricingPlan = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pricingData: any = {
-    CHF: { type: "CHF", monthly: "7.90", yearly: "79", symbol: "CHF" },
-    USD: { type: "USD", monthly: "9.50", yearly: "95", symbol: "$" },
-    EUR: { type: "EUR", monthly: "8.90", yearly: "89", symbol: "€" },
+    CHF: { type: "CHF", intro: "3.90", monthly: "7.90", symbol: "CHF" },
+    USD: { type: "USD", intro: "4.90", monthly: "9.50", symbol: "$" },
+    EUR: { type: "EUR", intro: "4.40", monthly: "8.90", symbol: "€" },
   };
 
   const currencies = [
@@ -26,50 +32,171 @@ const PricingPlan = () => {
   ];
 
   const currentPricing = pricingData[currency];
+  const symbol =
+    currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol;
 
-  const freePlanFeatures = [
+  const baseFeatures = [
     "Full access to all features",
     "Post and browse requests",
     "Secure in-app messaging",
     "Personalized user profile & reviews",
   ];
+  const standardFeatures = [...baseFeatures, "Cancel anytime"];
 
-  const monthlyPlanFeatures = [
-    "Full access to all features",
-    "Post and browse requests",
-    "Secure in-app messaging",
-    "Personalized user profile & reviews",
-    "Cancel anytime",
-  ];
-  const yearlyPlanFeatures = [
-    "Full access to all features",
-    "Post and browse requests",
-    "Secure in-app messaging",
-    "Personalized user profile & reviews",
-    "Cancel anytime",
-  ];
+  // Shared pieces -----------------------------------------------------------
+
+  const HeaderBadge = ({
+    icon,
+    label,
+  }: {
+    icon: React.ReactNode;
+    label: string;
+  }) => (
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: "5px",
+        height: "22px",
+        px: "10px",
+        borderRadius: "11px",
+        background: "rgba(69,87,176,0.3)",
+        border: "1px solid rgba(69,87,176,0.2)",
+        flexShrink: 0,
+      }}
+    >
+      {icon}
+      <Typography
+        sx={{
+          color: "#ffffff",
+          fontSize: "10px",
+          fontWeight: 600,
+          letterSpacing: "0.5px",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+
+  const PricePill = ({ label }: { label: string }) => (
+    <Box
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        height: "22px",
+        px: "12px",
+        borderRadius: "11px",
+        background: "rgba(69,87,176,0.2)",
+        border: "1px solid rgba(69,87,176,0.2)",
+      }}
+    >
+      <Typography
+        sx={{ color: "#ffffff", fontSize: "11px", whiteSpace: "nowrap" }}
+      >
+        {label}
+      </Typography>
+    </Box>
+  );
+
+  const Divider = () => (
+    <Box
+      sx={{
+        width: "100%",
+        height: "1px",
+        background: "linear-gradient(90deg, #0D1B49 46.63%, #0D4761 100%)",
+        mt: "20px",
+      }}
+    />
+  );
+
+  const FeatureList = ({ features }: { features: string[] }) => (
+    <>
+      <Typography
+        sx={{
+          color: "rgba(255,255,255,0.9)",
+          fontSize: "16px",
+          fontWeight: 500,
+          mt: "28px",
+          mb: "18px",
+        }}
+      >
+        What&apos;s included
+      </Typography>
+      {features.map((feature, index) => (
+        <Box
+          key={index}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            mb: "12px",
+            gap: "14px",
+          }}
+        >
+          <Box component="img" src={CheckIcon} alt="" sx={{ width: "20px" }} />
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.6)",
+              fontSize: "14px",
+              lineHeight: 1.5,
+            }}
+          >
+            {feature}
+          </Typography>
+        </Box>
+      ))}
+    </>
+  );
+
+  const sideCardSx = {
+    width: { xs: "100%", md: "354px" },
+    maxWidth: { xs: "400px", md: "354px" },
+    minHeight: { md: "575px" },
+    background: "rgba(255,255,255,0.05)",
+    borderRadius: "16px",
+    border: "1px solid rgba(255,255,255,0.1)",
+    backdropFilter: "blur(12px)",
+    textAlign: "left",
+    padding: "28px 26px",
+    display: "flex",
+    flexDirection: "column",
+  } as const;
 
   return (
     <Box
       id="pricing"
       sx={{
-        background: "linear-gradient(142deg, #2F80B5 0%, #020617 20%)",
+        background: "#020617",
         pb: { xs: "80px", md: "140px" },
         pt: { xs: "80px", md: "110px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
-        overflow: "visible", // Changed to visible for dropdown
+        overflowX: "clip", // keep vertical overflow visible for dropdown
         position: "relative",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: "-774px",
+          right: "-1282px",
+          width: "2496px",
+          height: "2581px",
+          background:
+            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+          pointerEvents: "none",
+          display: { xs: "none", md: "block" },
+        },
       }}
     >
       <Typography
         component="h2"
         sx={{
           color: "#ffffff",
-          fontSize: { xs: "28px", md: "40px", lg: "52px" },
-          fontWeight: 500,
+          fontSize: { xs: "28px", md: "40px" },
+          fontWeight: 600,
           lineHeight: 1.2,
           mb: { xs: "12px", md: "16px" },
+          position: "relative",
         }}
       >
         Our Pricing Plan
@@ -78,11 +205,12 @@ const PricingPlan = () => {
       <Typography
         component="p"
         sx={{
-          color: "#e5e7eb",
+          color: "rgba(255,255,255,0.6)",
           fontSize: { xs: "16px", lg: "18px" },
-          maxWidth: "620px",
+          maxWidth: "900px",
           margin: "0 auto",
           mb: "30px",
+          position: "relative",
         }}
       >
         Start free for 14 days, then stay connected with full access through our
@@ -151,7 +279,6 @@ const PricingPlan = () => {
                   left: "50%",
                   transform: "translateX(-50%)",
                   width: "145px",
-                  // background: "rgba(13, 27, 73, 0.9)", // Darker background for dropdown
                   backdropFilter: "blur(12px)",
                   borderRadius: "16px",
                   border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -228,386 +355,428 @@ const PricingPlan = () => {
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          // gap: "30px",
-          maxWidth: "1126px",
+          maxWidth: "1060px",
           margin: "0 auto",
           justifyContent: "center",
-          alignItems: { xs: "center", md: "stretch" },
+          alignItems: "center",
+          gap: { xs: "24px", md: 0 },
         }}
       >
-        {/* Free Plan Card */}
-        <Box
-          sx={{
-            flex: 1,
-            maxWidth: { xs: "400px", md: "354px" },
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
-            borderRadius: "16px",
-            padding: { xs: "32px 0px", md: "40px 0px" },
-            border: "1px solid rgba(255,255,255,0.1)",
-            backdropFilter: "blur(12px)",
-            textAlign: "left",
-            transition: "all 0.3s ease",
-            // "&:hover": {
-            //   transform: "scale(1.05)",
-            //   border: "1px solid rgba(255,255,255,0.2)",
-            //   boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            // },
-          }}
-        >
-          <Typography
+        {/* Card 1 — BUEZ PLUS (Founder phase) */}
+        <Box sx={sideCardSx}>
+          <Box
             sx={{
-              color: "#ffffff",
-              fontSize: "18px",
-              fontWeight: 600,
-              mb: "20px",
-              padding: "0px 32px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            BUEZ FREE
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
+            >
+              BUEZ PLUS
+            </Typography>
+            <HeaderBadge
+              icon={
+                <WorkspacePremiumIcon
+                  sx={{ fontSize: "12px", color: "#ffffff" }}
+                />
+              }
+              label="FOUNDER PHASE"
+            />
+          </Box>
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.4)",
+              fontSize: "13px",
+              mt: "6px",
+            }}
+          >
+            Free for first 100 Users
           </Typography>
 
-          <Box sx={{ mb: "32px", padding: "0px 32px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
+              mt: "28px",
+            }}
+          >
             <Typography
-              component="span"
-              sx={{
-                color: "#ffffff",
-                fontSize: "30px",
-                fontWeight: 600,
-              }}
+              sx={{ color: "#ffffff", fontSize: "36px", fontWeight: 600, lineHeight: 1 }}
             >
-              {currentPricing.type === "CHF"
-                ? "CHF 0"
-                : `${currentPricing.symbol} 0`}
+              {symbol} 0
             </Typography>
-            <Typography
-              component="span"
-              sx={{
-                color: "#94a3b8",
-                fontSize: "16px",
-                ml: "8px",
-              }}
-            >
-              / 14 days / user
-            </Typography>
+            <PricePill label="60 DAYS FREE" />
           </Box>
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.4)",
+              fontSize: "13px",
+              mt: "10px",
+            }}
+          >
+            No auto-renewal. Founder badge included.
+          </Typography>
+
+          <Divider />
+
+          {/* Spots claimed widget */}
           <Box
             sx={{
               position: "relative",
+              overflow: "hidden",
+              width: "100%",
+              height: "84px",
+              mt: "24px",
+              borderRadius: "8px",
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.05)",
+              padding: "14px 18px",
               "&::after": {
                 content: '""',
                 position: "absolute",
-                left: 0,
-                bottom: 0,
-                width: "100%",
-                height: "1px",
-                background:
-                  "linear-gradient(90deg, #0D1B49 46.63%, #0D4761 100%)",
+                top: "-40px",
+                right: "-40px",
+                width: "80px",
+                height: "80px",
+                borderRadius: "50%",
+                background: "#4557B0",
+                filter: "blur(25px)",
+                pointerEvents: "none",
               },
             }}
-          ></Box>
-          <Typography
-            sx={{
-              color: "#94a3b8",
-              fontSize: "15px",
-              fontWeight: 500,
-              mb: "16px",
-              mt: "65px",
-              padding: "0px 32px",
-            }}
           >
-            What's Included
-          </Typography>
-
-          <Box sx={{ padding: "0px 32px" }}>
-            {freePlanFeatures.map((feature, index) => (
+            <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <Box
-                key={index}
                 sx={{
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  background: "rgba(255,255,255,0.05)",
                   display: "flex",
-                  alignItems: "flex-start",
-                  mb: "14px",
-                  gap: "12px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
                 }}
               >
-                <Box component="img" src={CheckIcon} alt="Check Icon" />
+                <PeopleAltOutlinedIcon
+                  sx={{ fontSize: "15px", color: "#F4FFF4" }}
+                />
+              </Box>
+              <Box>
+                <Box sx={{ display: "flex", alignItems: "baseline", gap: "4px" }}>
+                  <Typography
+                    sx={{ color: "#ffffff", fontSize: "16px", fontWeight: 600, lineHeight: 1.2 }}
+                  >
+                    23
+                  </Typography>
+                  <Typography
+                    sx={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}
+                  >
+                    /100
+                  </Typography>
+                </Box>
                 <Typography
                   sx={{
-                    color: "#cbd5e1",
-                    fontSize: "14px",
-                    lineHeight: 1.5,
+                    color: "rgba(255,255,255,0.4)",
+                    fontSize: "11px",
+                    lineHeight: 1.2,
                   }}
                 >
-                  {feature}
+                  Spots Claimed
                 </Typography>
               </Box>
-            ))}
+              <Box sx={{ ml: "auto", position: "relative" }}>
+                <PricePill label="77 left" />
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                position: "relative",
+                width: "100%",
+                height: "6px",
+                borderRadius: "3px",
+                background: "rgba(255,255,255,0.05)",
+                mt: "12px",
+              }}
+            >
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "28.5%",
+                  height: "6px",
+                  borderRadius: "3px",
+                  background: "#4557B0",
+                }}
+              />
+            </Box>
           </Box>
+
+          <FeatureList features={baseFeatures} />
+
+          <Typography
+            sx={{
+              mt: "auto",
+              pt: "16px",
+              textAlign: "center",
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.4)",
+            }}
+          >
+            <Box component="span" sx={{ color: "#ffffff", fontWeight: 600 }}>
+              Note:
+            </Box>{" "}
+            Available only for early users during launch
+          </Typography>
         </Box>
-        {/* Monthly Plan Card */}
+
+        {/* Card 2 — Introductory price (Early-bird) */}
         <Box
           sx={{
-            flex: 1,
-            maxWidth: { xs: "100%", md: "354px" },
+            width: { xs: "100%", md: "352px" },
+            maxWidth: { xs: "400px", md: "352px" },
+            minHeight: { md: "610px" },
             background:
               "linear-gradient(179.97deg, rgba(84, 97, 112, 0.5) 0%, rgba(13, 0, 48, 0.2) 99.97%)",
             borderRadius: "16px",
-            padding: { xs: "32px 0px", md: "40px 0px" },
-            border: "1px solid rgba(47, 128, 181, 0.3)",
+            border: "1px solid rgba(255,255,255,0.15)",
             backdropFilter: "blur(12px)",
             textAlign: "left",
-            transition: "all 0.3s ease",
-            transform: "scale(1.05)",
-            boxShadow: "0 8px 32px rgba(47, 128, 181, 0.2)",
-            zIndex: 1,
+            padding: "28px 26px",
+            display: "flex",
+            flexDirection: "column",
             position: "relative",
-            // "&:hover": {
-            //   transform: "scale(1.05)",
-            //   border: "1px solid rgba(255,255,255,0.2)",
-            //   boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            // },
+            zIndex: 1,
           }}
         >
           <Box
             sx={{
-              position: "absolute",
-              top: "-14px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              background: "linear-gradient(90deg, #2F80B5, #4557B0)",
-              borderRadius: "999px",
-              padding: "4px 16px",
-              whiteSpace: "nowrap",
-            }}
-          >
-            <Typography
-              sx={{ color: "#ffffff", fontSize: "12px", fontWeight: 600 }}
-            >
-              MOST POPULAR
-            </Typography>
-          </Box>
-
-          <Typography
-            sx={{
-              color: "#ffffff",
-              fontSize: "18px",
-              fontWeight: 600,
-              mb: "20px",
-              padding: "0px 32px",
-            }}
-          >
-            BUEZ PRO
-          </Typography>
-
-          <Box sx={{ mb: "32px", padding: "0px 32px" }}>
-            <Typography
-              component="span"
-              sx={{
-                color: "#ffffff",
-                fontSize: "30px",
-                fontWeight: 600,
-              }}
-            >
-              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
-              {currentPricing.monthly}
-            </Typography>
-            {/* Removed the separate cents logic to simplify for dynamic currency */}
-            <Typography
-              component="span"
-              sx={{
-                color: "#94a3b8",
-                fontSize: "16px",
-                ml: "8px",
-              }}
-            >
-              / month / user
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              position: "relative",
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                left: 0,
-                bottom: 0,
-                width: "100%",
-                height: "1px",
-                background:
-                  "linear-gradient(90deg, #0D1B49 46.63%, #0D4761 100%)",
-              },
-            }}
-          ></Box>
-          <Typography
-            sx={{
-              color: "#94a3b8",
-              fontSize: "15px",
-              fontWeight: 500,
-              mb: "16px",
-              mt: "65px",
-              padding: "0px 32px",
-            }}
-          >
-            What's Included
-          </Typography>
-
-          <Box sx={{ padding: "0px 32px" }}>
-            {monthlyPlanFeatures.map((feature, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  mb: "14px",
-                  gap: "12px",
-                }}
-              >
-                <Box component="img" src={CheckIcon} alt="Check Icon" />
-                <Typography
-                  sx={{
-                    color: "#cbd5e1",
-                    fontSize: "14px",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {feature}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Box>
-        {/* Yearly Plan Card */}
-        <Box
-          sx={{
-            flex: 1,
-            maxWidth: { xs: "400px", md: "354px" },
-            background:
-              "linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
-            borderRadius: "16px",
-            padding: { xs: "32px 0px", md: "40px 0px" },
-            border: "1px solid rgba(255,255,255,0.1)",
-            backdropFilter: "blur(12px)",
-            textAlign: "left",
-            transition: "all 0.3s ease",
-            boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            // "&:hover": {
-            //   transform: "scale(1.05)",
-            //   border: "1px solid rgba(47, 128, 181, 0.5)",
-            //   boxShadow: "0 20px 60px rgba(47, 128, 181, 0.3)",
-            // },
-          }}
-        >
-          <Typography
-            sx={{
-              color: "#ffffff",
-              fontSize: "18px",
-              fontWeight: 600,
-              mb: "20px",
-              padding: "0px 32px",
-            }}
-          >
-            STANDARD PLAN
-          </Typography>
-
-          <Box sx={{ mb: "32px", padding: "0px 32px" }}>
-            <Typography
-              component="span"
-              sx={{
-                color: "#ffffff",
-                fontSize: "30px",
-                fontWeight: 600,
-              }}
-            >
-              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
-              {currentPricing.yearly}
-            </Typography>
-            <Typography
-              component="span"
-              sx={{
-                color: "#94a3b8",
-                fontSize: "16px",
-                ml: "8px",
-              }}
-            >
-              / yearly / user
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              position: "relative",
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                left: 0,
-                bottom: 0,
-                width: "100%",
-                zIndex: -1,
-                height: "1px",
-                background:
-                  "linear-gradient(90deg, #0D1B49 46.63%, #0D4761 100%)",
-              },
-            }}
-          ></Box>
-          <Box
-            sx={{
-              background: "linear-gradient(90deg, #0D1B49 0%, #000000 100%)",
-              borderRadius: "6px",
-              padding: "5px 35px",
               display: "flex",
-              justifyContent: "center",
-              width: "62%",
-              margin: "-16px auto 0px auto",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
             <Typography
-              sx={{
-                color: "#94a3b8",
-                fontSize: "13px",
-              }}
+              sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
             >
-              Save{" "}
-              {currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol}{" "}
-              17% yearly
+              Introductory price
+            </Typography>
+            <HeaderBadge
+              icon={
+                <DarkModeIcon sx={{ fontSize: "11px", color: "#ffffff" }} />
+              }
+              label="EARLY-BIRD PHASE"
+            />
+          </Box>
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.4)",
+              fontSize: "13px",
+              mt: "6px",
+            }}
+          >
+            Early-Bird pricing for your first 3 months.
+          </Typography>
+
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: "8px", mt: "24px" }}>
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "36px", fontWeight: 600, lineHeight: 1 }}
+            >
+              {symbol} {currentPricing.intro}
+            </Typography>
+            <Typography
+              sx={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
+            >
+              /month
             </Typography>
           </Box>
+          <Box sx={{ mt: "12px" }}>
+            <PricePill label="Valid For First 3 Months" />
+          </Box>
+
+          <Divider />
+
+          {/* Price transition widget */}
+          <Box
+            sx={{
+              position: "relative",
+              display: "flex",
+              width: "100%",
+              mt: "24px",
+              borderRadius: "8px",
+              overflow: "hidden",
+              border: "1px solid rgba(255,255,255,0.05)",
+            }}
+          >
+            <Box
+              sx={{
+                flex: 1,
+                background: "rgba(69,87,176,0.2)",
+                padding: "12px 0 14px",
+                textAlign: "center",
+              }}
+            >
+              <Typography
+                sx={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}
+              >
+                First 3 months
+              </Typography>
+              <Typography
+                sx={{ color: "#ffffff", fontSize: "14px", fontWeight: 600, mt: "4px" }}
+              >
+                {symbol} {currentPricing.intro}{" "}
+                <Box
+                  component="span"
+                  sx={{
+                    color: "rgba(255,255,255,0.6)",
+                    fontSize: "10px",
+                    fontWeight: 400,
+                  }}
+                >
+                  /month
+                </Box>
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                flex: 1,
+                background: "rgba(255,255,255,0.05)",
+                padding: "12px 0 14px",
+                textAlign: "center",
+              }}
+            >
+              <Typography
+                sx={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}
+              >
+                After 3 months
+              </Typography>
+              <Typography
+                sx={{ color: "#ffffff", fontSize: "14px", fontWeight: 600, mt: "4px" }}
+              >
+                {symbol} {currentPricing.monthly}{" "}
+                <Box
+                  component="span"
+                  sx={{
+                    color: "rgba(255,255,255,0.6)",
+                    fontSize: "10px",
+                    fontWeight: 400,
+                  }}
+                >
+                  /month
+                </Box>
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "24px",
+                height: "24px",
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.1)",
+                backdropFilter: "blur(6px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <ArrowForwardIcon sx={{ fontSize: "12px", color: "#ffffff" }} />
+            </Box>
+          </Box>
+
+          <FeatureList features={baseFeatures} />
 
           <Typography
             sx={{
-              color: "#94a3b8",
-              fontSize: "14px",
-              fontWeight: 500,
-              mb: "16px",
-              padding: "0px 32px",
-              mt: "26px",
+              mt: "auto",
+              pt: "16px",
+              textAlign: "center",
+              fontSize: "12px",
+              color: "rgba(255,255,255,0.4)",
             }}
           >
-            What's Included
+            <Box component="span" sx={{ color: "#ffffff", fontWeight: 600 }}>
+              Note:
+            </Box>{" "}
+            You&apos;ll be notified before the price changes.
+          </Typography>
+        </Box>
+
+        {/* Card 3 — Standard Plan */}
+        <Box sx={sideCardSx}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
+            >
+              Standard Plan
+            </Typography>
+            <HeaderBadge
+              icon={
+                <CreditCardIcon sx={{ fontSize: "12px", color: "#ffffff" }} />
+              }
+              label="STANDARD PLAN"
+            />
+          </Box>
+          <Typography
+            sx={{
+              color: "rgba(255,255,255,0.4)",
+              fontSize: "13px",
+              mt: "6px",
+            }}
+          >
+            Full BUEZ Access
           </Typography>
 
-          <Box sx={{ padding: "0px 32px" }}>
-            {yearlyPlanFeatures.map((feature, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  mb: "14px",
-                  gap: "12px",
-                }}
-              >
-                <Box component="img" src={CheckIcon} alt="Check Icon" />
-                <Typography
-                  sx={{
-                    color: "#cbd5e1",
-                    fontSize: "14px",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {feature}
-                </Typography>
-              </Box>
-            ))}
+          <Box sx={{ display: "flex", alignItems: "baseline", gap: "8px", mt: "28px" }}>
+            <Typography
+              sx={{ color: "#ffffff", fontSize: "36px", fontWeight: 600, lineHeight: 1 }}
+            >
+              {symbol} {currentPricing.monthly}
+            </Typography>
+            <Typography
+              sx={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
+            >
+              /month
+            </Typography>
+          </Box>
+          <Box sx={{ mt: "12px" }}>
+            <PricePill label="Billed Monthly" />
+          </Box>
+
+          <Divider />
+
+          <FeatureList features={standardFeatures} />
+
+          <Box
+            sx={{
+              mt: "auto",
+              pt: "16px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+            }}
+          >
+            <LockOutlinedIcon
+              sx={{ fontSize: "13px", color: "rgba(255,255,255,0.4)" }}
+            />
+            <Typography
+              sx={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}
+            >
+              Secure payment. Cancel anytime
+            </Typography>
           </Box>
         </Box>
       </Box>

@@ -1,148 +1,101 @@
-// MUI Imports
 // React
 import React, { useState } from "react";
 // MUI Imports
-import {
-  Box,
-  Typography,
-  IconButton,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-// Slider
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 // Assets
-import ExploreBuezImage from "../../assets/ExploreBuezOne.svg";
-import ExploreBuezImageTwo from "../../assets/ExploreBuezTwo.svg";
-// Custom Arrow Components
-const NextArrow = ({ onClick }: { onClick?: () => void }) => {
-  return (
-    <IconButton
-      onClick={onClick}
-      sx={{
-        position: "absolute",
-        right: { xs: "0", md: "-60px" },
-        top: "50%",
-        transform: "translateY(-50%)",
-        zIndex: 2,
-        background: "rgba(255, 255, 255, 0.1)",
-        backdropFilter: "blur(10px)",
-        color: "#ffffff",
-        width: "50px",
-        height: "50px",
-        borderRadius: "50%",
-        "&:hover": {
-          background: "rgba(255, 255, 255, 0.2)",
-        },
-      }}
-    >
-      <ArrowForwardIosIcon sx={{ fontSize: "20px" }} />
-    </IconButton>
-  );
+import ExplorePhone1 from "../../assets/explorePhone1.png";
+import ExplorePhone2 from "../../assets/explorePhone2.png";
+import ExplorePhone3 from "../../assets/explorePhone3.png";
+import ExplorePhone4 from "../../assets/explorePhone4.png";
+import ExplorePhone5 from "../../assets/explorePhone5.png";
+
+const images = [
+  ExplorePhone1,
+  ExplorePhone2,
+  ExplorePhone3,
+  ExplorePhone4,
+  ExplorePhone5,
+];
+
+// Fan layout from the Figma SVG (relative to the container center):
+// slots -2..2 → center offset, width, z-index
+const slots: Record<
+  number,
+  { offset: number; width: number; z: number }
+> = {
+  [-2]: { offset: -367, width: 249, z: 3 },
+  [-1]: { offset: -195, width: 272, z: 4 },
+  [0]: { offset: 0, width: 309, z: 5 },
+  [1]: { offset: 195, width: 272, z: 4 },
+  [2]: { offset: 367, width: 249, z: 3 },
 };
-const PrevArrow = ({ onClick }: { onClick?: () => void }) => {
-  return (
-    <IconButton
-      onClick={onClick}
-      sx={{
-        position: "absolute",
-        left: { xs: "0", md: "-60px" },
-        top: "50%",
-        transform: "translateY(-50%)",
-        zIndex: 2,
-        background: "rgba(255, 255, 255, 0.1)",
-        backdropFilter: "blur(10px)",
-        color: "#ffffff",
-        width: "50px",
-        height: "50px",
-        borderRadius: "50%",
-        "&:hover": {
-          background: "rgba(255, 255, 255, 0.2)",
-        },
-      }}
-    >
-      <ArrowBackIosNewIcon sx={{ fontSize: "20px" }} />
-    </IconButton>
-  );
-};
+
 const ExploreBuez = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const [slideIndex, setSlideIndex] = useState(0);
-  const images = [
-    // ExploreBuezImage,
-    ExploreBuezImageTwo,
-    ExploreBuezImageTwo,
-    ExploreBuezImageTwo,
-    // ExploreBuezImage,
-    ExploreBuezImageTwo,
-  ];
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: isMobile ? 1 : 3,
-    slidesToScroll: 1,
-    centerMode: !isMobile,
-    centerPadding: "0px",
-    arrows: !isMobile,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    beforeChange: (_current: number, next: number) => {
-      setSlideIndex(next);
+  const [active, setActive] = useState(2);
+
+  const prev = () => setActive((a) => (a + images.length - 1) % images.length);
+  const next = () => setActive((a) => (a + 1) % images.length);
+
+  const arrowSx = {
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    zIndex: 10,
+    background: "rgba(255, 255, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    color: "#ffffff",
+    width: "50px",
+    height: "50px",
+    borderRadius: "50%",
+    "&:hover": {
+      background: "rgba(255, 255, 255, 0.2)",
     },
-    customPaging: (i: number) => (
-      <Box
-        sx={{
-          width: i === slideIndex ? "12px" : "8px",
-          height: i === slideIndex ? "12px" : "8px",
-          borderRadius: "50%",
-          background: i === slideIndex ? "#ffffff" : "rgba(255, 255, 255, 0.3)",
-          transition: "all 0.3s ease",
-          mt: "20px",
-        }}
-      />
-    ),
-    appendDots: (dots: any) => (
-      <Box
-        sx={{
-          display: "flex !important",
-          justifyContent: "center",
-          gap: "8px",
-          alignItems: "center",
-          bottom: "-40px", // Adjust dot position
-        }}
-      >
-        {dots}
-      </Box>
-    ),
-  };
+  } as const;
+
   return (
     <Box
       id="exploreBuez"
       sx={{
-        background: "linear-gradient(142deg, #2F80B5 0%, #020617 20%)",
+        background: "#020617",
         pb: { xs: "80px", md: "140px" },
         pt: { xs: "80px", md: "110px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
-        // overflow: "hidden", // Removed to prevent clipping of shadows/dots
         minHeight: "600px",
+        overflowX: "clip",
       }}
     >
-      <Box sx={{ maxWidth: "1428px", margin: "0 auto" }}>
+      <Box
+        sx={{
+          maxWidth: "1428px",
+          margin: "0 auto",
+          position: "relative",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: "-216px",
+            right: "-921px",
+            width: "1540px",
+            height: "1560px",
+            background:
+              "radial-gradient(circle closest-side, rgba(47,128,181,0.3) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+            pointerEvents: "none",
+            display: { xs: "none", md: "block" },
+            zIndex: 0,
+          },
+        }}
+      >
         <Typography
           component="h2"
           sx={{
             color: "#ffffff",
-            fontSize: { xs: "28px", md: "40px", lg: "52px" },
+            fontSize: { xs: "28px", md: "40px" },
             fontWeight: 500,
             lineHeight: 1.2,
             mb: { xs: "12px", md: "16px" },
+            position: "relative",
           }}
         >
           Explore the BUEZ App Interface
@@ -150,65 +103,102 @@ const ExploreBuez = () => {
         <Typography
           component="p"
           sx={{
-            color: "#e5e7eb",
+            color: "rgba(255,255,255,0.6)",
             fontSize: { xs: "16px", lg: "18px" },
-            maxWidth: { xs: "100%", lg: "60%" },
+            lineHeight: 1.7,
+            maxWidth: { xs: "100%", lg: "990px" },
             margin: "0 auto",
-            mb: { xs: "60px", md: "50px" },
-          }}
-        >
-          Experience a clean, intuitive design that makes connecting, posting,
-          and completing tasks effortless — all within a smooth and
-          user-friendly interface.
-        </Typography>
-        <Box
-          sx={{
+            mb: { xs: "40px", md: "50px" },
             position: "relative",
-            px: { xs: "0", md: "60px" },
-
-            ".slick-slide": {
-              opacity: isMobile ? 1 : 0.5,
-              transform: isMobile ? "scale(1)" : "scale(0.8)",
-              transition: "all 0.5s ease",
-            },
-
-            ".slick-center": {
-              opacity: 1,
-              transform: isMobile ? "scale(1)" : "scale(1.05)",
-              zIndex: 10,
-            },
-
-            ".slick-list": {
-              padding: isMobile ? "0px !important" : "50px 0 !important",
-            },
-
-            ".slick-track": {
-              display: "flex",
-              alignItems: "center",
-            },
           }}
         >
-          <Slider {...settings}>
-            {images.map((img, index) => (
-              <Box key={index} sx={{ outline: "none", px: "10px" }}>
+          Our clean, intuitive design makes connecting with helpers, posting
+          tasks, and getting things done smoothly. Enjoy a truly smooth and
+          user-friendly experience from start to finish.
+        </Typography>
+
+        {/* Fanned phone stack */}
+        <Box sx={{ position: "relative" }}>
+          <IconButton
+            onClick={prev}
+            sx={{ ...arrowSx, left: { xs: "0", md: "10px" } }}
+          >
+            <ArrowBackIosNewIcon sx={{ fontSize: "20px" }} />
+          </IconButton>
+          <IconButton
+            onClick={next}
+            sx={{ ...arrowSx, right: { xs: "0", md: "10px" } }}
+          >
+            <ArrowForwardIosIcon sx={{ fontSize: "20px" }} />
+          </IconButton>
+
+          <Box
+            sx={{
+              position: "relative",
+              height: { xs: "540px", md: "620px" },
+            }}
+          >
+            {images.map((img, index) => {
+              // slot -2..2 relative to the active phone
+              const rel =
+                ((index - active + 2 + images.length) % images.length) - 2;
+              const slot = slots[rel];
+              return (
                 <Box
+                  key={index}
                   component="img"
                   src={img}
                   alt={`BUEZ Interface ${index + 1}`}
+                  onClick={() => setActive(index)}
                   sx={{
-                    // width: "100%",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    width: {
+                      xs: rel === 0 ? "260px" : "0px",
+                      md: `${slot.width}px`,
+                    },
                     height: "auto",
-                    display: "inline",
-                    borderRadius: "24px",
-                    boxShadow:
-                      index === slideIndex
-                        ? "0 20px 50px rgba(0,0,0,0.5)"
-                        : "none",
+                    transform: {
+                      xs: "translate(-50%, -50%)",
+                      md: `translate(calc(-50% + ${slot.offset}px), -50%)`,
+                    },
+                    zIndex: slot.z,
+                    cursor: rel === 0 ? "default" : "pointer",
+                    transition: "all 0.5s ease",
+                    opacity: { xs: rel === 0 ? 1 : 0, md: 1 },
                   }}
                 />
-              </Box>
+              );
+            })}
+          </Box>
+
+          {/* Dots */}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "10px",
+              mt: "36px",
+            }}
+          >
+            {images.map((_, index) => (
+              <Box
+                key={index}
+                onClick={() => setActive(index)}
+                sx={{
+                  width: index === active ? "12px" : "8px",
+                  height: index === active ? "12px" : "8px",
+                  borderRadius: "50%",
+                  background:
+                    index === active ? "#ffffff" : "rgba(255, 255, 255, 0.3)",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+              />
             ))}
-          </Slider>
+          </Box>
         </Box>
       </Box>
     </Box>

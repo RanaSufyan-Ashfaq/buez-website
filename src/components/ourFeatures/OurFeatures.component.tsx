@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
-import ShareIcon from "@mui/icons-material/Share";
 // Assets
-import TrialIcon from "../../assets/trial.svg";
-import PostRequestsIcon from "../../assets/postRequests.svg";
-import AcceptCompleteIcon from "../../assets/acceptCompleteTasks.svg";
-import RatingsIcon from "../../assets/rating.svg";
-import ProfileRankingIcon from "../../assets/profileRanking.svg";
-import TrialPhoneImage from "../../assets/tryBuezFree.svg";
+import TrialIcon from "../../assets/featureTrialGift.svg";
+import PostRequestsIcon from "../../assets/featurePostRequests.png";
+import AcceptCompleteIcon from "../../assets/featureAcceptTasks.png";
+import RatingsIcon from "../../assets/featureRatings.png";
+import ProfileRankingIcon from "../../assets/featureProfileRanking.png";
+import ShareTasksIcon from "../../assets/featureShareTasks.png";
+import TrialPhoneImage from "../../assets/14Days.png";
 import PostRequestPhoneImage from "../../assets/step1.svg";
 import AcceptCompletePhoneImage from "../../assets/step2.svg";
 import RatingsPhoneImage from "../../assets/step5.svg";
@@ -43,6 +43,7 @@ const features = [
     tooltip: "Rate and review after each task to build community trust.",
     icon: RatingsIcon,
     image: RatingsPhoneImage,
+    iconSize: 28,
   },
   {
     title: "Profile Ranking",
@@ -55,7 +56,7 @@ const features = [
     title: "Share Tasks",
     description: "Share tasks with friends and your community easily.",
     tooltip: "Share tasks with friends and your community easily.",
-    icon: null,
+    icon: ShareTasksIcon,
     image: ShareTasksPhoneImage,
   },
 ];
@@ -63,17 +64,14 @@ const features = [
 const OurFeatures = () => {
   const [activeFeature, setActiveFeature] = useState(0);
 
-  const renderIcon = (feature: (typeof features)[number], size: number) =>
-    feature.icon ? (
-      <Box
-        component="img"
-        src={feature.icon}
-        alt={feature.title}
-        sx={{ width: `${size}px`, height: `${size}px` }}
-      />
-    ) : (
-      <ShareIcon sx={{ color: "#ffffff", fontSize: `${size}px` }} />
-    );
+  const renderIcon = (feature: (typeof features)[number], size: number) => (
+    <Box
+      component="img"
+      src={feature.icon}
+      alt={feature.title}
+      sx={{ width: `${size}px`, height: `${size}px` }}
+    />
+  );
 
   return (
     <Box
@@ -87,6 +85,7 @@ const OurFeatures = () => {
       <Typography
         component="h2"
         sx={{
+          position: "relative",
           color: "#ffffff",
           fontSize: { xs: "28px", md: "40px" },
           fontWeight: 600,
@@ -101,11 +100,12 @@ const OurFeatures = () => {
       <Typography
         component="p"
         sx={{
-          color: "#94a3b8",
-          fontSize: { xs: "16px", lg: "18px" },
+          position: "relative",
+          color: "rgba(255,255,255,0.6)",
+          fontSize: "16px",
           maxWidth: "820px",
           margin: "0 auto",
-          mb: { xs: "50px", md: "90px" },
+          mb: { xs: "50px", md: "150px" },
           textAlign: "center",
         }}
       >
@@ -115,11 +115,13 @@ const OurFeatures = () => {
 
       <Box
         sx={{
-          maxWidth: "1300px",
+          position: "relative",
+          zIndex: 1,
+          maxWidth: "1428px",
           margin: "0 auto",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          alignItems: { xs: "center", md: "flex-start" },
+          alignItems: "center",
           justifyContent: "space-between",
           gap: { xs: "50px", md: "60px" },
         }}
@@ -127,19 +129,18 @@ const OurFeatures = () => {
         {/* Left - Feature list */}
         <Box
           sx={{
-            width: { xs: "100%", md: "620px" },
+            width: { xs: "100%", md: "547px" },
             flexShrink: 0,
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.005))",
-            borderRadius: "24px",
-            padding: { xs: "20px", md: "40px" },
+            background: "rgba(37,50,117,0.05)",
+            borderRadius: "16px",
+            padding: { xs: "20px", md: "24px 20px 32px" },
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
           }}
         >
           {features.map((feature, index) => {
             const isActive = index === activeFeature;
+            const isLast = index === features.length - 1;
             return (
               <Box
                 key={index}
@@ -147,45 +148,42 @@ const OurFeatures = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "20px",
+                  gap: "16px",
                   cursor: "pointer",
-                  borderRadius: "16px",
-                  padding: isActive ? "22px 24px" : "12px 24px",
+                  borderRadius: "14px",
+                  height: isActive ? { xs: "auto", md: "104px" } : "56px",
+                  padding: isActive ? { xs: "16px", md: "0 14px" } : "0 14px",
+                  mb: isLast ? 0 : isActive ? "40px" : { xs: "20px", md: "60px" },
                   background: isActive
-                    ? "linear-gradient(90deg, rgba(69,87,176,0.55), rgba(30,41,59,0.55))"
+                    ? "linear-gradient(90deg, rgba(37,50,117,0.3), rgba(69,94,219,0.3))"
                     : "transparent",
+                  opacity: isActive ? 1 : 0.4,
                   transition: "all 0.3s ease",
-                  "&:hover": {
-                    background: isActive
-                      ? "linear-gradient(90deg, rgba(69,87,176,0.55), rgba(30,41,59,0.55))"
-                      : "rgba(255,255,255,0.04)",
-                  },
+                  "&:hover": { opacity: isActive ? 1 : 0.7 },
                 }}
               >
                 <Box
                   sx={{
-                    width: "56px",
-                    height: "56px",
-                    borderRadius: isActive ? "14px" : "50%",
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "50%",
                     flexShrink: 0,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    background: isActive
-                      ? "rgba(255,255,255,0.12)"
-                      : "rgba(255,255,255,0.05)",
+                    background: "rgba(85,113,255,0.2)",
                     transition: "all 0.3s ease",
                   }}
                 >
-                  {renderIcon(feature, 28)}
+                  {renderIcon(feature, feature.iconSize ?? 24)}
                 </Box>
 
                 <Box>
                   <Typography
                     sx={{
                       color: isActive ? "#ffffff" : "#94a3b8",
-                      fontSize: isActive ? "20px" : "18px",
-                      fontWeight: isActive ? 700 : 500,
+                      fontSize: isActive ? "20px" : "17px",
+                      fontWeight: isActive ? 600 : 500,
                       transition: "all 0.3s ease",
                     }}
                   >
@@ -194,8 +192,8 @@ const OurFeatures = () => {
                   {isActive && (
                     <Typography
                       sx={{
-                        color: "#cbd5e1",
-                        fontSize: "15px",
+                        color: "rgba(255,255,255,0.7)",
+                        fontSize: "14px",
                         mt: "6px",
                       }}
                     >
@@ -215,7 +213,7 @@ const OurFeatures = () => {
             display: "flex",
             justifyContent: { xs: "center", md: "flex-end" },
             position: "relative",
-            pr: { md: "40px" },
+            pr: { md: "39px" },
           }}
         >
           <Box
@@ -233,43 +231,47 @@ const OurFeatures = () => {
             sx={{
               display: { xs: "none", md: "flex" },
               position: "absolute",
-              bottom: "10%",
-              right: { md: "270px", lg: "310px" },
+              bottom: "71px",
+              right: { md: "300px", lg: "393px" },
               alignItems: "flex-start",
-              gap: "14px",
-              width: { md: "440px", lg: "480px" },
-              maxWidth: "none",
+              gap: "16px",
+              width: "345px",
+              minHeight: "93px",
               background:
-                "linear-gradient(90deg, rgba(15,23,42,0.95), rgba(30,41,59,0.75))",
+                "linear-gradient(154deg, rgba(135,153,242,0.2), rgba(29,37,74,0.2))",
               backdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "16px",
-              padding: "18px 22px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: "12px",
+              padding: "16px",
             }}
           >
             <Box
               sx={{
                 width: "48px",
                 height: "48px",
-                borderRadius: "12px",
+                borderRadius: "50%",
                 flexShrink: 0,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background: "rgba(69,87,176,0.5)",
+                background: "rgba(85,113,255,0.2)",
               }}
             >
               {renderIcon(features[activeFeature], 24)}
             </Box>
             <Box>
               <Typography
-                sx={{ color: "#ffffff", fontSize: "17px", fontWeight: 600 }}
+                sx={{ color: "#ffffff", fontSize: "15px", fontWeight: 600 }}
               >
                 {features[activeFeature].title}
               </Typography>
               <Typography
-                sx={{ color: "#94a3b8", fontSize: "14px", mt: "4px" }}
+                sx={{
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: "13px",
+                  lineHeight: 1.35,
+                  mt: "4px",
+                }}
               >
                 {features[activeFeature].tooltip}
               </Typography>

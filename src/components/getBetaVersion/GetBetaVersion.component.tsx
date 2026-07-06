@@ -1,12 +1,72 @@
 import React from "react";
 // MUI Imports
-import { Box, Typography, Grid } from "@mui/material";
-import AppleIcon from "@mui/icons-material/Apple";
-import AndroidIcon from "@mui/icons-material/Android";
+import { Box, Typography } from "@mui/material";
 // Assets
-import GetBetaVersionImage from "../../assets/getBetaVersion.svg";
-// Shared Component
-import { GetBetaVersionButton } from "../../shared/GetBetaVersionButton";
+import GetBetaPhoneImage from "../../assets/getBetaPhone.png";
+import AppleStoreIcon from "../../assets/applestore.svg";
+import GooglePlayIcon from "../../assets/googleplay.svg";
+
+const storeButtons = [
+  {
+    eyebrow: "Download on the",
+    label: "App Store",
+    icon: AppleStoreIcon,
+    iconAlt: "Apple",
+    iconSx: { width: "28px", height: "30px" },
+  },
+  {
+    eyebrow: "Get it on",
+    label: "Google Play",
+    icon: GooglePlayIcon,
+    iconAlt: "Google Play",
+    iconSx: { width: "29px", height: "32px" },
+  },
+];
+
+const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx }) => (
+  <Box
+    component="button"
+    type="button"
+    sx={{
+      display: "flex",
+      alignItems: "center",
+      gap: "16px",
+      width: "206px",
+      height: "68px",
+      background: "rgba(255,255,255,0.2)",
+      border: 0,
+      borderRadius: "12px",
+      padding: "0 21px",
+      cursor: "pointer",
+      textAlign: "left",
+      transition: "background 0.3s ease",
+      "&:hover": { background: "rgba(255,255,255,0.28)" },
+    }}
+  >
+    <Box component="img" src={icon} alt={iconAlt} sx={iconSx} />
+    <Box>
+      <Typography
+        sx={{
+          color: "rgba(255,255,255,0.6)",
+          fontSize: "12px",
+          lineHeight: 1.2,
+        }}
+      >
+        {eyebrow}
+      </Typography>
+      <Typography
+        sx={{
+          color: "#ffffff",
+          fontSize: "16px",
+          fontWeight: 600,
+          lineHeight: 1.3,
+        }}
+      >
+        {label}
+      </Typography>
+    </Box>
+  </Box>
+);
 
 const GetBetaVersion = () => {
   return (
@@ -17,56 +77,99 @@ const GetBetaVersion = () => {
       ></Box>
       <Box
         sx={{
+          position: "relative",
           background: "#020617",
-          pt: { xs: "40px", md: "70px" },
+          pt: { xs: "55px", md: "115px" },
+          pb: { xs: "80px", md: "140px" },
           px: { xs: "15px", md: "20px" },
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: { xs: "-80px", md: "-120px" },
+            left: { xs: "-220px", md: "-120px" },
+            width: { xs: "360px", md: "520px" },
+            height: { xs: "360px", md: "500px" },
+            borderRadius: "50%",
+            background: "#2F80B5",
+            filter: "blur(170px)",
+            opacity: 0.58,
+            pointerEvents: "none",
+          },
         }}
       >
-        <Grid
-          container
-          // spacing={{ xs: 6, md: 10 }}
-          alignItems="center"
-          flexWrap={{ xs: "wrap", md: "nowrap" }}
-          justifyContent={{ xs: "center", md: "space-between" }}
-          textAlign={{ xs: "center", md: "left" }}
-          flexDirection={{ xs: "column-reverse", md: "row" }}
+        <Box
           sx={{
+            position: "relative",
+            zIndex: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexDirection: { xs: "column-reverse", md: "row" },
+            gap: { xs: "52px", md: "110px", lg: "150px" },
             maxWidth: "1428px",
             margin: "0 auto",
             width: "100%",
+            textAlign: { xs: "center", md: "left" },
           }}
         >
-          <Grid
-            xs={12}
-            md={6}
+          <Box
             sx={{
-              textAlign: { xs: "center", md: "left" },
+              flex: { xs: "0 1 auto", md: "0 0 520px" },
+              display: "flex",
+              justifyContent: { xs: "center", md: "flex-start" },
+              pl: { md: "100px" },
+              width: "100%",
             }}
           >
             <Box
               component="img"
               sx={{
-                maxWidth: { xs: "75%", md: "100%" },
+                width: { xs: "min(78vw, 314px)", md: "314px" },
+                height: "auto",
               }}
-              src={GetBetaVersionImage}
-              alt="Get Beta Version"
+              src={GetBetaPhoneImage}
+              alt="BUEZ app welcome screen"
             />
-          </Grid>
-          <Grid
-            xs={12}
-            md={6}
+          </Box>
+          <Box
             sx={{
-              width: { md: "100%", lg: "60%" },
-              paddingBottom: { xs: "60px", md: "0" },
+              flex: "1 1 auto",
+              maxWidth: "820px",
+              width: "100%",
             }}
           >
+            <Box
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "26px",
+                px: "15px",
+                borderRadius: "999px",
+                background: "rgba(69, 87, 176, 0.3)",
+                border: "1px solid rgba(255,255,255,0.05)",
+                mb: { xs: "24px", md: "34px" },
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#ffffff",
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  lineHeight: 1,
+                }}
+              >
+                Download Now
+              </Typography>
+            </Box>
+
             <Typography
               component="h2"
               sx={{
                 color: "#ffffff",
-                fontSize: { xs: "26px", md: "36px", lg: "52px" },
-                fontWeight: 500,
-                lineHeight: 1.2,
+                fontSize: { xs: "28px", md: "34px", lg: "38px" },
+                fontWeight: 600,
+                lineHeight: 1.15,
               }}
             >
               Manage Chores Smarter
@@ -75,64 +178,34 @@ const GetBetaVersion = () => {
             <Typography
               component="p"
               sx={{
-                color: "#e5e7eb",
-                fontSize: { xs: "16px", lg: "18px" },
-                mt: { xs: "20px", md: "30px" },
+                color: "rgba(255,255,255,0.6)",
+                fontSize: { xs: "14px", md: "16px", lg: "18px" },
+                lineHeight: 1.55,
+                mt: { xs: "22px", md: "36px" },
                 mx: { xs: "auto", md: 0 },
-                mb: { xs: "20px", md: "30px" },
+                maxWidth: "860px",
               }}
             >
-              Join a growing community that believes in helping each other. With
-              BUEZ, you can find support, share your skills, and make daily life
-              easier — all in one simple app. Download today and start your
-              14-day free trial!
+              BUEZ is now officially available for everyone. Organize household
+              tasks, track progress, collaborate with family members, and stay
+              productive—all from one powerful app.
             </Typography>
-            <GetBetaVersionButton />
 
             <Box
               sx={{
                 display: "flex",
+                flexWrap: "wrap",
                 justifyContent: { xs: "center", md: "flex-start" },
-                gap: "12px",
-                mt: "20px",
+                gap: "20px",
+                mt: { xs: "38px", md: "70px" },
               }}
             >
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  borderRadius: "999px",
-                  padding: "8px 18px",
-                  color: "#ffffff",
-                }}
-              >
-                <AppleIcon sx={{ fontSize: "20px" }} />
-                <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
-                  App Store
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  borderRadius: "999px",
-                  padding: "8px 18px",
-                  color: "#ffffff",
-                }}
-              >
-                <AndroidIcon sx={{ fontSize: "20px" }} />
-                <Typography sx={{ fontSize: "14px", fontWeight: 500 }}>
-                  Google Play
-                </Typography>
-              </Box>
+              {storeButtons.map((button) => (
+                <StoreButton key={button.label} {...button} />
+              ))}
             </Box>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
     </>
   );

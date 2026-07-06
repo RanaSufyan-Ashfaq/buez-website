@@ -2,7 +2,8 @@ import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
 // Assets
-import WhatIsBuezImage from "../../assets/whatIsBuez.svg";
+import PhoneBackImage from "../../assets/whatIsBuezPhoneBack.png";
+import PhoneFrontImage from "../../assets/whatIsBuezPhoneFront.png";
 
 const WhatIsBuez = () => {
   return (
@@ -40,13 +41,38 @@ const WhatIsBuez = () => {
             }}
           >
             <Box
-              component="img"
               sx={{
-                maxWidth: { xs: "75%", md: "100%" },
+                position: "relative",
+                width: { xs: "300px", md: "445px" },
+                aspectRatio: "445 / 586",
+                mx: { xs: "auto", md: 0 },
               }}
-              src={WhatIsBuezImage}
-              alt="What is BUEZ"
-            />
+            >
+              <Box
+                component="img"
+                src={PhoneBackImage}
+                alt="BUEZ onboarding — welcome screen"
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "57.1%",
+                  height: "auto",
+                }}
+              />
+              <Box
+                component="img"
+                src={PhoneFrontImage}
+                alt="BUEZ onboarding — post what you need help with"
+                sx={{
+                  position: "absolute",
+                  top: "13%",
+                  left: "42.9%",
+                  width: "57.1%",
+                  height: "auto",
+                }}
+              />
+            </Box>
           </Grid>
           <Grid
             xs={12}
@@ -60,8 +86,8 @@ const WhatIsBuez = () => {
               component="h2"
               sx={{
                 color: "#ffffff",
-                fontSize: { xs: "26px", md: "36px", lg: "52px" },
-                fontWeight: 500,
+                fontSize: { xs: "26px", md: "40px" },
+                fontWeight: 600,
                 lineHeight: 1.2,
               }}
             >
@@ -71,9 +97,11 @@ const WhatIsBuez = () => {
             <Typography
               component="p"
               sx={{
-                color: "#e5e7eb",
+                color: "rgba(255,255,255,0.6)",
                 fontSize: { xs: "16px", lg: "18px" },
-                mt: { xs: "20px", md: "30px" },
+                lineHeight: 1.7,
+                maxWidth: { md: "750px" },
+                mt: { xs: "20px", md: "24px" },
                 mx: { xs: "auto", md: 0 },
               }}
             >
