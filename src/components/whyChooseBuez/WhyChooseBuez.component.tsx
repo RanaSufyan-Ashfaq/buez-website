@@ -79,8 +79,8 @@ const WhyChooseBuez = () => {
       id="whyBuez"
       sx={{
         background: "#020617",
-        pt: { xs: "80px", md: "140px" },
-        pb: { xs: "0px", md: "140px" },
+        pt: { xs: "70px", md: "96px" },
+        pb: { xs: "0px", md: "96px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         position: "relative",
@@ -92,7 +92,7 @@ const WhyChooseBuez = () => {
           left: "-1524px",
           width: "2750px",
           height: "2750px",
-          background: "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+          background: "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, rgba(47,128,181,0) 80%)",
           pointerEvents: "none",
           display: { xs: "none", md: "block" },
         },
@@ -110,7 +110,7 @@ const WhyChooseBuez = () => {
           component="h2"
           sx={{
             color: "#ffffff",
-            fontSize: { xs: "28px", md: "40px" },
+            fontSize: { xs: "28px", md: "34px" },
             fontWeight: 600,
             lineHeight: 1.2,
             mb: { xs: "12px", md: "16px" },
@@ -125,7 +125,7 @@ const WhyChooseBuez = () => {
           component="p"
           sx={{
             color: "rgba(255,255,255,0.6)",
-            fontSize: { xs: "16px", lg: "18px" },
+            fontSize: "16px",
             maxWidth: "900px",
             margin: "0 auto",
             mb: { xs: "40px", md: "60px", lg: "0px" },
@@ -185,10 +185,10 @@ const WhyChooseBuez = () => {
             sx={{
               display: { xs: "none", lg: "block" },
               position: "absolute",
-              top: "323px",
+              top: "50%",
               left: "50%",
-              transform: "translateX(-50%)",
-              width: "340px",
+              transform: "translate(-50%, -50%)",
+              width: "300px",
               height: "auto",
               zIndex: 1,
             }}
@@ -222,6 +222,18 @@ const WhyChooseBuez = () => {
                   transition: "background 0.3s ease",
                   "&:hover": {
                     background: "rgba(153,161,187,0.2)",
+                  },
+                  "@keyframes cardFloat": {
+                    "0%": { transform: "translateY(0px)" },
+                    "50%": { transform: "translateY(-10px)" },
+                    "100%": { transform: "translateY(0px)" },
+                  },
+                  animation: {
+                    lg: `cardFloat ${3 + (index % 3) * 0.5}s ease-in-out infinite`,
+                  },
+                  animationDelay: `${index * 0.4}s`,
+                  "@media (prefers-reduced-motion: reduce)": {
+                    animation: "none",
                   },
                 }}
               >
@@ -259,7 +271,7 @@ const WhyChooseBuez = () => {
                     variant="h6"
                     sx={{
                       color: "#ffffff",
-                      fontSize: { xs: "16px", lg: "18px" },
+                      fontSize: "16px",
                       fontWeight: 600,
                     }}
                   >

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography, TextField, IconButton, Link } from "@mui/material";
+import emailjs from "emailjs-com";
 // Assets
 import BuezIcon from "../../assets/buez.svg";
 import FacebookIcon from "../../assets/facebook.svg";
@@ -11,13 +12,48 @@ import SendEmailIcon from "../../assets/sendEmail.svg";
 import CopyRightIcon from "../../assets/copyright.svg";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+
+  const handleSend = () => {
+    const trimmed = email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setStatus("error");
+      return;
+    }
+    setStatus("sending");
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          fullName: "Let's Connect (website footer)",
+          email: trimmed,
+          deviceModel: "N/A — footer contact request for info@buezapp.com",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setStatus("sent");
+          setEmail("");
+        },
+        (error) => {
+          console.error("Email send error:", error);
+          setStatus("error");
+        }
+      );
+  };
+
   return (
     <Box
       component="footer"
       sx={{
-        background: "#0a0c1e",
-        pt: { xs: "70px", md: "160px" },
-        pb: { xs: "56px", md: "72px" },
+        background: "#090D1D",
+        pt: { xs: "70px", md: "84px" },
+        pb: { xs: "56px", md: "52px" },
         px: { xs: "20px", md: "40px" },
       }}
     >
@@ -36,12 +72,12 @@ const Footer = () => {
               md: "minmax(0, 760px) 363px",
             },
             justifyContent: "space-between",
-            mb: { xs: "56px", md: "92px" },
+            mb: { xs: "56px", md: "63px" },
             gap: { xs: "54px", md: "80px" },
           }}
         >
           <Box sx={{ width: "100%" }}>
-            <Box sx={{ display: "flex", alignItems: "center", mb: "30px" }}>
+            <Box sx={{ display: "flex", alignItems: "center", mb: "20px" }}>
               <Box
                 component="img"
                 src={BuezIcon}
@@ -55,11 +91,12 @@ const Footer = () => {
 
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.82)",
-                fontSize: { xs: "16px", md: "28px" },
-                lineHeight: 1.55,
-                mb: { xs: "34px", md: "52px" },
-                maxWidth: { xs: "100%", md: "760px" },
+                color: "rgba(255,255,255,0.6)",
+                fontSize: "16px",
+                lineHeight: 1.7,
+                textAlign: "justify",
+                mb: { xs: "34px", md: "30px" },
+                maxWidth: { xs: "100%", md: "333px" },
               }}
             >
               More than just an app — BUEZ connects communities, empowers
@@ -68,9 +105,11 @@ const Footer = () => {
             </Typography>
 
             {/* Social Media Icons */}
-            <Box sx={{ display: "flex", gap: { xs: "20px", md: "34px" }, alignItems: "center" }}>
+            <Box sx={{ display: "flex", gap: { xs: "20px", md: "41px" }, alignItems: "center" }}>
               <Link
-                href="#"
+                href="https://www.instagram.com/buezapp?igsh=cTV3NDlodzN0MzQ3"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   opacity: 0.8,
                   transition: "opacity 0.3s ease",
@@ -83,20 +122,22 @@ const Footer = () => {
                   component="img"
                   src={FacebookIcon}
                   alt="Facebook"
-                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
+                  sx={{ width: "20px", height: "20px" }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: { xs: "20px", md: "30px" },
-                  background: "rgba(255,255,255,0.24)",
+                  height: "20px",
+                  background: "rgba(255,255,255,0.3)",
                 }}
               />
 
               <Link
-                href="#"
+                href="https://www.instagram.com/buezapp?igsh=cTV3NDlodzN0MzQ3"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   opacity: 0.8,
                   transition: "opacity 0.3s ease",
@@ -109,20 +150,22 @@ const Footer = () => {
                   component="img"
                   src={InstagramIcon}
                   alt="Instagram"
-                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
+                  sx={{ width: "20px", height: "20px" }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: { xs: "20px", md: "30px" },
-                  background: "rgba(255,255,255,0.24)",
+                  height: "20px",
+                  background: "rgba(255,255,255,0.3)",
                 }}
               />
 
               <Link
-                href="#"
+                href="https://www.instagram.com/buezapp?igsh=cTV3NDlodzN0MzQ3"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   opacity: 0.8,
                   transition: "opacity 0.3s ease",
@@ -135,20 +178,22 @@ const Footer = () => {
                   component="img"
                   src={TwitterIcon}
                   alt="Twitter"
-                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
+                  sx={{ width: "20px", height: "20px" }}
                 />
               </Link>
 
               <Box
                 sx={{
                   width: "1px",
-                  height: { xs: "20px", md: "30px" },
-                  background: "rgba(255,255,255,0.24)",
+                  height: "20px",
+                  background: "rgba(255,255,255,0.3)",
                 }}
               />
 
               <Link
-                href="#"
+                href="https://www.instagram.com/buezapp?igsh=cTV3NDlodzN0MzQ3"
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   opacity: 0.8,
                   transition: "opacity 0.3s ease",
@@ -161,7 +206,7 @@ const Footer = () => {
                   component="img"
                   src={YoutubeIcon}
                   alt="YouTube"
-                  sx={{ width: { xs: "20px", md: "30px" }, height: { xs: "20px", md: "30px" } }}
+                  sx={{ width: "20px", height: "20px" }}
                 />
               </Link>
             </Box>
@@ -171,10 +216,10 @@ const Footer = () => {
             <Typography
               sx={{
                 color: "#ffffff",
-                fontSize: { xs: "22px", md: "28px" },
-                fontWeight: 700,
-                mb: { xs: "18px", md: "30px" },
-                letterSpacing: 0,
+                fontSize: "18px",
+                fontWeight: 600,
+                letterSpacing: "0.5px",
+                mb: { xs: "18px", md: "22px" },
               }}
             >
               LET'S CONNECT
@@ -182,10 +227,10 @@ const Footer = () => {
 
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.82)",
+                color: "rgba(255,255,255,0.9)",
                 fontSize: { xs: "14px", md: "16px" },
-                mb: { xs: "24px", md: "42px" },
-                lineHeight: 1.55,
+                mb: { xs: "24px", md: "33px" },
+                lineHeight: 1.7,
               }}
             >
               Questions, ideas, or just want to say hi?
@@ -205,12 +250,22 @@ const Footer = () => {
                 placeholder="Your email address"
                 variant="outlined"
                 fullWidth
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (status !== "idle") setStatus("idle");
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSend();
+                }}
+                type="email"
+                disabled={status === "sending"}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     height: "54px",
                     background: "rgba(255,255,255,0.1)",
                     borderRadius: "27px",
-                    fontSize: "16px",
+                    fontSize: "14px",
                     "& fieldset": {
                       border: "none",
                     },
@@ -234,6 +289,8 @@ const Footer = () => {
               />
 
               <IconButton
+                onClick={handleSend}
+                disabled={status === "sending"}
                 sx={{
                   background: "#253275",
                   borderRadius: "50%",
@@ -245,6 +302,10 @@ const Footer = () => {
                   "&:hover": {
                     background: "#2f3d8a",
                   },
+                  "&.Mui-disabled": {
+                    background: "#253275",
+                    opacity: 0.6,
+                  },
                 }}
               >
                 <Box
@@ -255,6 +316,21 @@ const Footer = () => {
                 />
               </IconButton>
             </Box>
+
+            {status === "sent" && (
+              <Typography
+                sx={{ color: "#7CD992", fontSize: "13px", mt: "10px" }}
+              >
+                Thanks! We&apos;ve received your email — we&apos;ll be in touch.
+              </Typography>
+            )}
+            {status === "error" && (
+              <Typography
+                sx={{ color: "#E58A8A", fontSize: "13px", mt: "10px" }}
+              >
+                Please enter a valid email address and try again.
+              </Typography>
+            )}
           </Box>
         </Box>
 
@@ -262,10 +338,11 @@ const Footer = () => {
         <Box
           sx={{
             height: "1px",
-            background: "rgba(255,255,255,0.18)",
-            width: { xs: "100%", md: "calc(100% - 450px)" },
-            ml: { xs: 0, md: "450px" },
-            mb: { xs: "26px", md: "32px" },
+            background: "rgba(244,255,244,0.4)",
+            width: "100%",
+            maxWidth: "1167px",
+            mx: "auto",
+            mb: { xs: "26px", md: "28px" },
           }}
         />
 
@@ -275,34 +352,34 @@ const Footer = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: { xs: "center", md: "flex-end" },
-            gap: "8px",
-            textAlign: { xs: "center", md: "right" },
+            alignItems: "center",
+            gap: "10px",
+            textAlign: "center",
           }}
         >
           <Typography
             sx={{
-              color: "#ffffff",
-              fontSize: { xs: "14px", md: "18px" },
+              color: "rgba(255,255,255,0.6)",
+              fontSize: { xs: "14px", md: "16px" },
               fontWeight: "400",
               display: "flex",
               alignItems: "center",
-              gap: "6px",
+              gap: "10px",
             }}
           >
             <Box
               component="img"
               src={CopyRightIcon}
               alt="Copy Right"
-              sx={{ width: { xs: "16px", md: "22px" }, height: { xs: "16px", md: "22px" } }}
+              sx={{ width: "20px", height: "20px", opacity: 0.6 }}
             />
             2026 Büez Solution. All Rights Reserved.
           </Typography>
 
           <Typography
             sx={{
-              color: "#ffffff",
-              fontSize: { xs: "14px", md: "18px" },
+              color: "rgba(255,255,255,0.8)",
+              fontSize: { xs: "14px", md: "16px" },
               fontWeight: "400",
             }}
           >

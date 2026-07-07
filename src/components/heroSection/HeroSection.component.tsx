@@ -128,7 +128,7 @@ const HeroSection = () => {
             component="p"
             sx={{
               color: "rgba(255, 255, 255, 0.4)",
-              fontSize: { xs: "16px", lg: "18px" },
+              fontSize: "16px",
               lineHeight: 1.7,
               mt: "24px",
               maxWidth: "505px",
@@ -187,6 +187,10 @@ const HeroSection = () => {
             }}
           >
             <Box
+              component="a"
+              href="https://apps.apple.com/pk/app/buez/id6753902802"
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -197,6 +201,7 @@ const HeroSection = () => {
                 borderRadius: "12px",
                 padding: "0 21px",
                 cursor: "pointer",
+                textDecoration: "none",
                 transition: "background 0.3s ease",
                 "&:hover": { background: "rgba(255,255,255,0.28)" },
               }}
@@ -355,6 +360,23 @@ const HeroSection = () => {
                     borderRadius: "50%",
                     background: "#FFDA44",
                     flexShrink: 0,
+                    "@keyframes dotBeep": {
+                      "0%": {
+                        transform: "scale(1)",
+                        boxShadow: "0 0 0 0 rgba(255,218,68,0.55)",
+                      },
+                      "50%": {
+                        transform: "scale(1.35)",
+                      },
+                      "100%": {
+                        transform: "scale(1)",
+                        boxShadow: "0 0 0 9px rgba(255,218,68,0)",
+                      },
+                    },
+                    animation: "dotBeep 1.6s ease-out infinite",
+                    "@media (prefers-reduced-motion: reduce)": {
+                      animation: "none",
+                    },
                   }}
                 />
                 <Typography

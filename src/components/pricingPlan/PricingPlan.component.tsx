@@ -168,8 +168,8 @@ const PricingPlan = () => {
       id="pricing"
       sx={{
         background: "#020617",
-        pb: { xs: "80px", md: "140px" },
-        pt: { xs: "80px", md: "110px" },
+        pb: { xs: "70px", md: "96px" },
+        pt: { xs: "70px", md: "88px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         overflowX: "clip", // keep vertical overflow visible for dropdown
@@ -182,7 +182,7 @@ const PricingPlan = () => {
           width: "2496px",
           height: "2581px",
           background:
-            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, rgba(47,128,181,0) 80%)",
           pointerEvents: "none",
           display: { xs: "none", md: "block" },
         },
@@ -192,7 +192,7 @@ const PricingPlan = () => {
         component="h2"
         sx={{
           color: "#ffffff",
-          fontSize: { xs: "28px", md: "40px" },
+          fontSize: { xs: "28px", md: "34px" },
           fontWeight: 600,
           lineHeight: 1.2,
           mb: { xs: "12px", md: "16px" },
@@ -206,7 +206,7 @@ const PricingPlan = () => {
         component="p"
         sx={{
           color: "rgba(255,255,255,0.6)",
-          fontSize: { xs: "16px", lg: "18px" },
+          fontSize: "16px",
           maxWidth: "900px",
           margin: "0 auto",
           mb: "30px",
@@ -355,7 +355,7 @@ const PricingPlan = () => {
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          maxWidth: "1060px",
+          maxWidth: "1080px",
           margin: "0 auto",
           justifyContent: "center",
           alignItems: "center",
@@ -537,8 +537,8 @@ const PricingPlan = () => {
         {/* Card 2 — Introductory price (Early-bird) */}
         <Box
           sx={{
-            width: { xs: "100%", md: "352px" },
-            maxWidth: { xs: "400px", md: "352px" },
+            width: { xs: "100%", md: "372px" },
+            maxWidth: { xs: "400px", md: "372px" },
             minHeight: { md: "610px" },
             background:
               "linear-gradient(179.97deg, rgba(84, 97, 112, 0.5) 0%, rgba(13, 0, 48, 0.2) 99.97%)",
@@ -561,7 +561,12 @@ const PricingPlan = () => {
             }}
           >
             <Typography
-              sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
+              sx={{
+                color: "#ffffff",
+                fontSize: "18px",
+                fontWeight: 600,
+                whiteSpace: "nowrap",
+              }}
             >
               Introductory price
             </Typography>

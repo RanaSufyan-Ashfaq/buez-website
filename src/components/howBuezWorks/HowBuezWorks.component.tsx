@@ -68,7 +68,7 @@ const HowBuezWorks = () => {
         position: "relative",
         background: "#020617",
         overflowX: "clip",
-        py: { xs: "80px", md: "140px" },
+        py: { xs: "70px", md: "96px" },
         px: { xs: "15px", md: "20px" },
         textAlign: "center",
         "&::after": {
@@ -79,7 +79,7 @@ const HowBuezWorks = () => {
           width: "2750px",
           height: "2750px",
           background:
-            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, transparent 80%)",
+            "radial-gradient(circle closest-side, rgba(47,128,181,0.28) 0%, rgba(47,128,181,0.12) 35%, rgba(47,128,181,0.04) 60%, rgba(47,128,181,0) 80%)",
           pointerEvents: "none",
         },
       }}
@@ -89,7 +89,7 @@ const HowBuezWorks = () => {
           component="h2"
           sx={{
             color: "#ffffff",
-            fontSize: { xs: "28px", md: "40px", lg: "40px" },
+            fontSize: { xs: "28px", md: "34px" },
             fontWeight: 500,
             lineHeight: 1.2,
             mb: { xs: "12px", md: "16px" },
@@ -102,7 +102,7 @@ const HowBuezWorks = () => {
           component="p"
           sx={{
             color: "#e5e7eb",
-            fontSize: { xs: "16px", lg: "18px" },
+            fontSize: "16px",
             margin: "0 auto",
             mb: { xs: "60px", md: "70px" },
           }}
@@ -160,16 +160,16 @@ const HowBuezWorks = () => {
           <Box
             sx={{
               display: "flex",
-              flexDirection: { xs: "column", md: "row" },
+              flexDirection: { xs: "column", lg: "row" },
               alignItems: "center",
-              gap: { xs: "40px", md: "40px" },
+              gap: { xs: "40px", lg: "40px" },
             }}
           >
             <Box
               sx={{
-                width: { xs: "100%", md: "350px" },
+                width: { xs: "100%", lg: "350px" },
                 flexShrink: 0,
-                textAlign: "left",
+                textAlign: { xs: "center", lg: "left" },
               }}
             >
               <Box
@@ -209,16 +209,38 @@ const HowBuezWorks = () => {
               </Typography>
             </Box>
 
+            {/* Simple single phone — mobile & tablet only */}
+            <Box
+              sx={{
+                display: { xs: "flex", lg: "none" },
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <Box
+                component="img"
+                src={steps[activeStep].image}
+                alt={steps[activeStep].title}
+                sx={{
+                  width: { xs: "220px", md: "260px" },
+                  height: "auto",
+                  borderRadius: "24px",
+                  boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
+                }}
+              />
+            </Box>
+
+            {/* Fanned stack — desktop only */}
             <Box
               sx={{
                 flex: 1,
                 width: "100%",
-                height: { xs: "380px", md: "560px" },
+                height: "560px",
                 position: "relative",
-                display: "flex",
+                display: { xs: "none", lg: "flex" },
                 alignItems: "center",
-                justifyContent: { xs: "center", md: "flex-start" },
-                py: { xs: "20px", md: "50px" },
+                justifyContent: "flex-start",
+                py: "50px",
               }}
             >
               {steps.map((step, index) => {
@@ -235,18 +257,22 @@ const HowBuezWorks = () => {
                       position: "absolute",
                       top: "50%",
                       left: {
-                        xs: `calc(50% + ${style.x * 0.6}%)`,
-                        md: `${style.x}%`,
+                        xs: "50%",
+                        lg: `${style.x}%`,
                       },
-                      width: { xs: "180px", md: "260px" },
+                      width: { xs: "200px", md: "240px", lg: "260px" },
                       height: "auto",
                       transform: {
-                        xs: `translate(-50%, -50%) scale(${style.scale})`,
-                        md: `translateY(-50%) scale(${style.scale})`,
+                        xs: "translate(-50%, -50%)",
+                        lg: `translateY(-50%) scale(${style.scale})`,
                       },
                       transformOrigin: "left center",
-                      filter: `blur(${style.blur}px)`,
-                      opacity: style.opacity,
+                      filter: { xs: "none", lg: `blur(${style.blur}px)` },
+                      opacity: {
+                        xs: offset === 0 ? 1 : 0,
+                        lg: style.opacity,
+                      },
+                      pointerEvents: offset === 0 ? "auto" : "none",
                       transition: "all 0.4s ease",
                       zIndex: 5 - offset,
                       borderRadius: "24px",
@@ -263,7 +289,7 @@ const HowBuezWorks = () => {
         <Box
           sx={{
             position: "relative",
-            display: "flex",
+            display: { xs: "none", lg: "flex" },
             justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
@@ -344,6 +370,8 @@ const HowBuezWorks = () => {
                     height: "2px",
                     borderRadius: "1px",
                     background: "#4557B0",
+                    opacity: index === activeStep ? 1 : 0.3,
+                    transition: "opacity 0.3s ease",
                     mx: { xs: "10px", md: "20px" },
                   }}
                 />

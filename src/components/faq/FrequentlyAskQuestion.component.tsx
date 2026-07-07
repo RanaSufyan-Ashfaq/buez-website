@@ -56,7 +56,7 @@ const FrequentlyAskQuestion = () => {
       sx={{
         background: "#020617",
         pt: { xs: "60px", md: "80px" },
-        pb: { xs: "80px", md: "140px" },
+        pb: { xs: "70px", md: "96px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
@@ -67,7 +67,7 @@ const FrequentlyAskQuestion = () => {
           display: "grid",
           gridTemplateColumns: { xs: "1fr", md: "570px 1fr" },
           alignItems: "center",
-          columnGap: { md: "100px" },
+          columnGap: { md: "159px" },
         }}
       >
         {/* Left Section - Heading & Description */}
@@ -76,10 +76,10 @@ const FrequentlyAskQuestion = () => {
             component="h2"
             sx={{
               color: "#ffffff",
-              fontSize: { xs: "28px", md: "34px", lg: "38px" },
+              fontSize: { xs: "28px", md: "34px" },
               fontWeight: 600,
               lineHeight: 1.2,
-              mb: { xs: "20px", md: "28px" },
+              mb: { xs: "20px", md: "36px" },
             }}
           >
             Frequently Asked Questions
@@ -89,9 +89,9 @@ const FrequentlyAskQuestion = () => {
             component="p"
             sx={{
               color: "rgba(255,255,255,0.6)",
-              fontSize: { xs: "16px", md: "18px" },
+              fontSize: "16px",
               lineHeight: 1.7,
-              maxWidth: "705px",
+              maxWidth: "485px",
             }}
           >
             Have questions about using BUEZ? Explore FAQs to get started quickly
@@ -130,9 +130,9 @@ const FrequentlyAskQuestion = () => {
                 }
                 sx={{
                   padding: 0,
-                  minHeight: { xs: "60px", md: "78px" },
+                  minHeight: { xs: "60px", md: "86px" },
                   "&.Mui-expanded": {
-                    minHeight: { xs: "60px", md: "78px" },
+                    minHeight: { xs: "60px", md: "86px" },
                   },
                   "& .MuiAccordionSummary-expandIconWrapper.Mui-expanded": {
                     transform: "rotate(90deg)",
@@ -147,8 +147,8 @@ const FrequentlyAskQuestion = () => {
               >
                 <Typography
                   sx={{
-                    color: "#ffffff",
-                    fontSize: { xs: "16px", md: "18px" },
+                    color: "#F4FFF4",
+                    fontSize: "16px",
                     fontWeight: 600,
                     lineHeight: 1.25,
                   }}

@@ -1,15 +1,5 @@
 // MUI Imports
-import {
-  Box,
-  AppBar,
-  Toolbar,
-  Typography,
-  Link,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-} from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, Link, IconButton, Drawer, List, ListItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState, useEffect } from "react";
@@ -25,7 +15,7 @@ const Header = () => {
   const location = useLocation();
 
   const navItems = [
-    { label: "HOME", href: "https://buezapp.com/" },
+    { label: "HOME", href: "/" },
     { label: "ABOUT BUEZ", href: "#about" },
     { label: "OUR FEATURES", href: "#ourFeatures" },
     { label: "WHY BUEZ", href: "#whyBuez" },
@@ -49,23 +39,24 @@ const Header = () => {
 
   useEffect(() => {
     // specific check for state passed from navigation
-    if (
-      location.state &&
-      location.state.scrollTo &&
-      location.pathname === "/"
-    ) {
+    if (location.state && location.state.scrollTo && location.pathname === "/") {
       scrollToSection(location.state.scrollTo);
       // Clean up state to avoid re-scrolling on random updates
       window.history.replaceState({}, document.title);
     }
   }, [location]);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (href.startsWith("#")) {
+    if (href === "/") {
+      // Home: scroll to the top of the landing page (hero)
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        navigate("/");
+        setTimeout(() => window.scrollTo({ top: 0 }), 100);
+      }
+    } else if (href.startsWith("#")) {
       if (location.pathname === "/") {
         // Already on home page, just scroll
         scrollToSection(href);
@@ -95,9 +86,8 @@ const Header = () => {
         <AppBar
           position="static"
           sx={{
-            background:
-              "linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02))",
-            backdropFilter: "blur(290px)",
+            background: "linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)), linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.65))",
+            backdropFilter: "blur(20px)",
             boxShadow: "0 2px 20px rgba(0, 0, 0, 0.1)",
             borderRadius: "51px",
             maxWidth: "1428px",
@@ -115,7 +105,8 @@ const Header = () => {
           >
             <Box
               component="a"
-              href="https://buezapp.com/"
+              href="/"
+              onClick={(e) => handleNavClick(e, "/")}
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -154,7 +145,7 @@ const Header = () => {
                     transition: "color 0.3s ease",
                     cursor: "pointer",
                     "&:hover": {
-                      color: "#2F80B5",
+                      color: "#8799F2",
                     },
                   }}
                 >
@@ -168,7 +159,7 @@ const Header = () => {
                 display: { xs: "none", sm: "none", md: "none", lg: "block" },
               }}
             >
-              <GetBetaVersionButton label="Download App" />
+              <GetBetaVersionButton label="Download App" scrollTo="#downloadApp" />
             </Box>
 
             <IconButton
@@ -228,8 +219,8 @@ const Header = () => {
                   transition: "all 0.3s ease",
                   cursor: "pointer",
                   "&:hover": {
-                    background: "rgba(47, 128, 181, 0.1)",
-                    color: "#2F80B5",
+                    background: "rgba(135, 153, 242, 0.08)",
+                    color: "#8799F2",
                   },
                 }}
               >
@@ -240,7 +231,7 @@ const Header = () => {
         </List>
 
         <Box sx={{ mt: "30px" }}>
-          <GetBetaVersionButton label="Download App" />
+          <GetBetaVersionButton label="Download App" scrollTo="#downloadApp" />
         </Box>
       </Drawer>
     </>

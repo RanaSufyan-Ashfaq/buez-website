@@ -86,7 +86,7 @@ const WhatIsBuez = () => {
               component="h2"
               sx={{
                 color: "#ffffff",
-                fontSize: { xs: "26px", md: "40px" },
+                fontSize: { xs: "26px", md: "34px" },
                 fontWeight: 600,
                 lineHeight: 1.2,
               }}
@@ -98,7 +98,7 @@ const WhatIsBuez = () => {
               component="p"
               sx={{
                 color: "rgba(255,255,255,0.6)",
-                fontSize: { xs: "16px", lg: "18px" },
+                fontSize: "16px",
                 lineHeight: 1.7,
                 maxWidth: { md: "750px" },
                 mt: { xs: "20px", md: "24px" },

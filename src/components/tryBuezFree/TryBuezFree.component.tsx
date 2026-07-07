@@ -11,7 +11,7 @@ const TryBuezFree = () => {
     <Box
       sx={{
         background: "#020617",
-        py: { xs: "80px", md: "140px" },
+        py: { xs: "70px", md: "96px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
@@ -32,7 +32,7 @@ const TryBuezFree = () => {
             component="h2"
             sx={{
               color: "#ffffff",
-              fontSize: { xs: "26px", md: "36px", lg: "52px" },
+              fontSize: { xs: "26px", md: "34px" },
               fontWeight: 500,
               lineHeight: 1.2,
             }}
@@ -44,7 +44,7 @@ const TryBuezFree = () => {
             component="p"
             sx={{
               color: "#ffffff",
-              fontSize: { xs: "16px", lg: "18px" },
+              fontSize: "16px",
               mt: { xs: "20px", md: "30px" },
               mb: { xs: "40px", md: "60px" },
               mx: { xs: "auto", md: 0 },

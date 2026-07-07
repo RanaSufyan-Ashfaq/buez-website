@@ -78,7 +78,7 @@ const OurFeatures = () => {
       id="ourFeatures"
       sx={{
         background: "#020617",
-        py: { xs: "80px", md: "140px" },
+        py: { xs: "70px", md: "96px" },
         px: { xs: "15px", md: "20px" },
       }}
     >
@@ -87,7 +87,7 @@ const OurFeatures = () => {
         sx={{
           position: "relative",
           color: "#ffffff",
-          fontSize: { xs: "28px", md: "40px" },
+          fontSize: { xs: "28px", md: "34px" },
           fontWeight: 600,
           lineHeight: 1.2,
           mb: { xs: "12px", md: "16px" },
@@ -105,7 +105,7 @@ const OurFeatures = () => {
           fontSize: "16px",
           maxWidth: "820px",
           margin: "0 auto",
-          mb: { xs: "50px", md: "150px" },
+          mb: { xs: "50px", md: "100px" },
           textAlign: "center",
         }}
       >

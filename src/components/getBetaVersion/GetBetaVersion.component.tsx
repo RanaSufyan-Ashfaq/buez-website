@@ -13,6 +13,7 @@ const storeButtons = [
     icon: AppleStoreIcon,
     iconAlt: "Apple",
     iconSx: { width: "28px", height: "30px" },
+    href: "https://apps.apple.com/pk/app/buez/id6753902802",
   },
   {
     eyebrow: "Get it on",
@@ -23,10 +24,13 @@ const storeButtons = [
   },
 ];
 
-const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx }) => (
+const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx, href }) => (
   <Box
-    component="button"
-    type="button"
+    component={href ? "a" : "button"}
+    type={href ? undefined : "button"}
+    href={href}
+    target={href ? "_blank" : undefined}
+    rel={href ? "noopener noreferrer" : undefined}
     sx={{
       display: "flex",
       alignItems: "center",
@@ -39,6 +43,7 @@ const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx }) => (
       padding: "0 21px",
       cursor: "pointer",
       textAlign: "left",
+      textDecoration: "none",
       transition: "background 0.3s ease",
       "&:hover": { background: "rgba(255,255,255,0.28)" },
     }}
@@ -72,35 +77,35 @@ const GetBetaVersion = () => {
   return (
     <>
       <Box
-        id="about"
+        id="downloadApp"
         sx={{ height: { xs: "40px", md: "70px" }, background: "#020617" }}
       ></Box>
       <Box
         sx={{
-          position: "relative",
           background: "#020617",
-          pt: { xs: "55px", md: "115px" },
-          pb: { xs: "80px", md: "140px" },
+          pt: { xs: "55px", md: "88px" },
+          pb: { xs: "70px", md: "96px" },
           px: { xs: "15px", md: "20px" },
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: { xs: "-80px", md: "-120px" },
-            left: { xs: "-220px", md: "-120px" },
-            width: { xs: "360px", md: "520px" },
-            height: { xs: "360px", md: "500px" },
-            borderRadius: "50%",
-            background: "#2F80B5",
-            filter: "blur(170px)",
-            opacity: 0.58,
-            pointerEvents: "none",
-          },
         }}
       >
         <Box
           sx={{
             position: "relative",
             zIndex: 1,
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: { xs: "-135px", md: "-235px" },
+              left: { xs: "-235px", md: "-270px" },
+              width: { xs: "360px", md: "520px" },
+              height: { xs: "360px", md: "500px" },
+              borderRadius: "50%",
+              background: "#2F80B5",
+              filter: "blur(170px)",
+              opacity: 0.58,
+              pointerEvents: "none",
+              zIndex: -1,
+            },
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -167,7 +172,7 @@ const GetBetaVersion = () => {
               component="h2"
               sx={{
                 color: "#ffffff",
-                fontSize: { xs: "28px", md: "34px", lg: "38px" },
+                fontSize: { xs: "28px", md: "34px" },
                 fontWeight: 600,
                 lineHeight: 1.15,
               }}
@@ -179,7 +184,7 @@ const GetBetaVersion = () => {
               component="p"
               sx={{
                 color: "rgba(255,255,255,0.6)",
-                fontSize: { xs: "14px", md: "16px", lg: "18px" },
+                fontSize: { xs: "14px", md: "16px" },
                 lineHeight: 1.55,
                 mt: { xs: "22px", md: "36px" },
                 mx: { xs: "auto", md: 0 },
