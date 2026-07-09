@@ -21,6 +21,7 @@ const storeButtons = [
     icon: GooglePlayIcon,
     iconAlt: "Google Play",
     iconSx: { width: "29px", height: "32px" },
+    href: "https://play.google.com/store/apps/details?id=com.adamburg.buez",
   },
 ];
 

@@ -2,62 +2,67 @@ import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
 // Assets
-import TrialIcon from "../../assets/featureTrialGift.svg";
-import PostRequestsIcon from "../../assets/featurePostRequests.png";
-import AcceptCompleteIcon from "../../assets/featureAcceptTasks.png";
-import RatingsIcon from "../../assets/featureRatings.png";
-import ProfileRankingIcon from "../../assets/featureProfileRanking.png";
-import ShareTasksIcon from "../../assets/featureShareTasks.png";
-import TrialPhoneImage from "../../assets/14Days.png";
-import PostRequestPhoneImage from "../../assets/step1.svg";
-import AcceptCompletePhoneImage from "../../assets/step2.svg";
-import RatingsPhoneImage from "../../assets/step5.svg";
-import ProfileRankingPhoneImage from "../../assets/step3.svg";
-import ShareTasksPhoneImage from "../../assets/step4.svg";
+import FounderBadgeIcon from "../../assets/featureTrialGift.svg";
+import LocationTaskIcon from "../../assets/featureLocationTask.png";
+import ShareTasksIcon from "../../assets/featureShareTasksNew.png";
+import ProfileRankingIcon from "../../assets/featureProfileRankingNew.png";
+import MultiLanguageIcon from "../../assets/featureMultiLanguage.png";
+import ThemeIcon from "../../assets/featureTheme.png";
+import FounderPhoneImage from "../../assets/founderPhone.png";
+import LocationPhoneImage from "../../assets/locationPhone.png";
+import ShareTasksPhoneImage from "../../assets/shareTasksPhone.png";
+import ProfileRankingPhoneImage from "../../assets/profileRankingPhone.png";
+import MultiLanguagePhoneImage from "../../assets/multiLanguagePhone.png";
+import ThemePhoneImage from "../../assets/themePhone.png";
 
 const features = [
   {
-    title: "14-Days Free Trial",
-    description: "Access all features free for 14 days",
-    tooltip: "Try BUEZ free for 14 days and explore all features.",
-    icon: TrialIcon,
-    image: TrialPhoneImage,
+    title: "Founder Badge",
+    description: "Exclusive perks for early members.",
+    tooltip: "First 100 users get free 2 months premium subscription.",
+    icon: FounderBadgeIcon,
+    image: FounderPhoneImage,
   },
   {
-    title: "Post Requests",
-    description: "Post tasks with details and connect with helpers easily.",
-    tooltip: "Post tasks with details and connect with helpers easily.",
-    icon: PostRequestsIcon,
-    image: PostRequestPhoneImage,
+    title: "Location Base Task",
+    description:
+      "View nearby requests within 100 km, or search any location to find more tasks.",
+    tooltip:
+      "Discover requests within 100 km of your location, or switch to any location to explore more opportunities.",
+    icon: LocationTaskIcon,
+    image: LocationPhoneImage,
   },
   {
-    title: "Accept & Complete Tasks",
-    description: "Browse nearby requests, accept tasks, and assist others.",
-    tooltip: "Browse nearby requests, accept tasks, and assist others.",
-    icon: AcceptCompleteIcon,
-    image: AcceptCompletePhoneImage,
-  },
-  {
-    title: "Ratings & Reviews",
-    description: "Rate and review after each task to build community trust.",
-    tooltip: "Rate and review after each task to build community trust.",
-    icon: RatingsIcon,
-    image: RatingsPhoneImage,
-    iconSize: 28,
+    title: "Share Tasks",
+    description:
+      "Quickly share tasks so others can view details and apply when available.",
+    tooltip:
+      "Quickly share tasks so others can view details and apply when available.",
+    icon: ShareTasksIcon,
+    image: ShareTasksPhoneImage,
   },
   {
     title: "Profile Ranking",
-    description: "Earn badges like Top Buezer as you complete more tasks.",
-    tooltip: "Earn badges like Top Buezer as you complete more tasks.",
+    description:
+      "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks.",
+    tooltip:
+      "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks.",
     icon: ProfileRankingIcon,
     image: ProfileRankingPhoneImage,
   },
   {
-    title: "Share Tasks",
-    description: "Share tasks with friends and your community easily.",
-    tooltip: "Share tasks with friends and your community easily.",
-    icon: ShareTasksIcon,
-    image: ShareTasksPhoneImage,
+    title: "Multi Language Support",
+    description: "Switch languages anytime with ease.",
+    tooltip: "Buez supports multiple languages for a seamless experience.",
+    icon: MultiLanguageIcon,
+    image: MultiLanguagePhoneImage,
+  },
+  {
+    title: "Light/Dark theme",
+    description: "Switch between light and dark mode anytime.",
+    tooltip: "Personalize your experience with light and dark modes.",
+    icon: ThemeIcon,
+    image: ThemePhoneImage,
   },
 ];
 

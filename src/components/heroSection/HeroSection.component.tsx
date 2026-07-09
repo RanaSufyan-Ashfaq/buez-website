@@ -236,6 +236,10 @@ const HeroSection = () => {
             </Box>
 
             <Box
+              component="a"
+              href="https://play.google.com/store/apps/details?id=com.adamburg.buez"
+              target="_blank"
+              rel="noopener noreferrer"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -246,6 +250,7 @@ const HeroSection = () => {
                 borderRadius: "12px",
                 padding: "0 21px",
                 cursor: "pointer",
+                textDecoration: "none",
                 transition: "background 0.3s ease",
                 "&:hover": { background: "rgba(255,255,255,0.28)" },
               }}
