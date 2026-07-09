@@ -4,11 +4,11 @@ import { Box, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 // Assets
-import Step1Image from "../../assets/step1.svg";
-import Step2Image from "../../assets/step2.svg";
-import Step3Image from "../../assets/step3.svg";
-import Step4Image from "../../assets/step4.svg";
-import Step5Image from "../../assets/step5.svg";
+import Step1Image from "../../assets/stepPhone1.png";
+import Step2Image from "../../assets/stepPhone2.png";
+import Step3Image from "../../assets/stepPhone3.png";
+import Step4Image from "../../assets/stepPhone4.png";
+import Step5Image from "../../assets/stepPhone5.png";
 
 const steps = [
   {
