@@ -6,6 +6,17 @@
       "runtimeExecutable": "/Users/apple/.nvm/versions/node/v20.19.5/bin/node",
       "runtimeArgs": ["node_modules/.bin/vite"],
       "port": 5173
+    },
+    {
+      "name": "devappics",
+      "runtimeExecutable": "/Users/apple/.nvm/versions/node/v20.19.5/bin/node",
+      "runtimeArgs": [
+        "/Users/apple/DevAppics/node_modules/.bin/vite",
+        "/Users/apple/DevAppics",
+        "--port",
+        "5174"
+      ],
+      "port": 5174
     }
   ]
 }
