@@ -1,26 +1,44 @@
 // MUI Imports
-import { Box, AppBar, Toolbar, Typography, Link, IconButton, Drawer, List, ListItem } from "@mui/material";
+import { Box, AppBar, Toolbar, Typography, Link, IconButton, Drawer, List, ListItem, Menu, MenuItem } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LanguageIcon from "@mui/icons-material/Language";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // Assets
 import BuezLogo from "../../assets/buez.svg";
 // Shared Component
 import { GetBetaVersionButton } from "../../shared/GetBetaVersionButton";
 
+const languages = [
+  { code: "en", label: "English", short: "EN" },
+  { code: "de", label: "Deutsch (CH)", short: "DE" },
+];
+
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [langAnchor, setLangAnchor] = useState<null | HTMLElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const currentLang =
+    languages.find((l) => l.code === i18n.resolvedLanguage) ?? languages[0];
+
+  const changeLanguage = (code: string) => {
+    i18n.changeLanguage(code);
+    setLangAnchor(null);
+  };
 
   const navItems = [
-    { label: "HOME", href: "/" },
-    { label: "ABOUT BUEZ", href: "#about" },
-    { label: "OUR FEATURES", href: "#ourFeatures" },
-    { label: "WHY BUEZ", href: "#whyBuez" },
-    { label: "PRICING", href: "#pricing" },
-    { label: "EXPLORE", href: "#exploreBuez" },
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.features"), href: "#ourFeatures" },
+    { label: t("nav.why"), href: "#whyBuez" },
+    { label: t("nav.pricing"), href: "#pricing" },
+    { label: t("nav.explore"), href: "#exploreBuez" },
   ];
 
   const toggleMobileMenu = () => {
@@ -156,11 +174,71 @@ const Header = () => {
 
             <Box
               sx={{
-                display: { xs: "none", sm: "none", md: "none", lg: "block" },
+                display: { xs: "none", sm: "none", md: "none", lg: "flex" },
+                alignItems: "center",
+                gap: "20px",
               }}
             >
-              <GetBetaVersionButton label="Download App" scrollTo="#downloadApp" />
+              <Box
+                onClick={(e) => setLangAnchor(e.currentTarget)}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  cursor: "pointer",
+                  color: "#ffffff",
+                  transition: "color 0.3s ease",
+                  "&:hover": { color: "#8799F2" },
+                }}
+              >
+                <LanguageIcon sx={{ fontSize: "20px" }} />
+                <Typography sx={{ fontSize: "16px", fontWeight: 500 }}>
+                  {currentLang.short}
+                </Typography>
+                <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
+              </Box>
+
+              <GetBetaVersionButton label={t("nav.downloadApp")} scrollTo="#downloadApp" />
             </Box>
+
+            <Menu
+              anchorEl={langAnchor}
+              open={Boolean(langAnchor)}
+              onClose={() => setLangAnchor(null)}
+              disableScrollLock
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+              slotProps={{
+                paper: {
+                  sx: {
+                    mt: "8px",
+                    background: "#0B1020",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    borderRadius: "12px",
+                    minWidth: "150px",
+                  },
+                },
+              }}
+            >
+              {languages.map((lang) => (
+                <MenuItem
+                  key={lang.code}
+                  selected={lang.code === currentLang.code}
+                  onClick={() => changeLanguage(lang.code)}
+                  sx={{
+                    color: "#ffffff",
+                    fontSize: "14px",
+                    "&:hover": { background: "rgba(135,153,242,0.12)" },
+                    "&.Mui-selected": {
+                      background: "rgba(135,153,242,0.16)",
+                      "&:hover": { background: "rgba(135,153,242,0.22)" },
+                    },
+                  }}
+                >
+                  {lang.label}
+                </MenuItem>
+              ))}
+            </Menu>
 
             <IconButton
               onClick={toggleMobileMenu}
@@ -230,8 +308,41 @@ const Header = () => {
           ))}
         </List>
 
-        <Box sx={{ mt: "30px" }}>
-          <GetBetaVersionButton label="Download App" scrollTo="#downloadApp" />
+        <Box
+          sx={{
+            display: "flex",
+            gap: "10px",
+            mt: "24px",
+            px: "16px",
+          }}
+        >
+          {languages.map((lang) => (
+            <Box
+              key={lang.code}
+              onClick={() => changeLanguage(lang.code)}
+              sx={{
+                flex: 1,
+                textAlign: "center",
+                padding: "10px 0",
+                borderRadius: "10px",
+                cursor: "pointer",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: lang.code === currentLang.code ? "#ffffff" : "rgba(255,255,255,0.6)",
+                background:
+                  lang.code === currentLang.code
+                    ? "rgba(135,153,242,0.18)"
+                    : "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              {lang.label}
+            </Box>
+          ))}
+        </Box>
+
+        <Box sx={{ mt: "20px" }}>
+          <GetBetaVersionButton label={t("nav.downloadApp")} scrollTo="#downloadApp" />
         </Box>
       </Drawer>
     </>

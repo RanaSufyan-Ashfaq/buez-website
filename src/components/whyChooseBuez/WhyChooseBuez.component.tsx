@@ -1,6 +1,7 @@
 import React from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 // Icons
 import AwardIcon from "../../assets/award.svg";
 import CommunityIcon from "../../assets/community.svg";
@@ -15,59 +16,60 @@ import NearbyTasksIcon from "../../assets/nearbyTasks.svg";
 import CentralPhoneImage from "../../assets/whyChoosePhone.png";
 
 const WhyChooseBuez = () => {
+  const { t } = useTranslation();
   const features = [
     {
-      title: "Rewarding Experience",
-      description: "Earn badges and build your reputation as you complete tasks.",
+      title: t("why.items.rewarding.title"),
+      description: t("why.items.rewarding.description"),
       icon: AwardIcon,
       position: { top: "138px", left: "117px" },
       mobileOrder: 1,
     },
     {
-      title: "Community-Driven Platform",
-      description: "Designed to connect people who want to help and support each other.",
+      title: t("why.items.community.title"),
+      description: t("why.items.community.description"),
       icon: CommunityIcon,
       position: { top: "138px", right: "117px" },
       mobileOrder: 2,
     },
     {
-      title: "Direct Communication",
-      description: "Communicate safely with users to plan and complete tasks smoothly.",
+      title: t("why.items.communication.title"),
+      description: t("why.items.communication.description"),
       icon: CommunicationIcon,
       position: { top: "462px", left: "0px" },
       mobileOrder: 3,
     },
     {
-      title: "Fast & Easy to Use",
-      description: "Easily post or accept tasks in seconds — no complicated steps.",
+      title: t("why.items.fast.title"),
+      description: t("why.items.fast.description"),
       icon: FastAndEasyIcon,
       position: { top: "462px", right: "0px" },
       mobileOrder: 4,
     },
     {
-      title: "Free to Start",
-      description: "Enjoy a full 14-days free trial with access to every feature of BUEZ.",
+      title: t("why.items.free.title"),
+      description: t("why.items.free.description"),
       icon: FreeToStartIcon,
       position: { top: "797px", left: "0px" },
       mobileOrder: 5,
     },
     {
-      title: "Safe & Reliable",
-      description: "Ratings, reviews, and top profiles help maintain a safe community.",
+      title: t("why.items.safe.title"),
+      description: t("why.items.safe.description"),
       icon: SafeAndReliableIcon,
       position: { top: "797px", right: "0px" },
       mobileOrder: 6,
     },
     {
-      title: "Personalized Experience",
-      description: "Switch themes, choose your language, and use BUEZ your way.",
+      title: t("why.items.personalized.title"),
+      description: t("why.items.personalized.description"),
       icon: PersonalizedExperienceIcon,
       position: { top: "1122px", left: "117px" },
       mobileOrder: 7,
     },
     {
-      title: "Nearby Tasks & Helpers",
-      description: "Find help or offer trusted support within 100km of your current location.",
+      title: t("why.items.nearby.title"),
+      description: t("why.items.nearby.description"),
       icon: NearbyTasksIcon,
       position: { top: "1122px", right: "117px" },
       mobileOrder: 8,
@@ -118,7 +120,7 @@ const WhyChooseBuez = () => {
             zIndex: 2,
           }}
         >
-          Why Choose BUEZ?
+          {t("why.title")}
         </Typography>
 
         <Typography
@@ -133,7 +135,7 @@ const WhyChooseBuez = () => {
             zIndex: 2,
           }}
         >
-          See why BUEZ is the simplest and most trusted way to get and give help in your community.
+          {t("why.subtitle")}
         </Typography>
 
         {/* Desktop Circular Layout Container */}

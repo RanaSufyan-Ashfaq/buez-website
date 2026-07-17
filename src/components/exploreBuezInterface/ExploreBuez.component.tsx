@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Box, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useTranslation } from "react-i18next";
 // Assets
 import ExplorePhone1 from "../../assets/explorePhone1.png";
 import ExplorePhone2 from "../../assets/explorePhone2.png";
@@ -33,6 +34,7 @@ const slots: Record<
 };
 
 const ExploreBuez = () => {
+  const { t } = useTranslation();
   const [active, setActive] = useState(2);
 
   const prev = () => setActive((a) => (a + images.length - 1) % images.length);
@@ -97,7 +99,7 @@ const ExploreBuez = () => {
             position: "relative",
           }}
         >
-          Explore the BUEZ App Interface
+          {t("explore.title")}
         </Typography>
         <Typography
           component="p"
@@ -111,9 +113,7 @@ const ExploreBuez = () => {
             position: "relative",
           }}
         >
-          Our clean, intuitive design makes connecting with helpers, posting
-          tasks, and getting things done smoothly. Enjoy a truly smooth and
-          user-friendly experience from start to finish.
+          {t("explore.subtitle")}
         </Typography>
 
         {/* Fanned phone stack */}

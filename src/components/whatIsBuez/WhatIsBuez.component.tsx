@@ -1,11 +1,13 @@
 import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
+import { useTranslation } from "react-i18next";
 // Assets
 import PhoneBackImage from "../../assets/whatIsBuezPhoneBack.png";
 import PhoneFrontImage from "../../assets/whatIsBuezPhoneFront.png";
 
 const WhatIsBuez = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Box
@@ -91,7 +93,7 @@ const WhatIsBuez = () => {
                 lineHeight: 1.2,
               }}
             >
-              What is BUEZ?
+              {t("whatIs.title")}
             </Typography>
 
             <Typography
@@ -105,11 +107,7 @@ const WhatIsBuez = () => {
                 mx: { xs: "auto", md: 0 },
               }}
             >
-              BUEZ connects people who need help with daily tasks to those ready
-              to assist. Post or browse requests, chat securely, and build trust
-              through profiles and reviews. With a simple subscription, join a
-              supportive community where helping each other is easy and
-              rewarding.
+              {t("whatIs.description")}
             </Typography>
           </Grid>
         </Grid>

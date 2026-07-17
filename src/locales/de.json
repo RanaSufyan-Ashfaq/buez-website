@@ -1,0 +1,230 @@
+{
+  "nav": {
+    "home": "STARTSEITE",
+    "about": "ÜBER BUEZ",
+    "features": "FUNKTIONEN",
+    "why": "WARUM BUEZ",
+    "pricing": "PREISE",
+    "explore": "ENTDECKEN",
+    "downloadApp": "App herunterladen"
+  },
+  "cta": {
+    "getBetaVersion": "Beta-Version holen"
+  },
+  "store": {
+    "downloadOnThe": "Laden im",
+    "appStore": "App Store",
+    "getItOn": "Jetzt bei",
+    "googlePlay": "Google Play"
+  },
+  "hero": {
+    "earlyAccess": "FRÜHZUGANG",
+    "titleLine1Prefix": "Die ersten",
+    "titleLine1Highlight": "100",
+    "titleLine1Suffix": "Nutzer erhalten",
+    "titleLine2": "2 Monate gratis",
+    "titleLine3": "Premium-Abo",
+    "founderBadge": "+Exklusives Gründer-Abzeichen",
+    "description": "Gehöre zu den ersten 100 Nutzern, die BUEZ erleben, und werde mit 2 Monaten Premium-Zugang und einem Gründer-Abzeichen belohnt.",
+    "pill1": "Premium-Zugang",
+    "pill2": "Gründer-Abzeichen",
+    "pill3": "Early-Access-Start",
+    "slotsRemaining": "Verbleibende Plätze",
+    "slotsCount": "67 Plätze übrig"
+  },
+  "whatIs": {
+    "title": "Was ist BUEZ?",
+    "description": "BUEZ verbindet Menschen, die Hilfe bei alltäglichen Aufgaben brauchen, mit denen, die bereit sind zu helfen. Erstelle oder durchsuche Anfragen, chatte sicher und baue über Profile und Bewertungen Vertrauen auf. Mit einem einfachen Abo trittst du einer hilfsbereiten Community bei, in der es leicht und lohnend ist, sich gegenseitig zu helfen."
+  },
+  "howItWorks": {
+    "title": "So funktioniert BUEZ",
+    "subtitle": "Mit BUEZ kannst du deine Serviceanfragen einfach verwalten oder dein Geschäft ausbauen. Folge diesen 5 einfachen Schritten, um alles zu erledigen.",
+    "stepLabel": "Schritt {{number}}",
+    "steps": {
+      "post": {
+        "label": "Anfrage erstellen",
+        "title": "Erstelle eine Anfrage",
+        "description": "Erstelle deine Anfrage in nur wenigen Schritten."
+      },
+      "browse": {
+        "label": "Durchsuchen & Bewerben",
+        "title": "Durchsuchen & Bewerben",
+        "description": "Durchsuche Anfragen und bewirb dich auf die passenden."
+      },
+      "manage": {
+        "label": "Anfragen verwalten",
+        "title": "Anfragen verwalten",
+        "description": "Behalte alle deine Anfragen an einem Ort im Blick."
+      },
+      "complete": {
+        "label": "Anfrage abschliessen",
+        "title": "Anfragen abschliessen",
+        "description": "Erledige den Auftrag und markiere die Anfrage als abgeschlossen."
+      },
+      "review": {
+        "label": "Bewerten & Rezensieren",
+        "title": "Bewerten & Rezensieren",
+        "description": "Bewerte den Service und teile deine Erfahrung."
+      }
+    }
+  },
+  "features": {
+    "title": "Deine All-in-One-Service-Lösung",
+    "subtitle": "Alles, was du brauchst, um vertrauenswürdige Dienstleister zu finden, Anfragen zu verwalten und Aufgaben zuverlässig zu erledigen.",
+    "items": {
+      "founder": {
+        "title": "Gründer-Abzeichen",
+        "description": "Exklusive Vorteile für frühe Mitglieder.",
+        "tooltip": "Die ersten 100 Nutzer erhalten 2 Monate Premium-Abo gratis."
+      },
+      "location": {
+        "title": "Standortbasierte Aufgaben",
+        "description": "Sieh Anfragen in deiner Nähe innerhalb von 100 km oder suche an jedem Ort nach weiteren Aufgaben.",
+        "tooltip": "Entdecke Anfragen innerhalb von 100 km um deinen Standort oder wechsle zu einem beliebigen Ort, um mehr Möglichkeiten zu erkunden."
+      },
+      "share": {
+        "title": "Aufgaben teilen",
+        "description": "Teile Aufgaben schnell, damit andere die Details sehen und sich bei Verfügbarkeit bewerben können.",
+        "tooltip": "Teile Aufgaben schnell, damit andere die Details sehen und sich bei Verfügbarkeit bewerben können."
+      },
+      "ranking": {
+        "title": "Profil-Ranking",
+        "description": "Verdiene Abzeichen wie Pro Buezer, Buezer und Mini Buezer, je mehr Aufgaben du erledigst.",
+        "tooltip": "Verdiene Abzeichen wie Pro Buezer, Buezer und Mini Buezer, je mehr Aufgaben du erledigst."
+      },
+      "language": {
+        "title": "Mehrsprachige Unterstützung",
+        "description": "Wechsle die Sprache jederzeit mit Leichtigkeit.",
+        "tooltip": "Buez unterstützt mehrere Sprachen für ein nahtloses Erlebnis."
+      },
+      "theme": {
+        "title": "Hell-/Dunkelmodus",
+        "description": "Wechsle jederzeit zwischen hellem und dunklem Modus.",
+        "tooltip": "Gestalte dein Erlebnis mit hellem und dunklem Modus."
+      }
+    }
+  },
+  "why": {
+    "title": "Warum BUEZ wählen?",
+    "subtitle": "Erfahre, warum BUEZ der einfachste und vertrauenswürdigste Weg ist, um in deiner Community Hilfe zu erhalten und zu geben.",
+    "items": {
+      "rewarding": {
+        "title": "Lohnendes Erlebnis",
+        "description": "Verdiene Abzeichen und baue deinen Ruf auf, während du Aufgaben erledigst."
+      },
+      "community": {
+        "title": "Community-getriebene Plattform",
+        "description": "Entwickelt, um Menschen zu verbinden, die sich gegenseitig helfen und unterstützen möchten."
+      },
+      "communication": {
+        "title": "Direkte Kommunikation",
+        "description": "Kommuniziere sicher mit Nutzern, um Aufgaben reibungslos zu planen und abzuschliessen."
+      },
+      "fast": {
+        "title": "Schnell & einfach zu bedienen",
+        "description": "Erstelle oder übernimm Aufgaben in Sekunden — ganz ohne komplizierte Schritte."
+      },
+      "free": {
+        "title": "Kostenlos starten",
+        "description": "Geniesse eine volle 14-tägige Gratis-Testphase mit Zugang zu allen Funktionen von BUEZ."
+      },
+      "safe": {
+        "title": "Sicher & zuverlässig",
+        "description": "Bewertungen, Rezensionen und Top-Profile sorgen für eine sichere Community."
+      },
+      "personalized": {
+        "title": "Personalisiertes Erlebnis",
+        "description": "Wechsle das Design, wähle deine Sprache und nutze BUEZ nach deinen Wünschen."
+      },
+      "nearby": {
+        "title": "Aufgaben & Helfer in der Nähe",
+        "description": "Finde Hilfe oder biete vertrauenswürdige Unterstützung innerhalb von 100 km um deinen Standort."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Unser Preisplan",
+    "subtitle": "Starte 14 Tage gratis und bleibe danach mit vollem Zugang über unser einfaches Monatsabo verbunden.",
+    "included": "Inbegriffen",
+    "noteLabel": "Hinweis:",
+    "perMonth": "/Monat",
+    "features": {
+      "fullAccess": "Voller Zugang zu allen Funktionen",
+      "postBrowse": "Anfragen erstellen und durchsuchen",
+      "messaging": "Sichere In-App-Nachrichten",
+      "profile": "Personalisiertes Nutzerprofil & Bewertungen",
+      "cancel": "Jederzeit kündbar"
+    },
+    "plus": {
+      "name": "BUEZ PLUS",
+      "badge": "GRÜNDER-PHASE",
+      "subtitle": "Gratis für die ersten 100 Nutzer",
+      "priceBadge": "60 TAGE GRATIS",
+      "note": "Keine automatische Verlängerung. Gründer-Abzeichen inklusive.",
+      "spotsClaimed": "Vergebene Plätze",
+      "spotsLeft": "77 übrig",
+      "footNote": "Nur für frühe Nutzer während des Starts verfügbar"
+    },
+    "intro": {
+      "name": "Einführungspreis",
+      "badge": "EARLY-BIRD-PHASE",
+      "subtitle": "Early-Bird-Preis für deine ersten 3 Monate.",
+      "priceBadge": "Gültig für die ersten 3 Monate",
+      "firstMonths": "Erste 3 Monate",
+      "afterMonths": "Nach 3 Monaten",
+      "footNote": "Du wirst vor der Preisänderung benachrichtigt."
+    },
+    "standard": {
+      "name": "Standard-Abo",
+      "badge": "STANDARD-ABO",
+      "subtitle": "Voller BUEZ-Zugang",
+      "priceBadge": "Monatlich abgerechnet",
+      "footNote": "Sichere Zahlung. Jederzeit kündbar"
+    }
+  },
+  "explore": {
+    "title": "Entdecke die BUEZ-App-Oberfläche",
+    "subtitle": "Unser klares, intuitives Design macht das Verbinden mit Helfern, das Erstellen von Aufgaben und das Erledigen von Dingen mühelos. Geniesse ein rundum reibungsloses und nutzerfreundliches Erlebnis von Anfang bis Ende."
+  },
+  "download": {
+    "badge": "Jetzt herunterladen",
+    "title": "Aufgaben smarter verwalten",
+    "description": "BUEZ ist jetzt offiziell für alle verfügbar. Organisiere Haushaltsaufgaben, verfolge den Fortschritt, arbeite mit Familienmitgliedern zusammen und bleibe produktiv — alles in einer leistungsstarken App."
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Hast du Fragen zur Nutzung von BUEZ? Entdecke die FAQs, um schnell zu starten und BUEZ mühelos zu nutzen.",
+    "items": {
+      "what": {
+        "question": "Was ist BUEZ?",
+        "answer": "BUEZ ist eine community-getriebene Plattform, die Menschen, die Hilfe bei alltäglichen Aufgaben brauchen, mit denen verbindet, die bereit sind zu helfen. Sie ist so gestaltet, dass Zusammenarbeit einfach, zugänglich und für alle lohnend ist."
+      },
+      "trial": {
+        "question": "Wie funktioniert die Gratis-Testphase?",
+        "answer": "Du erhältst 14 Tage völlig kostenlosen Zugang zu allen BUEZ-Funktionen. Keine Kreditkarte erforderlich. Nach der Testphase kannst du auf unser Monatsabo upgraden, um den vollen Zugang weiterhin zu geniessen."
+      },
+      "post": {
+        "question": "Wie erstelle ich eine Anfrage?",
+        "answer": "Erstelle einfach ein Konto, tippe auf die Schaltfläche «Anfrage erstellen», beschreibe, wobei du Hilfe brauchst, lege deine Präferenzen fest und veröffentliche sie. Deine Anfrage wird für Nutzer in der Nähe sichtbar, die Hilfe anbieten können."
+      },
+      "offer": {
+        "question": "Kann ich Hilfe anbieten, statt sie anzufragen?",
+        "answer": "Absolut! BUEZ ist eine beidseitige Plattform. Du kannst Anfragen von anderen in deiner Umgebung durchsuchen und deine Fähigkeiten oder Zeit zur Hilfe anbieten. Eine grossartige Möglichkeit, Anerkennung zu erhalten und deinen Ruf in der Community aufzubauen."
+      },
+      "subscription": {
+        "question": "Brauche ich ein Abo, um BUEZ zu nutzen?",
+        "answer": "Du kannst mit einer 14-tägigen Gratis-Testphase starten, um alle Funktionen zu erkunden. Danach gibt dir ein Monatsabo für CHF 12.99 unbegrenzten Zugang, um Anfragen zu erstellen, Hilfe anzubieten und dich mit deiner Community zu verbinden."
+      }
+    }
+  },
+  "footer": {
+    "description": "Mehr als nur eine App — BUEZ verbindet Communities, stärkt Einzelpersonen und macht alltägliche Aufgaben zu Gelegenheiten, gemeinsam zusammenzuarbeiten und zu wachsen.",
+    "connectTitle": "KONTAKT AUFNEHMEN",
+    "connectText": "Fragen, Ideen oder einfach nur Hallo sagen?<br />Wir sind immer für einen Chat da.",
+    "emailPlaceholder": "Deine E-Mail-Adresse",
+    "sent": "Danke! Wir haben deine E-Mail erhalten — wir melden uns.",
+    "error": "Bitte gib eine gültige E-Mail-Adresse ein und versuche es erneut.",
+    "copyright": "2026 Büez Solution. Alle Rechte vorbehalten.",
+    "credit": "Jeyaraja Design & Development"
+  }
+}

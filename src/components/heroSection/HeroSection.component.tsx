@@ -1,6 +1,7 @@
 import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
+import { useTranslation } from "react-i18next";
 // Assets
 import FounderImage from "../../assets/founder.svg";
 import ChecksIcon from "../../assets/checksIcon.svg";
@@ -13,10 +14,11 @@ import HeroAvatar2 from "../../assets/heroAvatar2.jpeg";
 import HeroAvatar3 from "../../assets/heroAvatar3.jpeg";
 import HeroAvatar4 from "../../assets/heroAvatar4.jpeg";
 
-const badgePills = ["Premium Access", "Founder Badge", "Early Access Launch"];
 const heroAvatars = [HeroAvatar1, HeroAvatar2, HeroAvatar3, HeroAvatar4];
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  const badgePills = [t("hero.pill1"), t("hero.pill2"), t("hero.pill3")];
   return (
     <Box
       sx={{
@@ -76,7 +78,7 @@ const HeroSection = () => {
                 letterSpacing: "1px",
               }}
             >
-              EARLY ACCESS
+              {t("hero.earlyAccess")}
             </Typography>
           </Box>
 
@@ -89,17 +91,17 @@ const HeroSection = () => {
               lineHeight: 1.35,
             }}
           >
-            First{" "}
+            {t("hero.titleLine1Prefix")}{" "}
             <Box component="span" sx={{ fontWeight: 700 }}>
-              100
+              {t("hero.titleLine1Highlight")}
             </Box>{" "}
-            User Get
+            {t("hero.titleLine1Suffix")}
             <br />
             <Box component="span" sx={{ fontWeight: 700 }}>
-              2 Months Free
+              {t("hero.titleLine2")}
             </Box>
             <br />
-            Premium Subscription
+            {t("hero.titleLine3")}
           </Typography>
 
           <Box
@@ -120,7 +122,7 @@ const HeroSection = () => {
             <Typography
               sx={{ color: "#F4D740", fontSize: "18px", fontWeight: 600 }}
             >
-              +Exclusive Founder Badge
+              {t("hero.founderBadge")}
             </Typography>
           </Box>
 
@@ -135,8 +137,7 @@ const HeroSection = () => {
               mx: { xs: "auto", md: 0 },
             }}
           >
-            Be among the first 100 users to experience BUEZ and get rewarded
-            with 2 months premium access and founder badge.
+            {t("hero.description")}
           </Typography>
 
           <Box
@@ -220,7 +221,7 @@ const HeroSection = () => {
                     lineHeight: 1.2,
                   }}
                 >
-                  Download on the
+                  {t("store.downloadOnThe")}
                 </Typography>
                 <Typography
                   sx={{
@@ -230,7 +231,7 @@ const HeroSection = () => {
                     lineHeight: 1.3,
                   }}
                 >
-                  App Store
+                  {t("store.appStore")}
                 </Typography>
               </Box>
             </Box>
@@ -269,7 +270,7 @@ const HeroSection = () => {
                     lineHeight: 1.2,
                   }}
                 >
-                  Get it on
+                  {t("store.getItOn")}
                 </Typography>
                 <Typography
                   sx={{
@@ -279,7 +280,7 @@ const HeroSection = () => {
                     lineHeight: 1.3,
                   }}
                 >
-                  Google Play
+                  {t("store.googlePlay")}
                 </Typography>
               </Box>
             </Box>
@@ -348,7 +349,7 @@ const HeroSection = () => {
                   fontWeight: 500,
                 }}
               >
-                Slots Remaining
+                {t("hero.slotsRemaining")}
               </Typography>
               <Box
                 sx={{
@@ -387,7 +388,7 @@ const HeroSection = () => {
                 <Typography
                   sx={{ color: "rgba(255,255,255,0.4)", fontSize: "14px" }}
                 >
-                  67 slots remaining
+                  {t("hero.slotsCount")}
                 </Typography>
               </Box>
             </Box>

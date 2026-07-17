@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography, TextField, IconButton, Link } from "@mui/material";
 import emailjs from "emailjs-com";
+import { useTranslation, Trans } from "react-i18next";
 // Assets
 import BuezIcon from "../../assets/buez.svg";
 import FacebookIcon from "../../assets/facebook.svg";
@@ -12,6 +13,7 @@ import SendEmailIcon from "../../assets/sendEmail.svg";
 import CopyRightIcon from "../../assets/copyright.svg";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -99,9 +101,7 @@ const Footer = () => {
                 maxWidth: { xs: "100%", md: "333px" },
               }}
             >
-              More than just an app — BUEZ connects communities, empowers
-              individuals, and turns everyday tasks into opportunities to
-              collaborate and grow together.
+              {t("footer.description")}
             </Typography>
 
             {/* Social Media Icons */}
@@ -222,7 +222,7 @@ const Footer = () => {
                 mb: { xs: "18px", md: "22px" },
               }}
             >
-              LET'S CONNECT
+              {t("footer.connectTitle")}
             </Typography>
 
             <Typography
@@ -233,9 +233,7 @@ const Footer = () => {
                 lineHeight: 1.7,
               }}
             >
-              Questions, ideas, or just want to say hi?
-              <br />
-              We're always here to chat.
+              <Trans i18nKey="footer.connectText" components={{ br: <br /> }} />
             </Typography>
 
             <Box
@@ -247,7 +245,7 @@ const Footer = () => {
               }}
             >
               <TextField
-                placeholder="Your email address"
+                placeholder={t("footer.emailPlaceholder")}
                 variant="outlined"
                 fullWidth
                 value={email}
@@ -321,14 +319,14 @@ const Footer = () => {
               <Typography
                 sx={{ color: "#7CD992", fontSize: "13px", mt: "10px" }}
               >
-                Thanks! We&apos;ve received your email — we&apos;ll be in touch.
+                {t("footer.sent")}
               </Typography>
             )}
             {status === "error" && (
               <Typography
                 sx={{ color: "#E58A8A", fontSize: "13px", mt: "10px" }}
               >
-                Please enter a valid email address and try again.
+                {t("footer.error")}
               </Typography>
             )}
           </Box>
@@ -373,7 +371,7 @@ const Footer = () => {
               alt="Copy Right"
               sx={{ width: "20px", height: "20px", opacity: 0.6 }}
             />
-            2026 Büez Solution. All Rights Reserved.
+            {t("footer.copyright")}
           </Typography>
 
           <Typography
@@ -383,7 +381,7 @@ const Footer = () => {
               fontWeight: "400",
             }}
           >
-            Jeyaraja Design & Development
+            {t("footer.credit")}
           </Typography>
         </Box>
       </Box>

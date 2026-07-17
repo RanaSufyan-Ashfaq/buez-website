@@ -7,6 +7,7 @@ import CreditCardIcon from "@mui/icons-material/CreditCard";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useTranslation } from "react-i18next";
 // Assets
 import CheckIcon from "../../assets/check-icon.svg";
 // Flag Assets
@@ -16,6 +17,7 @@ import FlagEUR from "../../assets/flag-eur.svg";
 import ArrowDownIcon from "../../assets/arrow-down.svg";
 
 const PricingPlan = () => {
+  const { t } = useTranslation();
   const [currency, setCurrency] = useState("CHF");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,12 +38,12 @@ const PricingPlan = () => {
     currentPricing.type === "CHF" ? "CHF" : currentPricing.symbol;
 
   const baseFeatures = [
-    "Full access to all features",
-    "Post and browse requests",
-    "Secure in-app messaging",
-    "Personalized user profile & reviews",
+    t("pricing.features.fullAccess"),
+    t("pricing.features.postBrowse"),
+    t("pricing.features.messaging"),
+    t("pricing.features.profile"),
   ];
-  const standardFeatures = [...baseFeatures, "Cancel anytime"];
+  const standardFeatures = [...baseFeatures, t("pricing.features.cancel")];
 
   // Shared pieces -----------------------------------------------------------
 
@@ -122,7 +124,7 @@ const PricingPlan = () => {
           mb: "18px",
         }}
       >
-        What&apos;s included
+        {t("pricing.included")}
       </Typography>
       {features.map((feature, index) => (
         <Box
@@ -199,7 +201,7 @@ const PricingPlan = () => {
           position: "relative",
         }}
       >
-        Our Pricing Plan
+        {t("pricing.title")}
       </Typography>
 
       <Typography
@@ -213,8 +215,7 @@ const PricingPlan = () => {
           position: "relative",
         }}
       >
-        Start free for 14 days, then stay connected with full access through our
-        simple monthly plan.
+        {t("pricing.subtitle")}
       </Typography>
 
       {/* Currency Dropdown */}
@@ -374,7 +375,7 @@ const PricingPlan = () => {
             <Typography
               sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
             >
-              BUEZ PLUS
+              {t("pricing.plus.name")}
             </Typography>
             <HeaderBadge
               icon={
@@ -382,7 +383,7 @@ const PricingPlan = () => {
                   sx={{ fontSize: "12px", color: "#ffffff" }}
                 />
               }
-              label="FOUNDER PHASE"
+              label={t("pricing.plus.badge")}
             />
           </Box>
           <Typography
@@ -392,7 +393,7 @@ const PricingPlan = () => {
               mt: "6px",
             }}
           >
-            Free for first 100 Users
+            {t("pricing.plus.subtitle")}
           </Typography>
 
           <Box
@@ -408,7 +409,7 @@ const PricingPlan = () => {
             >
               {symbol} 0
             </Typography>
-            <PricePill label="60 DAYS FREE" />
+            <PricePill label={t("pricing.plus.priceBadge")} />
           </Box>
           <Typography
             sx={{
@@ -417,7 +418,7 @@ const PricingPlan = () => {
               mt: "10px",
             }}
           >
-            No auto-renewal. Founder badge included.
+            {t("pricing.plus.note")}
           </Typography>
 
           <Divider />
@@ -485,11 +486,11 @@ const PricingPlan = () => {
                     lineHeight: 1.2,
                   }}
                 >
-                  Spots Claimed
+                  {t("pricing.plus.spotsClaimed")}
                 </Typography>
               </Box>
               <Box sx={{ ml: "auto", position: "relative" }}>
-                <PricePill label="77 left" />
+                <PricePill label={t("pricing.plus.spotsLeft")} />
               </Box>
             </Box>
             <Box
@@ -528,9 +529,9 @@ const PricingPlan = () => {
             }}
           >
             <Box component="span" sx={{ color: "#ffffff", fontWeight: 600 }}>
-              Note:
+              {t("pricing.noteLabel")}
             </Box>{" "}
-            Available only for early users during launch
+            {t("pricing.plus.footNote")}
           </Typography>
         </Box>
 
@@ -568,13 +569,13 @@ const PricingPlan = () => {
                 whiteSpace: "nowrap",
               }}
             >
-              Introductory price
+              {t("pricing.intro.name")}
             </Typography>
             <HeaderBadge
               icon={
                 <DarkModeIcon sx={{ fontSize: "11px", color: "#ffffff" }} />
               }
-              label="EARLY-BIRD PHASE"
+              label={t("pricing.intro.badge")}
             />
           </Box>
           <Typography
@@ -584,7 +585,7 @@ const PricingPlan = () => {
               mt: "6px",
             }}
           >
-            Early-Bird pricing for your first 3 months.
+            {t("pricing.intro.subtitle")}
           </Typography>
 
           <Box sx={{ display: "flex", alignItems: "baseline", gap: "8px", mt: "24px" }}>
@@ -596,11 +597,11 @@ const PricingPlan = () => {
             <Typography
               sx={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
             >
-              /month
+              {t("pricing.perMonth")}
             </Typography>
           </Box>
           <Box sx={{ mt: "12px" }}>
-            <PricePill label="Valid For First 3 Months" />
+            <PricePill label={t("pricing.intro.priceBadge")} />
           </Box>
 
           <Divider />
@@ -628,7 +629,7 @@ const PricingPlan = () => {
               <Typography
                 sx={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}
               >
-                First 3 months
+                {t("pricing.intro.firstMonths")}
               </Typography>
               <Typography
                 sx={{ color: "#ffffff", fontSize: "14px", fontWeight: 600, mt: "4px" }}
@@ -642,7 +643,7 @@ const PricingPlan = () => {
                     fontWeight: 400,
                   }}
                 >
-                  /month
+                  {t("pricing.perMonth")}
                 </Box>
               </Typography>
             </Box>
@@ -657,7 +658,7 @@ const PricingPlan = () => {
               <Typography
                 sx={{ color: "rgba(255,255,255,0.6)", fontSize: "12px" }}
               >
-                After 3 months
+                {t("pricing.intro.afterMonths")}
               </Typography>
               <Typography
                 sx={{ color: "#ffffff", fontSize: "14px", fontWeight: 600, mt: "4px" }}
@@ -671,7 +672,7 @@ const PricingPlan = () => {
                     fontWeight: 400,
                   }}
                 >
-                  /month
+                  {t("pricing.perMonth")}
                 </Box>
               </Typography>
             </Box>
@@ -707,9 +708,9 @@ const PricingPlan = () => {
             }}
           >
             <Box component="span" sx={{ color: "#ffffff", fontWeight: 600 }}>
-              Note:
+              {t("pricing.noteLabel")}
             </Box>{" "}
-            You&apos;ll be notified before the price changes.
+            {t("pricing.intro.footNote")}
           </Typography>
         </Box>
 
@@ -725,13 +726,13 @@ const PricingPlan = () => {
             <Typography
               sx={{ color: "#ffffff", fontSize: "18px", fontWeight: 600 }}
             >
-              Standard Plan
+              {t("pricing.standard.name")}
             </Typography>
             <HeaderBadge
               icon={
                 <CreditCardIcon sx={{ fontSize: "12px", color: "#ffffff" }} />
               }
-              label="STANDARD PLAN"
+              label={t("pricing.standard.badge")}
             />
           </Box>
           <Typography
@@ -741,7 +742,7 @@ const PricingPlan = () => {
               mt: "6px",
             }}
           >
-            Full BUEZ Access
+            {t("pricing.standard.subtitle")}
           </Typography>
 
           <Box sx={{ display: "flex", alignItems: "baseline", gap: "8px", mt: "28px" }}>
@@ -753,11 +754,11 @@ const PricingPlan = () => {
             <Typography
               sx={{ color: "rgba(255,255,255,0.6)", fontSize: "14px" }}
             >
-              /month
+              {t("pricing.perMonth")}
             </Typography>
           </Box>
           <Box sx={{ mt: "12px" }}>
-            <PricePill label="Billed Monthly" />
+            <PricePill label={t("pricing.standard.priceBadge")} />
           </Box>
 
           <Divider />
@@ -780,7 +781,7 @@ const PricingPlan = () => {
             <Typography
               sx={{ fontSize: "12px", color: "rgba(255,255,255,0.4)" }}
             >
-              Secure payment. Cancel anytime
+              {t("pricing.standard.footNote")}
             </Typography>
           </Box>
         </Box>

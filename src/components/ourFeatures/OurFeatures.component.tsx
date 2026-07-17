@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 // Assets
 import FounderBadgeIcon from "../../assets/featureTrialGift.svg";
 import LocationTaskIcon from "../../assets/featureLocationTask.png";
@@ -15,59 +16,26 @@ import ProfileRankingPhoneImage from "../../assets/profileRankingPhone.png";
 import MultiLanguagePhoneImage from "../../assets/multiLanguagePhone.png";
 import ThemePhoneImage from "../../assets/themePhone.png";
 
-const features = [
-  {
-    title: "Founder Badge",
-    description: "Exclusive perks for early members.",
-    tooltip: "First 100 users get free 2 months premium subscription.",
-    icon: FounderBadgeIcon,
-    image: FounderPhoneImage,
-  },
-  {
-    title: "Location Base Task",
-    description:
-      "View nearby requests within 100 km, or search any location to find more tasks.",
-    tooltip:
-      "Discover requests within 100 km of your location, or switch to any location to explore more opportunities.",
-    icon: LocationTaskIcon,
-    image: LocationPhoneImage,
-  },
-  {
-    title: "Share Tasks",
-    description:
-      "Quickly share tasks so others can view details and apply when available.",
-    tooltip:
-      "Quickly share tasks so others can view details and apply when available.",
-    icon: ShareTasksIcon,
-    image: ShareTasksPhoneImage,
-  },
-  {
-    title: "Profile Ranking",
-    description:
-      "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks.",
-    tooltip:
-      "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks.",
-    icon: ProfileRankingIcon,
-    image: ProfileRankingPhoneImage,
-  },
-  {
-    title: "Multi Language Support",
-    description: "Switch languages anytime with ease.",
-    tooltip: "Buez supports multiple languages for a seamless experience.",
-    icon: MultiLanguageIcon,
-    image: MultiLanguagePhoneImage,
-  },
-  {
-    title: "Light/Dark theme",
-    description: "Switch between light and dark mode anytime.",
-    tooltip: "Personalize your experience with light and dark modes.",
-    icon: ThemeIcon,
-    image: ThemePhoneImage,
-  },
+const featureDefs = [
+  { key: "founder", icon: FounderBadgeIcon, image: FounderPhoneImage },
+  { key: "location", icon: LocationTaskIcon, image: LocationPhoneImage },
+  { key: "share", icon: ShareTasksIcon, image: ShareTasksPhoneImage },
+  { key: "ranking", icon: ProfileRankingIcon, image: ProfileRankingPhoneImage },
+  { key: "language", icon: MultiLanguageIcon, image: MultiLanguagePhoneImage },
+  { key: "theme", icon: ThemeIcon, image: ThemePhoneImage },
 ];
 
 const OurFeatures = () => {
+  const { t } = useTranslation();
   const [activeFeature, setActiveFeature] = useState(0);
+
+  const features = featureDefs.map((def) => ({
+    title: t(`features.items.${def.key}.title`),
+    description: t(`features.items.${def.key}.description`),
+    tooltip: t(`features.items.${def.key}.tooltip`),
+    icon: def.icon,
+    image: def.image,
+  }));
 
   const renderIcon = (feature: (typeof features)[number], size: number) => (
     <Box
@@ -99,7 +67,7 @@ const OurFeatures = () => {
           textAlign: "center",
         }}
       >
-        Your All-in-One Service Solution
+        {t("features.title")}
       </Typography>
 
       <Typography
@@ -114,8 +82,7 @@ const OurFeatures = () => {
           textAlign: "center",
         }}
       >
-        Everything you need to find trusted service providers, manage requests,
-        and get tasks completed with confidence.
+        {t("features.subtitle")}
       </Typography>
 
       <Box

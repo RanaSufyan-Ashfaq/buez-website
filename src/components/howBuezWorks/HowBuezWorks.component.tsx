@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Box, Typography, IconButton } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useTranslation } from "react-i18next";
 // Assets
 import Step1Image from "../../assets/stepPhone1.png";
 import Step2Image from "../../assets/stepPhone2.png";
@@ -10,37 +11,12 @@ import Step3Image from "../../assets/stepPhone3.png";
 import Step4Image from "../../assets/stepPhone4.png";
 import Step5Image from "../../assets/stepPhone5.png";
 
-const steps = [
-  {
-    label: "Post Request",
-    title: "Post a request",
-    description: "Post your request in just a few steps.",
-    image: Step1Image,
-  },
-  {
-    label: "Browse & Apply",
-    title: "Browse & Apply",
-    description: "Browse requests and apply to the ones that fit you.",
-    image: Step2Image,
-  },
-  {
-    label: "Manage Requests",
-    title: "Manage Requests",
-    description: "Track all your requests and stay updated in one place.",
-    image: Step3Image,
-  },
-  {
-    label: "Complete Request",
-    title: "Complete Requests",
-    description: "Complete the job and mark the request as done.",
-    image: Step4Image,
-  },
-  {
-    label: "Review & Rate",
-    title: "Review & Rate",
-    description: "Review the service and rate your experience.",
-    image: Step5Image,
-  },
+const stepDefs = [
+  { key: "post", image: Step1Image },
+  { key: "browse", image: Step2Image },
+  { key: "manage", image: Step3Image },
+  { key: "complete", image: Step4Image },
+  { key: "review", image: Step5Image },
 ];
 
 const stackStyles = [
@@ -52,7 +28,15 @@ const stackStyles = [
 ];
 
 const HowBuezWorks = () => {
+  const { t } = useTranslation();
   const [activeStep, setActiveStep] = useState(0);
+
+  const steps = stepDefs.map((def) => ({
+    label: t(`howItWorks.steps.${def.key}.label`),
+    title: t(`howItWorks.steps.${def.key}.title`),
+    description: t(`howItWorks.steps.${def.key}.description`),
+    image: def.image,
+  }));
 
   const handlePrev = () => {
     setActiveStep((prev) => (prev === 0 ? steps.length - 1 : prev - 1));
@@ -95,7 +79,7 @@ const HowBuezWorks = () => {
             mb: { xs: "12px", md: "16px" },
           }}
         >
-          How BUEZ Works
+          {t("howItWorks.title")}
         </Typography>
 
         <Typography
@@ -107,8 +91,7 @@ const HowBuezWorks = () => {
             mb: { xs: "60px", md: "70px" },
           }}
         >
-          BUEZ makes it simple to manage your service needs or grow your
-          business. Follow these 5 easy steps to get things done.
+          {t("howItWorks.subtitle")}
         </Typography>
 
         <Box
@@ -183,7 +166,7 @@ const HowBuezWorks = () => {
                 }}
               >
                 <Typography sx={{ color: "#cbd5e1", fontSize: "13px" }}>
-                  Step {activeStep + 1}
+                  {t("howItWorks.stepLabel", { number: activeStep + 1 })}
                 </Typography>
               </Box>
 

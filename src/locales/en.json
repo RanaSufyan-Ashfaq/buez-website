@@ -1,0 +1,230 @@
+{
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT BUEZ",
+    "features": "OUR FEATURES",
+    "why": "WHY BUEZ",
+    "pricing": "PRICING",
+    "explore": "EXPLORE",
+    "downloadApp": "Download App"
+  },
+  "cta": {
+    "getBetaVersion": "Get Beta Version"
+  },
+  "store": {
+    "downloadOnThe": "Download on the",
+    "appStore": "App Store",
+    "getItOn": "Get it on",
+    "googlePlay": "Google Play"
+  },
+  "hero": {
+    "earlyAccess": "EARLY ACCESS",
+    "titleLine1Prefix": "First",
+    "titleLine1Highlight": "100",
+    "titleLine1Suffix": "User Get",
+    "titleLine2": "2 Months Free",
+    "titleLine3": "Premium Subscription",
+    "founderBadge": "+Exclusive Founder Badge",
+    "description": "Be among the first 100 users to experience BUEZ and get rewarded with 2 months premium access and founder badge.",
+    "pill1": "Premium Access",
+    "pill2": "Founder Badge",
+    "pill3": "Early Access Launch",
+    "slotsRemaining": "Slots Remaining",
+    "slotsCount": "67 slots remaining"
+  },
+  "whatIs": {
+    "title": "What is BUEZ?",
+    "description": "BUEZ connects people who need help with daily tasks to those ready to assist. Post or browse requests, chat securely, and build trust through profiles and reviews. With a simple subscription, join a supportive community where helping each other is easy and rewarding."
+  },
+  "howItWorks": {
+    "title": "How BUEZ Works",
+    "subtitle": "BUEZ makes it simple to manage your service needs or grow your business. Follow these 5 easy steps to get things done.",
+    "stepLabel": "Step {{number}}",
+    "steps": {
+      "post": {
+        "label": "Post Request",
+        "title": "Post a request",
+        "description": "Post your request in just a few steps."
+      },
+      "browse": {
+        "label": "Browse & Apply",
+        "title": "Browse & Apply",
+        "description": "Browse requests and apply to the ones that fit you."
+      },
+      "manage": {
+        "label": "Manage Requests",
+        "title": "Manage Requests",
+        "description": "Track all your requests and stay updated in one place."
+      },
+      "complete": {
+        "label": "Complete Request",
+        "title": "Complete Requests",
+        "description": "Complete the job and mark the request as done."
+      },
+      "review": {
+        "label": "Review & Rate",
+        "title": "Review & Rate",
+        "description": "Review the service and rate your experience."
+      }
+    }
+  },
+  "features": {
+    "title": "Your All-in-One Service Solution",
+    "subtitle": "Everything you need to find trusted service providers, manage requests, and get tasks completed with confidence.",
+    "items": {
+      "founder": {
+        "title": "Founder Badge",
+        "description": "Exclusive perks for early members.",
+        "tooltip": "First 100 users get free 2 months premium subscription."
+      },
+      "location": {
+        "title": "Location Base Task",
+        "description": "View nearby requests within 100 km, or search any location to find more tasks.",
+        "tooltip": "Discover requests within 100 km of your location, or switch to any location to explore more opportunities."
+      },
+      "share": {
+        "title": "Share Tasks",
+        "description": "Quickly share tasks so others can view details and apply when available.",
+        "tooltip": "Quickly share tasks so others can view details and apply when available."
+      },
+      "ranking": {
+        "title": "Profile Ranking",
+        "description": "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks.",
+        "tooltip": "Earn badges like Pro Buezer, Buezer, and Mini Buezer as you complete more tasks."
+      },
+      "language": {
+        "title": "Multi Language Support",
+        "description": "Switch languages anytime with ease.",
+        "tooltip": "Buez supports multiple languages for a seamless experience."
+      },
+      "theme": {
+        "title": "Light/Dark theme",
+        "description": "Switch between light and dark mode anytime.",
+        "tooltip": "Personalize your experience with light and dark modes."
+      }
+    }
+  },
+  "why": {
+    "title": "Why Choose BUEZ?",
+    "subtitle": "See why BUEZ is the simplest and most trusted way to get and give help in your community.",
+    "items": {
+      "rewarding": {
+        "title": "Rewarding Experience",
+        "description": "Earn badges and build your reputation as you complete tasks."
+      },
+      "community": {
+        "title": "Community-Driven Platform",
+        "description": "Designed to connect people who want to help and support each other."
+      },
+      "communication": {
+        "title": "Direct Communication",
+        "description": "Communicate safely with users to plan and complete tasks smoothly."
+      },
+      "fast": {
+        "title": "Fast & Easy to Use",
+        "description": "Easily post or accept tasks in seconds — no complicated steps."
+      },
+      "free": {
+        "title": "Free to Start",
+        "description": "Enjoy a full 14-days free trial with access to every feature of BUEZ."
+      },
+      "safe": {
+        "title": "Safe & Reliable",
+        "description": "Ratings, reviews, and top profiles help maintain a safe community."
+      },
+      "personalized": {
+        "title": "Personalized Experience",
+        "description": "Switch themes, choose your language, and use BUEZ your way."
+      },
+      "nearby": {
+        "title": "Nearby Tasks & Helpers",
+        "description": "Find help or offer trusted support within 100km of your current location."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Our Pricing Plan",
+    "subtitle": "Start free for 14 days, then stay connected with full access through our simple monthly plan.",
+    "included": "What's included",
+    "noteLabel": "Note:",
+    "perMonth": "/month",
+    "features": {
+      "fullAccess": "Full access to all features",
+      "postBrowse": "Post and browse requests",
+      "messaging": "Secure in-app messaging",
+      "profile": "Personalized user profile & reviews",
+      "cancel": "Cancel anytime"
+    },
+    "plus": {
+      "name": "BUEZ PLUS",
+      "badge": "FOUNDER PHASE",
+      "subtitle": "Free for first 100 Users",
+      "priceBadge": "60 DAYS FREE",
+      "note": "No auto-renewal. Founder badge included.",
+      "spotsClaimed": "Spots Claimed",
+      "spotsLeft": "77 left",
+      "footNote": "Available only for early users during launch"
+    },
+    "intro": {
+      "name": "Introductory price",
+      "badge": "EARLY-BIRD PHASE",
+      "subtitle": "Early-Bird pricing for your first 3 months.",
+      "priceBadge": "Valid For First 3 Months",
+      "firstMonths": "First 3 months",
+      "afterMonths": "After 3 months",
+      "footNote": "You'll be notified before the price changes."
+    },
+    "standard": {
+      "name": "Standard Plan",
+      "badge": "STANDARD PLAN",
+      "subtitle": "Full BUEZ Access",
+      "priceBadge": "Billed Monthly",
+      "footNote": "Secure payment. Cancel anytime"
+    }
+  },
+  "explore": {
+    "title": "Explore the BUEZ App Interface",
+    "subtitle": "Our clean, intuitive design makes connecting with helpers, posting tasks, and getting things done smoothly. Enjoy a truly smooth and user-friendly experience from start to finish."
+  },
+  "download": {
+    "badge": "Download Now",
+    "title": "Manage Chores Smarter",
+    "description": "BUEZ is now officially available for everyone. Organize household tasks, track progress, collaborate with family members, and stay productive—all from one powerful app."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have questions about using BUEZ? Explore FAQs to get started quickly and use BUEZ with ease.",
+    "items": {
+      "what": {
+        "question": "What is BUEZ?",
+        "answer": "BUEZ is a community-driven platform that connects people who need help with everyday tasks to those willing to offer assistance. It's designed to make collaboration simple, accessible, and rewarding for everyone."
+      },
+      "trial": {
+        "question": "How does the free trial work?",
+        "answer": "You get 14 days of completely free access to all BUEZ features. No credit card required. After the trial, you can choose to upgrade to our monthly subscription plan to continue enjoying full access."
+      },
+      "post": {
+        "question": "How do I post a request?",
+        "answer": "Simply create an account, tap the 'Post Request' button, describe what you need help with, set your preferences, and publish. Your request will be visible to nearby users who can offer assistance."
+      },
+      "offer": {
+        "question": "Can I offer help instead of requesting it?",
+        "answer": "Absolutely! BUEZ is a two-way platform. You can browse requests from others in your area and offer your skills or time to help. It's a great way to earn recognition and build your reputation in the community."
+      },
+      "subscription": {
+        "question": "Do I need a subscription to use BUEZ?",
+        "answer": "You can start with a 14-day free trial to explore all features. After that, a monthly subscription of $12.99 gives you unlimited access to post requests, offer help, and connect with your community."
+      }
+    }
+  },
+  "footer": {
+    "description": "More than just an app — BUEZ connects communities, empowers individuals, and turns everyday tasks into opportunities to collaborate and grow together.",
+    "connectTitle": "LET'S CONNECT",
+    "connectText": "Questions, ideas, or just want to say hi?<br />We're always here to chat.",
+    "emailPlaceholder": "Your email address",
+    "sent": "Thanks! We've received your email — we'll be in touch.",
+    "error": "Please enter a valid email address and try again.",
+    "copyright": "2026 Büez Solution. All Rights Reserved.",
+    "credit": "Jeyaraja Design & Development"
+  }
+}

@@ -2,11 +2,12 @@ import React from "react";
 // Mui Imports
 import { Button } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 // Icons
 import AppleIconImage from "../assets/download-app.svg";
 
 export const GetBetaVersionButton = ({
-  label = "Get Beta Version",
+  label,
   scrollTo,
 }: {
   label?: string;
@@ -14,6 +15,8 @@ export const GetBetaVersionButton = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
+  const resolvedLabel = label ?? t("cta.getBetaVersion");
 
   const handleClick = () => {
     if (!scrollTo) {
@@ -53,7 +56,7 @@ export const GetBetaVersionButton = ({
       }}
     >
       <img src={AppleIconImage} alt="Apple Icon" />
-      {label}
+      {resolvedLabel}
     </Button>
   );
 };

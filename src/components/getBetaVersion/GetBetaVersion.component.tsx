@@ -1,29 +1,11 @@
 import React from "react";
 // MUI Imports
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 // Assets
 import GetBetaPhoneImage from "../../assets/getBetaPhone.png";
 import AppleStoreIcon from "../../assets/applestore.svg";
 import GooglePlayIcon from "../../assets/googleplay.svg";
-
-const storeButtons = [
-  {
-    eyebrow: "Download on the",
-    label: "App Store",
-    icon: AppleStoreIcon,
-    iconAlt: "Apple",
-    iconSx: { width: "28px", height: "30px" },
-    href: "https://apps.apple.com/pk/app/buez/id6753902802",
-  },
-  {
-    eyebrow: "Get it on",
-    label: "Google Play",
-    icon: GooglePlayIcon,
-    iconAlt: "Google Play",
-    iconSx: { width: "29px", height: "32px" },
-    href: "https://play.google.com/store/apps/details?id=com.adamburg.buez",
-  },
-];
 
 const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx, href }) => (
   <Box
@@ -75,6 +57,25 @@ const StoreButton = ({ eyebrow, label, icon, iconAlt, iconSx, href }) => (
 );
 
 const GetBetaVersion = () => {
+  const { t } = useTranslation();
+  const storeButtons = [
+    {
+      eyebrow: t("store.downloadOnThe"),
+      label: t("store.appStore"),
+      icon: AppleStoreIcon,
+      iconAlt: "Apple",
+      iconSx: { width: "28px", height: "30px" },
+      href: "https://apps.apple.com/pk/app/buez/id6753902802",
+    },
+    {
+      eyebrow: t("store.getItOn"),
+      label: t("store.googlePlay"),
+      icon: GooglePlayIcon,
+      iconAlt: "Google Play",
+      iconSx: { width: "29px", height: "32px" },
+      href: "https://play.google.com/store/apps/details?id=com.adamburg.buez",
+    },
+  ];
   return (
     <>
       <Box
@@ -165,7 +166,7 @@ const GetBetaVersion = () => {
                   lineHeight: 1,
                 }}
               >
-                Download Now
+                {t("download.badge")}
               </Typography>
             </Box>
 
@@ -178,7 +179,7 @@ const GetBetaVersion = () => {
                 lineHeight: 1.15,
               }}
             >
-              Manage Chores Smarter
+              {t("download.title")}
             </Typography>
 
             <Typography
@@ -192,9 +193,7 @@ const GetBetaVersion = () => {
                 maxWidth: "860px",
               }}
             >
-              BUEZ is now officially available for everyone. Organize household
-              tasks, track progress, collaborate with family members, and stay
-              productive—all from one powerful app.
+              {t("download.description")}
             </Typography>
 
             <Box
