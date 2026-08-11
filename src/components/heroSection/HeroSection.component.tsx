@@ -2,6 +2,8 @@ import React from "react";
 // MUI Imports
 import { Box, Typography, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
+// Hooks
+import { useFounderStats } from "../../hooks/useFounderStats";
 // Assets
 import FounderImage from "../../assets/founder.svg";
 import ChecksIcon from "../../assets/checksIcon.svg";
@@ -18,6 +20,10 @@ const heroAvatars = [HeroAvatar1, HeroAvatar2, HeroAvatar3, HeroAvatar4];
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  // Live Founder Phase stats — same Firestore doc the mobile app writes to.
+  const { filled, remaining, total, percentFilled } = useFounderStats();
+  // The avatars are illustrative; the bubble carries the real overflow count.
+  const extraFounders = Math.max(filled - heroAvatars.length, 0);
   const badgePills = [t("hero.pill1"), t("hero.pill2"), t("hero.pill3")];
   return (
     <Box
@@ -388,7 +394,7 @@ const HeroSection = () => {
                 <Typography
                   sx={{ color: "rgba(255,255,255,0.4)", fontSize: "14px" }}
                 >
-                  {t("hero.slotsCount")}
+                  {t("hero.slotsCount", { remaining })}
                 </Typography>
               </Box>
             </Box>
@@ -413,12 +419,12 @@ const HeroSection = () => {
                     lineHeight: 1,
                   }}
                 >
-                  23
+                  {filled}
                 </Typography>
                 <Typography
                   sx={{ color: "rgba(255,255,255,0.4)", fontSize: "20px" }}
                 >
-                  /100
+                  /{total}
                 </Typography>
               </Box>
               <Box
@@ -436,7 +442,7 @@ const HeroSection = () => {
                     position: "absolute",
                     top: 0,
                     left: 0,
-                    width: "29px",
+                    width: `${percentFilled}%`,
                     height: "4px",
                     borderRadius: "2px",
                     background: "#4557B0",
@@ -462,25 +468,27 @@ const HeroSection = () => {
                   }}
                 />
               ))}
-              <Box
-                sx={{
-                  width: "32px",
-                  height: "32px",
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.1)",
-                  border: "1px solid #1A1F30",
-                  ml: "-9px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Typography
-                  sx={{ color: "#ffffff", fontSize: "10px", fontWeight: 500 }}
+              {extraFounders > 0 && (
+                <Box
+                  sx={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.1)",
+                    border: "1px solid #1A1F30",
+                    ml: "-9px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                 >
-                  +19
-                </Typography>
-              </Box>
+                  <Typography
+                    sx={{ color: "#ffffff", fontSize: "10px", fontWeight: 500 }}
+                  >
+                    +{extraFounders}
+                  </Typography>
+                </Box>
+              )}
             </Box>
           </Box>
         </Grid>

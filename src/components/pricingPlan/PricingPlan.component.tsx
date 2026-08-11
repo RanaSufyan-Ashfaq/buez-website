@@ -8,6 +8,8 @@ import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useTranslation } from "react-i18next";
+// Hooks
+import { useFounderStats } from "../../hooks/useFounderStats";
 // Assets
 import CheckIcon from "../../assets/check-icon.svg";
 // Flag Assets
@@ -18,6 +20,8 @@ import ArrowDownIcon from "../../assets/arrow-down.svg";
 
 const PricingPlan = () => {
   const { t } = useTranslation();
+  // Live Founder Phase stats — same Firestore doc the mobile app writes to.
+  const { filled, remaining, total, percentFilled } = useFounderStats();
   const [currency, setCurrency] = useState("CHF");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -471,12 +475,12 @@ const PricingPlan = () => {
                   <Typography
                     sx={{ color: "#ffffff", fontSize: "16px", fontWeight: 600, lineHeight: 1.2 }}
                   >
-                    23
+                    {filled}
                   </Typography>
                   <Typography
                     sx={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}
                   >
-                    /100
+                    /{total}
                   </Typography>
                 </Box>
                 <Typography
@@ -490,7 +494,7 @@ const PricingPlan = () => {
                 </Typography>
               </Box>
               <Box sx={{ ml: "auto", position: "relative" }}>
-                <PricePill label={t("pricing.plus.spotsLeft")} />
+                <PricePill label={t("pricing.plus.spotsLeft", { remaining })} />
               </Box>
             </Box>
             <Box
@@ -508,7 +512,7 @@ const PricingPlan = () => {
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "28.5%",
+                  width: `${percentFilled}%`,
                   height: "6px",
                   borderRadius: "3px",
                   background: "#4557B0",

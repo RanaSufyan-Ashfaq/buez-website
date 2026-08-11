@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Buez marketing/landing website — a single-page React site (with one secondary route) for the Buez app, built with Vite. There is no backend in this repo; the only external integration is EmailJS for the beta-access request form. The site is mid-redesign to a Figma design called "BUEZ Landing Page Variant 2.0", being applied section by section against reference images supplied by the owner.
+Buez marketing/landing website — a single-page React site (with one secondary route) for the Buez app, built with Vite. There is no backend in this repo; external integrations are EmailJS (beta-access request form) and a read-only Firebase/Firestore connection for live Founder Phase stats. The site is mid-redesign to a Figma design called "BUEZ Landing Page Variant 2.0", being applied section by section against reference images supplied by the owner.
 
 ## Node version — critical
 
@@ -33,4 +33,11 @@ Invoke the binaries via `node <path>` as above — even Node 20's `npm` wrapper 
 - **Shared UI**: [src/shared/GetBetaVersionButton.tsx](src/shared/GetBetaVersionButton.tsx) navigates to `/apply-beta-access` and takes an optional `label` prop (Header passes "Download App"; other usages default to "Get Beta Version"). Prefer `src/shared/` over duplicating controls.
 - **Styling**: MUI `sx` props only; dark theme is hardcoded per-section (`background: "#020617"` base). Section-corner glows are made with a blurred solid circle (`::before`/`::after` pseudo-element: `borderRadius: 50%`, `background: rgba(47,128,181,1)`, `filter: blur(180px)`, positioned off-canvas at a corner, parent `overflow: hidden`) — **not** radial-gradients, which show a hard box edge. Adjacent sections place glows on facing corners so they blend across the seam.
 - **Assets**: `src/assets/` mixes SVG icons and PNG phone-mockup screenshots imported as URLs (typed via [src/types/svg.d.ts](src/types/svg.d.ts)). Asset workflow: the owner exports from Figma and drops files in by name, then asks for them to be wired to a section — reuse the closest existing asset as a stand-in until then. SVG imports are URL strings, not components: render with `<Box component="img" src={TheImport}/>`, never `<TheImport/>` (that crashes the page with an InvalidCharacterError). `founder.svg` (hero) is ~4 MB and dominates the bundle; a PNG replacement like the other phones is the obvious optimization.
+- **Firebase (read-only)**: [src/config/firebase.ts](src/config/firebase.ts) lazily initialises the **same** Firebase project as the BUEZ mobile app (`buez-b73cc`), credentials from `import.meta.env.VITE_FIREBASE_*`. [src/services/founder.service.ts](src/services/founder.service.ts) subscribes (`onSnapshot`) to the single doc `config/founderProgram` — `{ limit, claimedCount }` — which the app's `claimFounderSpot` transaction increments; [src/hooks/useFounderStats.ts](src/hooks/useFounderStats.ts) exposes `{ total, filled, remaining, percentFilled, isLoading, isError }` and is consumed by `HeroSection` and `PricingPlan`. The site **never writes and never authenticates**; the only rule required is a public read on that one doc:
+
+  ```
+  match /config/founderProgram { allow read: if true; allow write: if false; }
+  ```
+
+  Everything degrades to `0 / limit` when env vars are missing or the read fails, and the last good values are kept on a later stream error — do not add spinners or blank states to these counters.
 - **i18n scaffolding**: i18next packages are installed and `public/locales/{en,de}/` directories exist, but nothing is initialized and no component calls `useTranslation` — all copy is hardcoded English. Don't assume translations work.

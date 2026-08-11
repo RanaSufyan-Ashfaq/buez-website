@@ -30,7 +30,7 @@
     "pill2": "Gründer-Abzeichen",
     "pill3": "Early-Access-Start",
     "slotsRemaining": "Verbleibende Plätze",
-    "slotsCount": "67 Plätze übrig"
+    "slotsCount": "{{remaining}} Plätze übrig"
   },
   "whatIs": {
     "title": "Was ist BUEZ?",
@@ -162,7 +162,7 @@
       "priceBadge": "60 TAGE GRATIS",
       "note": "Keine automatische Verlängerung. Gründer-Abzeichen inklusive.",
       "spotsClaimed": "Vergebene Plätze",
-      "spotsLeft": "77 übrig",
+      "spotsLeft": "{{remaining}} übrig",
       "footNote": "Nur für frühe Nutzer während des Starts verfügbar"
     },
     "intro": {

@@ -30,7 +30,7 @@
     "pill2": "Founder Badge",
     "pill3": "Early Access Launch",
     "slotsRemaining": "Slots Remaining",
-    "slotsCount": "67 slots remaining"
+    "slotsCount": "{{remaining}} slots remaining"
   },
   "whatIs": {
     "title": "What is BUEZ?",
@@ -162,7 +162,7 @@
       "priceBadge": "60 DAYS FREE",
       "note": "No auto-renewal. Founder badge included.",
       "spotsClaimed": "Spots Claimed",
-      "spotsLeft": "77 left",
+      "spotsLeft": "{{remaining}} left",
       "footNote": "Available only for early users during launch"
     },
     "intro": {
